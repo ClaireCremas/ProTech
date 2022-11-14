@@ -1,0 +1,27 @@
+/* Edition de l'index */
+body{ /*Couleur de fond*/
+    background-color: #C0C0C0;
+}
+
+form{ /*Centrage des textes*/
+    text-align: left;
+    margin: 20px;
+}
+
+div.titre{ /*Augmentation de l'espace où se trouve le titre*/
+    padding: 20px 100px;
+}
+
+h1{ /*Modification du tritre*/
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+h1.connection{ /*Modifie les titres conectez vous et inscrivez vous*/
+    font-size: 20px;
+    padding: 15px;
+}
+
+input{
+    margin: 1px;
+}
