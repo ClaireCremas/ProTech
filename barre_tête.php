@@ -20,6 +20,7 @@
             <li><a href="./include/information/information.php" class="Active">Informations</a></li> 
             <li><a href="">Deconnexion</a></li>
         </ul> 
+</header>
 
 </body>
 </html>
