@@ -10,7 +10,6 @@
 
 <?php include 'barre_tête.php'; ?>
 
-<?php include '\..\..\barre_tête.php'; ?>
 <body>
     <div class='bg'></div>
     <h1>Informations à savoir sur le GPA et tout</h1>
