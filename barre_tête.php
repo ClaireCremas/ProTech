@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-            <img src="C:\xampp\htdocs\proTech\ProTech\image\emse-blanc.png" alt="logo" widht="30px">
+            <img src="image\emse-blanc.png" alt="logo" widht="30px">
             <a href="page_garde.php" class="index">MENU</a>
             <ul class="navigation"> <!--ici on ajoute des points en dessous du titre logo-->
                 <li><a href="./include/information/information.php" class="Active">Informations</a></li> 
