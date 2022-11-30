@@ -79,7 +79,7 @@
         <li>Il est possible, si une mention F figure sur le relevé de notes, que l’élève se voit non validé définitivement un GP et n’aura donc pas accès aux rattrapages. Dans ce cas, le prolongement de scolarité est obligatoire.</li></br>
 
         </p>
-    <h2>Abscences : </h2>
+    <h2>Absences : </h2>
         <p>
         <li>Il y a deux possibilités concernant la gestion des absences :</li></br>
 
