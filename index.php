@@ -9,7 +9,7 @@
 </head>
 
 <?php session_start();
-    include 'barre_tête.php'; #barre de tête
+    include 'barre_tête.php';
     include './include/database.php'; #connexion à la base de donnée
     global $db; #permet d'avoir la base de donnée sous le nom db
     

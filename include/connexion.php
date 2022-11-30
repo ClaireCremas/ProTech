@@ -16,7 +16,7 @@
 
         $email =$_POST['email'];
         $password = $_POST['password'];
-
+    }
         if(!empty($email) && !empty($password)){  #si l'email ou mdp est non vide alors
             $c = $db->prepare("SELECT * FROM user WHERE email= :email");
             $c->execute(['email'=> $email]);
@@ -26,6 +26,13 @@
                 //le compte existe bien
 
                 $hashpassword = $result['password'];
+
+                if(password_verify($password,$hashpassword)){
+                    echo "Le mot de passe est bon, connection en cours";
+                    ?> <a href="./compte/page_garde.php">Vas sur ta page</a><?php
+                    $_SESSION['email']=$result['email'];
+                    $_SESSION['date']=$result['date'];
+
                 if(password_verify($password,$hashpassword)){ #le mot de passe est bon
                     echo "Le mot de passe est bon, connection en cours";
                     ?> <a href="./compte/page_garde.php">Vas sur ta page</a><?php 
@@ -35,14 +42,17 @@
                     $_SESSION['prenom']=$result['prenom'];
 
                     
+        
                 }else{
                     echo "Le mot de passe n'est pas correct";
                 }
 
             } else{echo "Le compte" .$email ."n'existe pas";}
+
     
         }else{
             echo "Veuillez compléter l'ensemble des champs";
         }
     }
+        
 ?>
