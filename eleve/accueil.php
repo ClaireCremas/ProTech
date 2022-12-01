@@ -6,12 +6,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="accueil.css"> <!-- ajout de css-->
+    <link rel="stylesheet" href="accueil.css"> <!--css-->
 </head>
 
 <?php session_start();
-    include 'barre_tête.php';
-    include './include/database.php'; #connexion à la base de donnée
+    include '../barre_tête.php';
+    include '../include/database.php'; #connexion à la base de donnée
     global $db; #permet d'avoir la base de donnée sous le nom db
     
 ?>

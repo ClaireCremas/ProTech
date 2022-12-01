@@ -8,7 +8,7 @@
     <title>Informations</title>
 </head>
 
-<?php include 'barre_tête.php'; ?>
+<?php include '../../barre_tête.php'; ?>
 
 <body>
     <div class='bg'></div>

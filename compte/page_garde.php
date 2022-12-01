@@ -16,7 +16,7 @@
         <p>Ton prénom : <?php echo($_SESSION['prenom']) ?> </p>
         <p>Ton GPA : PAS OUF</p>
     </div>
-    <p><a href="include\information\information.php"> Informations</a></p>
+    <p><a href="/ProTech/include/information/information.php">Informations</a></p>
     <div>
         <p>GP : </p>
         <p>Grade : </p>
