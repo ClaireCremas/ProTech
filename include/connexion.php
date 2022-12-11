@@ -29,7 +29,7 @@
 
                 if(password_verify($password,$hashpassword)){ #le mot de passe est bon
                     echo "Le mot de passe est bon, connection en cours";
-                    ?> <a href="./eleve/acceuil_eleve.php">Vas sur ta page</a><?php 
+                    ?> <a href="./eleve/accueil_eleve.php">Vas sur ta page</a><?php 
                     $_SESSION['email']=$result['email'];
                     $_SESSION['date']=$result['date'];
                     $_SESSION['nom']=$result['nom'];
