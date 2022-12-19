@@ -4,7 +4,7 @@ $login="user";
 $mdp="user";
 try{
     $db=new PDO($source,$login,$mdp);
-    echo("Vous êtes connecté à la base de donnée! "); #marque si on est bien connecté à la base de donnée
+    echo(""); #marque si on est bien connecté à la base de donnée
 }
 catch(PDOException $e){
     $error_message= $e->getMessage();

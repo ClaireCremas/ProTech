@@ -102,7 +102,8 @@
             $c = $db->prepare("SELECT avg(note) from note INNER join user on note.id_user=user.id INNER join eval on eval.id=note.id_eval where eval.id_up=:id and user.email=:email");
             $c->execute(['id'=> $id_up, 'email'=>$email]);
             $moyenne_up_eleve = $c->fetch();
-            echo($moyenne_up_eleve[0]);
+            $arrondi=round($moyenne_up_eleve[0],2);
+            echo($arrondi);
         }
 
         function rattrapage($id_up,$email,$num_up,$id_gp){
@@ -132,6 +133,58 @@
             $note_rattrapage = $c->fetch();
             if (empty($note_rattrapage[0])==FALSE){
                 return TRUE;
+            }
+        }
+
+        function moyenne_gp_eleve($id_gp,$email){
+            global $db;
+            $somme=0;
+            $coef=0;
+            
+            for ($i = 1; $i <= 4; $i++) {
+                $c = $db->prepare("SELECT coefficient FROM up WHERE num_UP= :num AND id_gp=:id_gp");
+                $c->execute(['num'=> $i, 'id_gp'=>$id_gp]);
+                $coef_up = $c->fetch();
+                
+                $d = $db->prepare("SELECT avg(note) from note INNER join user on note.id_user=user.id INNER join eval on eval.id=note.id_eval INNER JOIN up on up.id=eval.id_up where up.num_up=:id and user.email=:email and up.id_gp=:id_gp");
+                $d->execute(['id'=> $i, 'email'=>$email, 'id_gp'=>$id_gp]);
+                $moyenne_up_eleve = $d->fetch();
+                
+                $somme=$somme+$coef_up[0]*$moyenne_up_eleve[0];
+                $coef=$coef+$coef_up[0];
+            }
+            $moyenne=$somme/$coef;
+            $arrondi=round($moyenne,2);
+            echo($arrondi);
+        }
+
+        function validation_gp($id_gp,$email){
+            $somme=0;
+            $coef=0;
+            global $db;
+            $e = $db->prepare("SELECT barre FROM gp WHERE id= :id");
+            $e->execute(['id'=> $id_gp]);
+            $barre_gp = $e->fetch();
+            
+            for ($i = 1; $i <= 4; $i++) {
+                $c = $db->prepare("SELECT coefficient FROM up WHERE num_UP= :num AND id_gp=:id_gp");
+                $c->execute(['num'=> $i, 'id_gp'=>$id_gp]);
+                $coef_up = $c->fetch();
+                
+                $d = $db->prepare("SELECT avg(note) from note INNER join user on note.id_user=user.id INNER join eval on eval.id=note.id_eval INNER JOIN up on up.id=eval.id_up where up.num_up=:id and user.email=:email and up.id_gp=:id_gp");
+                $d->execute(['id'=> $i, 'email'=>$email,'id_gp'=>$id_gp]);
+                $moyenne_up_eleve = $d->fetch();
+
+                $somme=$somme+$coef_up[0]*$moyenne_up_eleve[0];
+                $coef=$coef+$coef_up[0];
+            }
+            $moyenne=$somme/$coef;
+
+            if ($moyenne<$barre_gp[0]){
+                return TRUE;
+            }
+            else{
+                return FALSE;
             }
         }
     ?>

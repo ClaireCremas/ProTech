@@ -19,7 +19,7 @@ body{
       font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
       cursor: pointer;
       border: 0;
-      box-shadow: inset 0 0 0 1px #BBEDA4;
+      box-shadow: inset 0 0 0 1px #ECECEE;
       padding: .625rem 1.5rem .85rem;
       border-radius: 1.3125rem;
       color:black;
@@ -34,7 +34,7 @@ body{
       font-weight: 400;
       box-sizing: border-box;
       margin: 10px;
-      background-color: #BBEDA4;    
+   
   }
   
   .GP:hover{

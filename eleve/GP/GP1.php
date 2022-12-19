@@ -58,7 +58,7 @@
 
             <!-- NOTE DE RATTRAPAGE SI IL Y A -->
             <li class="note">
-            <?php if (rattrapage_non_vide(4,$email)==TRUE){
+            <?php if (rattrapage_non_vide(3,$email)==TRUE){
               echo("<ul> Rattrapage </ul>
               <ul> Note : </ul>
               <ul> Note pour valider l'UP : </ul>");
@@ -67,8 +67,9 @@
           </li>
         </li>
     </div>
+    <!--          UP2          -->
     <div class='UP UP2'> 
-    <?php if (rattrapage(3,$email,2,1)==True){
+    <?php if (rattrapage(2,$email,2,1)==True){
              echo("<style> .UP2{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP2{background-color : #61CA6F;}</style>") ;
@@ -82,14 +83,108 @@
         <li>
             <li class="note">
                 <ul>Note 1</ul>
-                <ul> Note : <?php note($email,3) ?></ul>
-                <ul>Classement : <?php classement_eval($email,3) ?></ul>
+                <ul> Note : <?php note($email,4) ?></ul>
+                <ul>Classement : <?php classement_eval($email,4) ?></ul>
                 <ul>Coefficient : </ul>
-                <ul>Moyenne Groupe : <?php moyenne_eval(3) ?></ul>
-                <ul>Ecart-Type : <?php ecart_type_eval(3)?> </ul>
-                <ul>Note min/ Note max : <?php min_note(3) ?> <?php echo('/') ?> <?php max_note(3) ?></ul>
+                <ul>Moyenne Groupe : <?php moyenne_eval(4) ?></ul>
+                <ul>Ecart-Type : <?php ecart_type_eval(4)?> </ul>
+                <ul>Note min/ Note max : <?php min_note(4) ?> <?php echo('/') ?> <?php max_note(4) ?></ul>
             </li>
             
+        </li>
+        <!-- NOTE DE RATTRAPAGE SI IL Y A -->
+        <li class="note">
+            <?php if (rattrapage_non_vide(9,$email)==TRUE){
+              echo("<ul> Rattrapage </ul>
+              <ul> Note : </ul>
+              <ul> Note pour valider l'UP : </ul>");
+            } ?>
+    </div>
+
+    <!--                UP3              -->
+    <div class='UP UP3'> 
+    <?php if (rattrapage(3,$email,3,1)==True){
+             echo("<style> .UP3{background-color : #FF4545;}</style>");}
+             else{
+              echo("<style> .UP3{background-color : #61CA6F;}</style>") ;
+             }?>
+
+        <p>UP3 : <?php echo(nom_up(3,1)) ?></p>
+        <li>
+            <ul>Moyenne : <?php moyenne_up(3) ?> </ul>
+            <ul>Classement : </ul>
+            <ul>Coefficient : <?php coef_up(3,1) ?> </ul>
+        </li>
+        <li>
+            <li class="note">
+                <ul>Note 1</ul>
+                <ul> Note : <?php note($email,5) ?></ul>
+                <ul>Classement : <?php classement_eval($email,5) ?> </ul>
+                <ul>Coefficient : </ul>
+                <ul>Moyenne Groupe : <?php moyenne_eval(5) ?></ul>
+                <ul>Ecart-Type : <?php ecart_type_eval(5)?> </ul>
+                <ul>Note min/ Note max : <?php min_note(5) ?> <?php echo('/') ?> <?php max_note(5) ?></ul>
+            </li>
+
+
+            <li class="note">
+                <ul>Note 2</ul>
+                <ul> Note : <?php note($email,6) ?></ul>
+                <ul>Classement : <?php classement_eval($email,6) ?></ul>
+                <ul>Coefficient :</ul>
+                <ul>Moyenne Groupe : <?php moyenne_eval(6) ?></ul>
+                <ul>Ecart-Type :  <?php ecart_type_eval(6)?></ul>
+                <ul>Note min/ Note max : <?php min_note(6) ?> <?php echo('/') ?> <?php max_note(6) ?></ul>
+            </li>
+
+            <!-- NOTE DE RATTRAPAGE SI IL Y A -->
+            <li class="note">
+            <?php if (rattrapage_non_vide(10,$email)==TRUE){
+              echo("<ul> Rattrapage </ul>
+              <ul> Note : </ul>
+              <ul> Note pour valider l'UP : </ul>");
+            } ?>
+
+          </li>
+        </li>
+    </div>
+
+
+        <!--                UP4              -->
+        <div class='UP UP4'> 
+    <?php if (rattrapage(4,$email,4,1)==True){
+             echo("<style> .UP4{background-color : #FF4545;}</style>");}
+             else{
+              echo("<style> .UP4{background-color : #61CA6F;}</style>") ;
+             }?>
+
+        <p>UP4 : <?php echo(nom_up(4,1)) ?></p>
+        <li>
+            <ul>Moyenne : <?php moyenne_up(4) ?> </ul>
+            <ul>Classement : </ul>
+            <ul>Coefficient : <?php coef_up(4,1) ?> </ul>
+        </li>
+        <li>
+            <li class="note">
+                <ul>Note 1</ul>
+                <ul> Note : <?php note($email,7) ?></ul>
+                <ul>Classement : <?php classement_eval($email,7) ?> </ul>
+                <ul>Coefficient : </ul>
+                <ul>Moyenne Groupe : <?php moyenne_eval(7) ?></ul>
+                <ul>Ecart-Type : <?php ecart_type_eval(7)?> </ul>
+                <ul>Note min/ Note max : <?php min_note(7) ?> <?php echo('/') ?> <?php max_note(7) ?></ul>
+            </li>
+
+
+            <!-- NOTE DE RATTRAPAGE SI IL Y A -->
+            <li class="note">
+            <?php if (rattrapage_non_vide(11,$email)==TRUE){
+              echo("<ul> Rattrapage </ul>
+              <ul> Note : </ul>
+              <ul> Note pour valider l'UP : </ul>");
+            } ?>
+
+          </li>
         </li>
     </div>
     <div class="retour">
