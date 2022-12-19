@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="GP.css">
     <title>Document</title>
 </head>
 
@@ -14,45 +15,79 @@
     include('./../../requete.php')
 ?>
 <body>
+    <?php $email=$_SESSION['email'] ?>
     <h1>GP1 : <?php echo(nom_gp(1)) ?></h1>
     <div>
         <li><a href=""> Simulation </a> </li>
         <li><a href="">Statistiques</a></li>
     </div>
     <div class='UP'> 
-        <style>
-            .UP{
-                background:green;
-            }
-        </style>
         <p>UP1 : <?php echo(nom_up(1,1)) ?></p>
         <li>
-            <ul>Moyenne : </ul>
+            <ul>Moyenne : <?php moyenne_up(1) ?> </ul>
             <ul>Classement : </ul>
-            <ul>Coefficient : </ul>
+            <ul>Coefficient : <?php coef_up(1,1) ?> </ul>
         </li>
         <li>
-            <li>
+            <li class="note">
                 <ul>Note 1</ul>
-                <ul> Note : </ul>
-                <ul>Classement</ul>
-                <ul>Coefficient</ul>
-                <ul>Moyenne Groupe</ul>
-                <ul>Ecart-Type</ul>
-                <ul>Note min/ Note max</ul>
+                <ul> Note : <?php note($email,1) ?></ul>
+                <ul>Classement : <?php classement_eval($email,1) ?> </ul>
+                <ul>Coefficient : </ul>
+                <ul>Moyenne Groupe : <?php moyenne_eval(1) ?></ul>
+                <ul>Ecart-Type : <?php ecart_type_eval(1)?> </ul>
+                <ul>Note min/ Note max : <?php min_note(1) ?> <?php echo('/') ?> <?php max_note(1) ?></ul>
             </li>
 
 
-            <li>
+            <li class="note">
                 <ul>Note 2</ul>
-                <ul> Note : </ul>
-                <ul>Classement</ul>
-                <ul>Coefficient</ul>
-                <ul>Moyenne Groupe</ul>
-                <ul>Ecart-Type</ul>
-                <ul>Note min/ Note max</ul>
+                <ul> Note : <?php note($email,2) ?></ul>
+                <ul>Classement : <?php classement_eval($email,2) ?></ul>
+                <ul>Coefficient :</ul>
+                <ul>Moyenne Groupe : <?php moyenne_eval(2) ?></ul>
+                <ul>Ecart-Type :  <?php ecart_type_eval(2)?></ul>
+                <ul>Note min/ Note max : <?php min_note(2) ?> <?php echo('/') ?> <?php max_note(2) ?></ul>
             </li>
         </li>
+    </div>
+    <div class='UP'> 
+        <style>
+            .UP{
+                background:#AAE685;
+            }
+        </style>
+        <p>UP2 : <?php echo(nom_up(2,1)) ?></p>
+        <li>
+            <ul>Moyenne : <?php moyenne_up(2) ?> </ul>
+            <ul>Classement : </ul>
+            <ul>Coefficient : <?php coef_up(2,1) ?> </ul>
+        </li>
+        <li>
+            <li class="note">
+                <ul>Note 1</ul>
+                <ul> Note : <?php note($email,1) ?></ul>
+                <ul>Classement : </ul>
+                <ul>Coefficient : </ul>
+                <ul>Moyenne Groupe : <?php moyenne_eval(1) ?></ul>
+                <ul>Ecart-Type : <?php ecart_type_eval(1)?> </ul>
+                <ul>Note min/ Note max : </ul>
+            </li>
+
+
+            <li class="note">
+                <ul>Note 2</ul>
+                <ul> Note : <?php note($email,2) ?></ul>
+                <ul>Classement :</ul>
+                <ul>Coefficient :</ul>
+                <ul>Moyenne Groupe : <?php moyenne_eval(2) ?></ul>
+                <ul>Ecart-Type :</ul>
+                <ul>Note min/ Note max : </ul>
+            </li>
+        </li>
+    </div>
+    <div class="retour">
+        <li><a href="./../accueil_eleve.php">RETOUR</a></li>
     </div>
 </body>
 </html>

@@ -1,0 +1,23 @@
+h1{
+    text-align: center;
+    font-size: 3rem;
+}
+ul{
+    list-style: none;
+}
+
+li{
+    list-style: none;
+    display: flex;
+}
+
+body{
+    font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
+    background-color: #ECECEE;
+}
+
+.UP{
+    border-radius: 1.3125rem;
+    padding:5px;
+    margin: 1rem;
+}

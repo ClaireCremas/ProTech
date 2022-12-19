@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="accueil_eleve.css"> <!--css-->
+    <link rel="stylesheet" href="accueil_eleve1.css"> <!--css-->
 </head>
 
 <?php session_start();
@@ -22,6 +22,8 @@
     <div class="eleve">
         <p>Nom : <?php echo($_SESSION['nom']) ?> </p>
         <p>Prénom : <?php echo($_SESSION['prenom']) ?> </p>
+        <p>Promo :</p>
+        <p>GPA : </p>
     </div>
         
     <?php include('./../requete.php')?>
@@ -41,7 +43,7 @@
   <li class="cd-accordion__item cd-accordion__item--has-children">
     <input class="cd-accordion__input" type="checkbox" name ="group-1" id="group-1">
     <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-1"><span class='GP'>GP 1 : <?php echo(nom_gp(1));?> </span><span class='barre'>Barre :   <?php echo(barre_gp(1));?> Grade :</span></label>
-    <a class='info_GP'>En savoir plus</a>
+    <a class='info_GP' href="./GP/GP1.php">En savoir plus</a>
     <!--UP1 GP1-->
     <ul class="cd-accordion__sub cd-accordion__sub--l1">
       <li class="cd-accordion__item cd-accordion__item--has-children">
@@ -50,9 +52,9 @@
 
         <!--NOTES-->
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,1))?>  Moyenne : </span></a></li>
-          <li class="cd-accordion__item"><span class='note'>NOTE 2 : Moyenne :</span></a></li>
-          <li class="cd-accordion__item"><span class='note'>NOTE 3 : Moyenne :</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,1))?>  Moyenne : <?php echo(moyenne_eval(1))?> </span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 2 : <?php echo(note($email,2))?> Moyenne : <?php echo(moyenne_eval(2))?></span></a></li>
+      
         </ul>
       </li>
 
@@ -98,7 +100,7 @@
   <li class="cd-accordion__item cd-accordion__item--has-children">
     <input class="cd-accordion__input" type="checkbox" name ="group-2" id="group-2">
     <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-2"><span class='GP'>GP 2 : <?php echo(nom_gp(2));?> </span><span class="barre">Barre :   <?php echo(barre_gp(2));?> Grade :</span></label>
-    <a class='info_GP'>En savoir plus</a>
+    <a class='info_GP' href="./GP/GP2.php">En savoir plus</a>
     <!--UP1 GP2-->
     <ul class="cd-accordion__sub cd-accordion__sub--l1">
       <li class="cd-accordion__item cd-accordion__item--has-children">
@@ -158,7 +160,7 @@
   <li class="cd-accordion__item cd-accordion__item--has-children">
     <input class="cd-accordion__input" type="checkbox" name ="group-1" id="group-3">
     <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-3"><span class='GP'>GP 3 : <?php echo(nom_gp(3));?> </span><span class='barre'>Barre :   <?php echo(barre_gp(3));?> Grade :</span></label>
-    <a class='info_GP'>En savoir plus</a>
+    <a class='info_GP' href="./GP/GP3.php">En savoir plus</a>
 
     <!--UP1 GP3-->
     <ul class="cd-accordion__sub cd-accordion__sub--l1">
@@ -217,7 +219,7 @@
   <li class="cd-accordion__item cd-accordion__item--has-children">
     <input class="cd-accordion__input" type="checkbox" name ="group-4" id="group-4">
     <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-4"><span class='GP'>GP 4 : <?php echo(nom_gp(4));?> </span><span class='barre'>Barre :   <?php echo(barre_gp(4));?> Grade :</span></label>
-    <a class='info_GP'>En savoir plus</a>
+    <a class='info_GP' href="./GP/GP4.php">En savoir plus</a>
 
     <!--UP1 GP4-->
     <ul class="cd-accordion__sub cd-accordion__sub--l1">
@@ -270,11 +272,5 @@
     </ul>
   </li>
 </ul>
-</body>
-</html>
-
-
-
-
 </body>
 </html>
