@@ -114,12 +114,12 @@ body{
   
   .info_GP{
     cursor: pointer;
-    background: #8C8D8E;
+    background: #B7B7B7;
     display: inline-flex;
     font-size:large;
     font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
     border: 0;
-    box-shadow: inset 0 0 0 1px #8C8D8E;
+    box-shadow: inset 0 0 0 1px #B7B7B7;
     padding: .625rem 1.5rem .85rem;
     border-radius: 1.3125rem;
     color: black;
@@ -133,7 +133,7 @@ body{
     font-weight: 400;
     box-sizing: border-box;
     margin: 5px;
-    margin-left: 3rem;
+    margin-left: 1rem;
   }
 
   .info_GP:hover{

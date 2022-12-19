@@ -39,7 +39,7 @@
                 }
 
             } else{
-                echo "Le compte" .$email ."n'existe pas";
+                echo ("Le compte" .$email ."n'existe pas");
             }
 
     

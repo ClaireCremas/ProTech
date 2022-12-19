@@ -16,7 +16,7 @@
 ?>
 <body>
     <?php $email=$_SESSION['email'] ?>
-    <h1>GP1 : <?php echo(nom_gp(2)) ?></h1>
+    <h1>GP2 : <?php echo(nom_gp(2)) ?></h1>
     <div>
         <li><a href=""> Simulation </a> </li>
         <li><a href="">Statistiques</a></li>
