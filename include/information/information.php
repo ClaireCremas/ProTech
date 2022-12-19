@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="informations.css">
+    <link rel="stylesheet" href="information.css">
     <title>Informations</title>
 </head>
 
-<?php include '../../barre_tête.php'; ?>
+<?php include './../../barre_tete.php'; ?>
 
 <body>
     <div class='bg'></div>
-    <h1>Informations à savoir sur le GPA et tout</h1>
+    <h1>Informations</h1>
     <h2>Questions</h2>
     <p>
         Question de la personne numéro 1
