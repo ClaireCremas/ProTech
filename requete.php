@@ -97,5 +97,41 @@
             echo($classement_eval[0]);
         }
 
-        
+        function moyenne_up_eleve($id_up,$email){
+            global $db;
+            $c = $db->prepare("SELECT avg(note) from note INNER join user on note.id_user=user.id INNER join eval on eval.id=note.id_eval where eval.id_up=:id and user.email=:email");
+            $c->execute(['id'=> $id_up, 'email'=>$email]);
+            $moyenne_up_eleve = $c->fetch();
+            echo($moyenne_up_eleve[0]);
+        }
+
+        function rattrapage($id_up,$email,$num_up,$id_gp){
+            global $db;
+
+            /*prend la valeur de la moyenne de l'UP de l'éleve*/
+            $c = $db->prepare("SELECT avg(note) from note INNER join user on note.id_user=user.id INNER join eval on eval.id=note.id_eval where eval.id_up=:id and user.email=:email");
+            $c->execute(['id'=> $id_up, 'email'=>$email]);
+            $moyenne_up_eleve = $c->fetch();
+
+            /*prend la barre de l'up*/
+            $d = $db->prepare("SELECT barre FROM up WHERE num_UP= :num AND id_gp=:id_gp");
+            $d->execute(['num'=> $num_up, 'id_gp'=>$id_gp]);
+            $barre_up = $d->fetch();
+
+            /*Test si la moyenne de l'élève est plus petite que la barre*/
+            if ($moyenne_up_eleve[0]<$barre_up[0])
+                return TRUE;
+            else
+                return FALSE;
+        }
+
+        function rattrapage_non_vide($id_eval,$email){
+            global $db;
+            $c = $db->prepare("SELECT note from note INNER join user on note.id_user=user.id INNER join eval on eval.id=note.id_eval where eval.id=:id and user.email=:email");
+            $c->execute(['id'=> $id_eval, 'email'=>$email]);
+            $note_rattrapage = $c->fetch();
+            if (empty($note_rattrapage[0])==FALSE){
+                return TRUE;
+            }
+        }
     ?>

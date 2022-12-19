@@ -21,7 +21,13 @@
         <li><a href=""> Simulation </a> </li>
         <li><a href="">Statistiques</a></li>
     </div>
-    <div class='UP'> 
+    <div class='UP UP1'> 
+    <?php if (rattrapage(1,$email,1,1)==True){
+             echo("<style> .UP1{background-color : #FF4545;}</style>");}
+             else{
+              echo("<style> .UP1{background-color : #61CA6F;}</style>") ;
+             }?>
+
         <p>UP1 : <?php echo(nom_up(1,1)) ?></p>
         <li>
             <ul>Moyenne : <?php moyenne_up(1) ?> </ul>
@@ -49,14 +55,24 @@
                 <ul>Ecart-Type :  <?php ecart_type_eval(2)?></ul>
                 <ul>Note min/ Note max : <?php min_note(2) ?> <?php echo('/') ?> <?php max_note(2) ?></ul>
             </li>
+
+            <!-- NOTE DE RATTRAPAGE SI IL Y A -->
+            <li class="note">
+            <?php if (rattrapage_non_vide(4,$email)==TRUE){
+              echo("<ul> Rattrapage </ul>
+              <ul> Note : </ul>
+              <ul> Note pour valider l'UP : </ul>");
+            } ?>
+
+          </li>
         </li>
     </div>
-    <div class='UP'> 
-        <style>
-            .UP{
-                background:#AAE685;
-            }
-        </style>
+    <div class='UP UP2'> 
+    <?php if (rattrapage(3,$email,2,1)==True){
+             echo("<style> .UP2{background-color : #FF4545;}</style>");}
+             else{
+              echo("<style> .UP2{background-color : #61CA6F;}</style>") ;
+             }?>
         <p>UP2 : <?php echo(nom_up(2,1)) ?></p>
         <li>
             <ul>Moyenne : <?php moyenne_up(2) ?> </ul>
@@ -66,24 +82,14 @@
         <li>
             <li class="note">
                 <ul>Note 1</ul>
-                <ul> Note : <?php note($email,1) ?></ul>
-                <ul>Classement : </ul>
+                <ul> Note : <?php note($email,3) ?></ul>
+                <ul>Classement : <?php classement_eval($email,3) ?></ul>
                 <ul>Coefficient : </ul>
-                <ul>Moyenne Groupe : <?php moyenne_eval(1) ?></ul>
-                <ul>Ecart-Type : <?php ecart_type_eval(1)?> </ul>
-                <ul>Note min/ Note max : </ul>
+                <ul>Moyenne Groupe : <?php moyenne_eval(3) ?></ul>
+                <ul>Ecart-Type : <?php ecart_type_eval(3)?> </ul>
+                <ul>Note min/ Note max : <?php min_note(3) ?> <?php echo('/') ?> <?php max_note(3) ?></ul>
             </li>
-
-
-            <li class="note">
-                <ul>Note 2</ul>
-                <ul> Note : <?php note($email,2) ?></ul>
-                <ul>Classement :</ul>
-                <ul>Coefficient :</ul>
-                <ul>Moyenne Groupe : <?php moyenne_eval(2) ?></ul>
-                <ul>Ecart-Type :</ul>
-                <ul>Note min/ Note max : </ul>
-            </li>
+            
         </li>
     </div>
     <div class="retour">

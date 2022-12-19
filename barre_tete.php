@@ -55,9 +55,9 @@
     <img src="./image/emse-blanc.png" alt="logo" class="img">
         
         <ul class="navigation"> <!--ici on ajoute des points en dessous du titre logo-->
-            <li><a href="/proTech_moi/eleve/accueil_eleve.php" >Mes notes</a></li>
-            <li><a href="/proTech_moi/include/information/information.php" class="Active">Informations</a></li> 
-            <li><a href="/proTech_moi/include/deconnexion.php">Deconnexion</a></li>
+            <li><a href="/proTech/eleve/accueil_eleve.php" >Mes notes</a></li>
+            <li><a href="/proTech/include/information/information.php" class="Active">Informations</a></li> 
+            <li><a href="/proTech/include/deconnexion.php">Deconnexion</a></li>
         </ul> 
     </div>
         
