@@ -7,7 +7,7 @@
     <div>
         <input type="text" name="email" id="email" placeholder="votre email" required><br/> 
         <input type="password" name="password" id="password" placeholder="votre mot de passe" required><br/>
-        <input type="submit" name="formsend_1" id="formsend" value="Connexion">
+        <button type="submit" name="formsend_1" id="formsend"> Connexion </button>
     </div>
 </form> 
 
@@ -29,7 +29,7 @@
 
                 if(password_verify($password,$hashpassword)){ #le mot de passe est bon
                     echo "Le mot de passe est bon, connection en cours";
-                    ?> <a href="./eleve/accueil_eleve.php">Vas sur ta page</a><?php 
+                    header('Location: ./eleve/accueil_eleve.php');
                     $_SESSION['email']=$result['email'];
                     $_SESSION['date']=$result['date'];
                     $_SESSION['nom']=$result['nom'];
