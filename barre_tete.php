@@ -52,7 +52,7 @@
 </head>
 <body>
     <div class='barre_tete'>
-    <img src="./image/emse-blanc.png" alt="logo" class="img">
+    <img src="/proTech/image/emse-blanc.png" alt="logo" class="img">
         
         <ul class="navigation"> <!--ici on ajoute des points en dessous du titre logo-->
             <li><a href="/proTech/eleve/accueil_eleve.php" >Mes notes</a></li>
