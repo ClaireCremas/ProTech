@@ -29,11 +29,19 @@
 
                 if(password_verify($password,$hashpassword)){ #le mot de passe est bon
                     echo "Le mot de passe est bon, connection en cours";
-                    header('Location: ./eleve/accueil_eleve.php');
                     $_SESSION['email']=$result['email'];
                     $_SESSION['date']=$result['date'];
                     $_SESSION['nom']=$result['nom'];
                     $_SESSION['prenom']=$result['prenom'];
+
+                    if($result['TYPE']==1){
+                        header('Location: ./eleve/accueil_eleve.php');
+                    }
+                    else{
+                        header('Location: ./prof/accueil_prof.php');
+                        echo("connexion prof");
+                    }
+                    
                 }else{
                     echo "Le mot de passe n'est pas correct";
                 }
