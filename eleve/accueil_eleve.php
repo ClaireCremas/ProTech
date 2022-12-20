@@ -253,7 +253,15 @@
     <ul class="cd-accordion__sub cd-accordion__sub--l1">
       <li class="cd-accordion__item cd-accordion__item--has-children">
         <input class="cd-accordion__input" type="checkbox" name ="sub-group-9" id="sub-group-9">
-        <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-9"><span class='UP'>UP 1 : <?php echo(nom_up(1,3))?> </span><span class='moyenne'>Moyenne :     Coefficient : <?php echo(coef_up(1,3))?>   Barre : <?php echo(barre_up(1,3))?> </span></label>
+        <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-9"><span class='UP UP9'>UP 1 : <?php echo(nom_up(1,3))?> </span><span class='moyenne'>Moyenne :     Coefficient : <?php echo(coef_up(1,3))?>   Barre : <?php echo(barre_up(1,3))?> </span></label>
+
+        <!-- CHANGE COULEUR SI IL FAUT RATTRAPAGE (NON VALIDATION UP) -->
+        <?php if (rattrapage(9,$email,1,3)==True){
+             echo("<style> .UP9{background-color : #FF4545;}</style>");}
+             else{
+              echo("<style> .UP9{background-color : #61CA6F;}</style>") ;
+             }?> 
+
 
         <!--NOTES-->
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
@@ -267,7 +275,15 @@
       <!--UP2 GP3-->
       <li class="cd-accordion__item cd-accordion__item--has-children">
         <input class="cd-accordion__input" type="checkbox" name ="sub-group-10" id="sub-group-10">
-        <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-10"><span class='UP'>UP2 : <?php echo(nom_up(2,3))?></span><span class='moyenne'>Moyenne :    Coefficient : <?php echo(coef_up(2,3))?>  Barre : <?php echo(barre_up(2,3))?></span></label>
+        <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-10"><span class='UP UP10'>UP2 : <?php echo(nom_up(2,3))?></span><span class='moyenne'>Moyenne :    Coefficient : <?php echo(coef_up(2,3))?>  Barre : <?php echo(barre_up(2,3))?></span></label>
+        
+        <!-- CHANGE COULEUR SI IL FAUT RATTRAPAGE (NON VALIDATION UP) -->
+        <?php if (rattrapage(10,$email,2,3)==True){
+             echo("<style> .UP10{background-color : #FF4545;}</style>");}
+             else{
+              echo("<style> .UP10{background-color : #61CA6F;}</style>") ;
+             }?> 
+        
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
           <li class="cd-accordion__item"><span class='note'>NOTE 1 : Moyenne :</span></a></li>
           <li class="cd-accordion__item"><span class='note'>NOTE 2 : Moyenne :</span></a></li>
@@ -278,7 +294,15 @@
     <!--UP3 GP3-->
     <li class="cd-accordion__item cd-accordion__item--has-children">
         <input class="cd-accordion__input" type="checkbox" name ="sub-group-11" id="sub-group-11">
-        <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-11"><span class='UP'>UP3 : <?php echo(nom_up(3,3))?></span><span class='moyenne'>Moyenne :    Coefficient : <?php echo(coef_up(3,3))?> Barre : <?php echo(barre_up(3,3))?></span></label>
+        <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-11"><span class='UP UP11'>UP3 : <?php echo(nom_up(3,3))?></span><span class='moyenne'>Moyenne :    Coefficient : <?php echo(coef_up(3,3))?> Barre : <?php echo(barre_up(3,3))?></span></label>
+        
+        <!-- CHANGE COULEUR SI IL FAUT RATTRAPAGE (NON VALIDATION UP) -->
+        <?php if (rattrapage(11,$email,3,3)==True){
+             echo("<style> .UP11{background-color : #FF4545;}</style>");}
+             else{
+              echo("<style> .UP11{background-color : #61CA6F;}</style>") ;
+             }?> 
+
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
           <li class="cd-accordion__item"><span class='note'>NOTE 1 : Moyenne :</span></a></li>
           <li class="cd-accordion__item"><span class='note'>NOTE 2 : Moyenne :</span></a></li>
@@ -289,7 +313,15 @@
     <!--UP4 GP3-->
     <li class="cd-accordion__item cd-accordion__item--has-children">
         <input class="cd-accordion__input" type="checkbox" name ="sub-group-12" id="sub-group-12">
-        <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-12"><span class='UP'>UP4 : <?php echo(nom_up(4,3))?></span><span class='moyenne'>Moyenne :    Coefficient : <?php echo(coef_up(4,3))?>  Barre : <?php echo(barre_up(4,3))?></span></label>
+        <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-12"><span class='UP UP12'>UP4 : <?php echo(nom_up(4,3))?></span><span class='moyenne'>Moyenne :    Coefficient : <?php echo(coef_up(4,3))?>  Barre : <?php echo(barre_up(4,3))?></span></label>
+        
+        <!-- CHANGE COULEUR SI IL FAUT RATTRAPAGE (NON VALIDATION UP) -->
+        <?php if (rattrapage(12,$email,4,3)==True){
+             echo("<style> .UP12{background-color : #FF4545;}</style>");}
+             else{
+              echo("<style> .UP12{background-color : #61CA6F;}</style>") ;
+             }?> 
+
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
           <li class="cd-accordion__item"><span class='note'>NOTE 1 : Moyenne :</span></a></li>
           <li class="cd-accordion__item"><span class='note'>NOTE 2 : Moyenne :</span></a></li>
@@ -368,5 +400,6 @@
     </ul>
   </li>
 </ul>
+
 </body>
 </html>

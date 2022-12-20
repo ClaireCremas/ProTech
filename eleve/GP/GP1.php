@@ -109,7 +109,7 @@
         <!-- Note de rattrapage si elle existe -->
         <li class="note">
             <?php if (rattrapage_non_vide(9,$email)==TRUE){
-                $nombre=return_note($email,3);
+                $nombre=return_note($email,9);
                 $note_bulletin=(return_note($email,3)+return_note($email,4))/2;
                 echo("<ul> Rattrapage </ul>
                 <ul> Note : $nombre </ul>
@@ -130,7 +130,7 @@
         <!-- Nom et donnée de l'UP3-->
         <p>UP3 : <?php echo(nom_up(3,1)) ?></p> 
         <li>
-            <ul>Moyenne : <?php moyenne_up(3) ?> </ul>
+            <ul>Moyenne : <?php moyenne_up_eleve(3,$email) ?> </ul>
             <ul>Classement : </ul>
             <ul>Coefficient : <?php coef_up(3,1) ?> </ul>
         </li>
@@ -161,7 +161,7 @@
             <!-- Note de rattrapage si elle existe -->
             <li class="note">
             <?php if (rattrapage_non_vide(10,$email)==TRUE){
-                $nombre=return_note($email,3);
+                $nombre=return_note($email,10);
                 echo("<ul> Rattrapage </ul>
                 <ul> Note : $nombre </ul>
                 <ul> Note pour valider l'UP : </ul>");
