@@ -33,11 +33,13 @@
                     $_SESSION['date']=$result['date'];
                     $_SESSION['nom']=$result['nom'];
                     $_SESSION['prenom']=$result['prenom'];
+                    
 
-                    if($result['TYPE']==1){
+                    /*Est ce un élève ou un prof ?*/
+                    if($result['TYPE']==1){ /*Connexion vers acceuil eleve*/
                         header('Location: ./eleve/accueil_eleve.php');
                     }
-                    else{
+                    else{ /*Connexion vers acceuil prof*/
                         header('Location: ./prof/accueil_prof.php');
                         echo("connexion prof");
                     }
