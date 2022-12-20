@@ -48,6 +48,13 @@
             echo($note[0]);
         }
 
+        function return_note($email,$id_eval){
+            global $db;
+            $c = $db->prepare("SELECT note FROM note JOIN user ON note.id_user=user.id WHERE id_eval= :id AND email=:email");
+            $c->execute(['id'=> $id_eval, 'email'=>$email]);
+            $note = $c->fetch();
+            return($note[0]);
+        }
         function moyenne_up($id_up){
             global $db;
             $c = $db->prepare("SELECT AVG(note) FROM note JOIN eval ON note.id_eval=eval.id WHERE eval.id_up= :id");

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="accueil_eleve2.css"> <!--css-->
+    <link rel="stylesheet" href="accueil_eleve.css"> <!--css-->
 </head>
 
 <?php session_start();
@@ -20,10 +20,10 @@
 <?php $email=$_SESSION['email'] ?>
 <h1> PROMETHEE GPA</h1>
     <div class="eleve">
-        <p>Nom : <?php echo($_SESSION['nom']) ?> </p>
-        <p>Prénom : <?php echo($_SESSION['prenom']) ?> </p>
-        <p>Promo :</p>
-        <p>GPA : </p>
+        <p><span class='nom'>Nom</span> : <?php echo($_SESSION['nom']) ?> </p>
+        <p><span class='nom'>Prénom</span> : <?php echo($_SESSION['prenom']) ?> </p>
+        <p> <span class='nom'>Promo</span> : </p>
+        <p><span class='nom'>GPA</span> : </p>
     </div>
         
     <?php include('./../requete.php')?>

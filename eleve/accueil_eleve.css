@@ -14,6 +14,9 @@ body{
     justify-content: space-around;
   }
 
+  .nom{
+    text-decoration: underline;
+  }
   .GP{
       font-size:large;
       font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
@@ -114,12 +117,12 @@ body{
   
   .info_GP{
     cursor: pointer;
-    background: #B7B7B7;
+    background: #CACACB;
     display: inline-flex;
     font-size:large;
     font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
     border: 0;
-    box-shadow: inset 0 0 0 1px #B7B7B7;
+    box-shadow: inset 0 0 0 1px #ECECEE ;
     padding: .625rem 1.5rem .85rem;
     border-radius: 1.3125rem;
     color: black;
@@ -134,10 +137,11 @@ body{
     box-sizing: border-box;
     margin: 5px;
     margin-left: 1rem;
+    text-decoration: none;
   }
 
   .info_GP:hover{
-    background: #CACACB;
+    background: #B7B7B7;
     
   }
   .note{
