@@ -22,7 +22,7 @@
         <li><a href="">Statistiques</a></li>
     </div>
     <div class='UP UP1'> 
-    <?php if (rattrapage(5,$email,1,2)==True){
+    <?php if (validation_up(5,$email)==True){
              echo("<style> .UP1{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP1{background-color : #61CA6F;}</style>") ;
@@ -59,7 +59,7 @@
     </div>
     <!--          UP2          -->
     <div class='UP UP2'> 
-    <?php if (rattrapage(6,$email,2,2)==True){
+    <?php if (validation_up(6,$email)==True){
              echo("<style> .UP2{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP2{background-color : #61CA6F;}</style>") ;
@@ -93,7 +93,7 @@
 
     <!--                UP3              -->
     <div class='UP UP3'> 
-    <?php if (rattrapage(7,$email,3,2)==True){
+    <?php if (validation_up(7,$email)==True){
              echo("<style> .UP3{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP3{background-color : #61CA6F;}</style>") ;
@@ -131,7 +131,7 @@
 
         <!--                UP4              -->
         <div class='UP UP4'> 
-    <?php if (rattrapage(8,$email,4,2)==True){
+    <?php if (validation_up(8,$email)==True){
              echo("<style> .UP4{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP4{background-color : #61CA6F;}</style>") ;

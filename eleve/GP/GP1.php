@@ -26,7 +26,7 @@
     <!-- Parti UP1 -->
     <div class='UP UP1'> 
         <!-- Couleur UP -->
-    <?php if (rattrapage(1,$email,1,1)==True){
+    <?php if (validation_up(1,$email)==True){
              echo("<style> .UP1{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP1{background-color : #61CA6F;}</style>") ;
@@ -81,7 +81,7 @@
     <!--          UP2          -->
     <div class='UP UP2'> 
         <!-- Couleur de l'UP2 -->
-    <?php if (rattrapage(2,$email,2,1)==True){
+    <?php if (validation_up(2,$email)==True){
              echo("<style> .UP2{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP2{background-color : #61CA6F;}</style>") ;
@@ -121,7 +121,7 @@
 
     <div class='UP UP3'>  
         <!-- Couleur de de l'UP3-->
-    <?php if (rattrapage(3,$email,3,1)==True){
+    <?php if (validation_up(3,$email)==True){
              echo("<style> .UP3{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP3{background-color : #61CA6F;}</style>") ;
@@ -175,7 +175,7 @@
         <div class='UP UP4'> 
 
         <!-- Couleur de l'UP4-->
-    <?php if (rattrapage(4,$email,4,1)==True){
+    <?php if (validation_up(4,$email)==True){
              echo("<style> .UP4{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP4{background-color : #61CA6F;}</style>") ;

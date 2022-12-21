@@ -61,7 +61,8 @@
             $c = $db->prepare("SELECT AVG(note) FROM note JOIN eval ON note.id_eval=eval.id WHERE eval.id_up= :id");
             $c->execute(['id'=> $id_up]);
             $moyenne_up = $c->fetch();
-            echo($moyenne_up[0]);
+            $arrondi=round($moyenne_up[0],2);
+            echo($arrondi);
         }
 
         function moyenne_eval($id_eval){
@@ -69,7 +70,8 @@
             $c = $db->prepare("SELECT AVG(note) from note join eval on note.id_eval=eval.id where id_eval=:id");
             $c->execute(['id'=> $id_eval]);
             $moyenne_eval = $c->fetch();
-            echo($moyenne_eval[0]);
+            $arrondi=round($moyenne_eval[0],2);
+            echo($arrondi);
             
         }
 
@@ -78,7 +80,8 @@
             $c = $db->prepare("SELECT STDDEV(note) from note join eval on note.id_eval=eval.id where id_eval=:id");
             $c->execute(['id'=> $id_eval]);
             $ecart_type_eval = $c->fetch();
-            echo($ecart_type_eval[0]);
+            $arrondi=round($ecart_type_eval[0],2);
+            echo($arrondi);
         }
 
         function min_note($id_eval){
