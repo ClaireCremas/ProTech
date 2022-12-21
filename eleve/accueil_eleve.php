@@ -42,7 +42,7 @@
 <ul class="cd-accordion margin-top-lg margin-bottom-lg">
   <li class="cd-accordion__item cd-accordion__item--has-children">
     <input class="cd-accordion__input" type="checkbox" name ="group-1" id="group-1">
-    <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-1"><span class='GP GP1'>GP 1 : <?php echo(nom_gp(1));?> </span><span class='barre'>Moyenne : <?php echo(moyenne_gp_eleve(1,$email)); ?> Barre :   <?php echo(barre_gp(1));?> Grade :</span>
+    <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-1"><span class='GP GP1'>GP 1 : <?php echo(nom_gp(1));?> </span><span class='barre'>Moyenne : <?php $moyenne_gp=moyenne_gp_eleve(1,$email);echo($moyenne_gp); ?> Barre :   <?php echo(barre_gp(1));?> Grade :</span>
     <span><a class='info_GP' href="./GP/GP1.php">En savoir plus</a></span></label>
     
     <!-- COULEUR POUR SAVOIR SI ON VALIDE LE GP -->
@@ -140,7 +140,7 @@
 <ul class="cd-accordion margin-top-lg margin-bottom-lg">
   <li class="cd-accordion__item cd-accordion__item--has-children">
     <input class="cd-accordion__input" type="checkbox" name ="group-2" id="group-2">
-    <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-2"><span class='GP GP2'>GP 2 : <?php echo(nom_gp(2));?> </span><span class="barre"> Moyenne : <?php echo(moyenne_gp_eleve(2,$email)); ?> Barre :   <?php echo(barre_gp(2));?> Grade :</span>
+    <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-2"><span class='GP GP2'>GP 2 : <?php echo(nom_gp(2));?> </span><span class="barre"> Moyenne : <?php $moyenne_gp=moyenne_gp_eleve(2,$email);echo($moyenne_gp); ?> Barre :   <?php echo(barre_gp(2));?> Grade :</span>
     <span><a class='info_GP' href="./GP/GP2.php">En savoir plus</a></span></label>
     
     <!-- COULEUR POUR SAVOIR SI ON VALIDE LE GP -->
@@ -237,7 +237,7 @@
 <ul class="cd-accordion margin-top-lg margin-bottom-lg">
   <li class="cd-accordion__item cd-accordion__item--has-children">
     <input class="cd-accordion__input" type="checkbox" name ="group-1" id="group-3">
-    <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-3"><span class='GP GP3'>GP 3 : <?php echo(nom_gp(3));?> </span><span class='barre'> Moyenne : <?php echo(moyenne_gp_eleve(3,$email)); ?> Barre :   <?php echo(barre_gp(3));?> Grade :</span>
+    <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-3"><span class='GP GP3'>GP 3 : <?php echo(nom_gp(3));?> </span><span class='barre'> Moyenne : <?php $moyenne_gp=moyenne_gp_eleve(3,$email);echo($moyenne_gp);?> Barre :   <?php echo(barre_gp(3));?> Grade :</span>
     <span><a class='info_GP' href="./GP/GP3.php">En savoir plus</a></span></label>
     
     <!-- COULEUR POUR SAVOIR SI ON VALIDE LE GP -->
@@ -337,7 +337,7 @@
 <ul class="cd-accordion margin-top-lg margin-bottom-lg">
   <li class="cd-accordion__item cd-accordion__item--has-children">
     <input class="cd-accordion__input" type="checkbox" name ="group-4" id="group-4">
-    <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-4"><span class='GP GP4'>GP 4 : <?php echo(nom_gp(4));?> </span><span class='barre'>Moyenne : <?php echo(moyenne_gp_eleve(4,$email)); ?> Barre :   <?php echo(barre_gp(4));?> Grade :</span>
+    <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-4"><span class='GP GP4'>GP 4 : <?php echo(nom_gp(4));?> </span><span class='barre'>Moyenne : <?php $moyenne_gp=moyenne_gp_eleve(4,$email);echo($moyenne_gp); ?> Barre :   <?php echo(barre_gp(4));?> Grade :</span>
     <span><a class='info_GP' href="./GP/GP4.php">En savoir plus</a></span></label>
     
     <!-- COULEUR POUR SAVOIR SI ON VALIDE LE GP -->

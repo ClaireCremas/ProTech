@@ -34,7 +34,7 @@
 
         <p>UP1 : <?php echo(nom_up(1,1)) ?></p> <!-- nom de l'up-->
         <li> <!-- Donnée de l'up-->
-            <ul>Moyenne : <?php moyenne_up_eleve(1,$email) ?> </ul>
+            <ul>Moyenne : <?php $moyenne=moyenne_up_eleve(1,$email); echo($moyenne); ?> </ul>
             <ul>Classement : </ul>
             <ul>Coefficient : <?php coef_up(1,1) ?> </ul>
             <ul>Moyenne groupe : <?php moyenne_up(1) ?> </ul>
@@ -89,7 +89,7 @@
 
         <p>UP2 : <?php echo(nom_up(2,1)) ?></p> <!-- Nom de l'UP2-->
         <li>
-            <ul>Moyenne : <?php moyenne_up(2) ?> </ul>
+            <ul>Moyenne : <?php $moyenne=moyenne_up_eleve(2,$email);echo($moyenne); ?> </ul>
             <ul>Classement : </ul>
             <ul>Coefficient : <?php coef_up(2,1) ?> </ul>
         </li>
@@ -130,7 +130,7 @@
         <!-- Nom et donnée de l'UP3-->
         <p>UP3 : <?php echo(nom_up(3,1)) ?></p> 
         <li>
-            <ul>Moyenne : <?php moyenne_up_eleve(3,$email) ?> </ul>
+            <ul>Moyenne : <?php $moyenne=moyenne_up_eleve(3,$email); echo($moyenne) ?> </ul>
             <ul>Classement : </ul>
             <ul>Coefficient : <?php coef_up(3,1) ?> </ul>
         </li>
@@ -184,7 +184,7 @@
             <!-- Nom et donnée de l'UP4-->
         <p>UP4 : <?php echo(nom_up(4,1)) ?></p>
         <li>
-            <ul>Moyenne : <?php moyenne_up(4) ?> </ul>
+            <ul>Moyenne : <?php $moyenne=moyenne_up_eleve(4,$email); echo($moyenne); ?> </ul>
             <ul>Classement : </ul>
             <ul>Coefficient : <?php coef_up(4,1) ?> </ul>
         </li>

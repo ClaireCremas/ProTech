@@ -55,7 +55,8 @@
             $note = $c->fetch();
             return($note[0]);
         }
-        function moyenne_up($id_up){
+
+        function moyenne_up($id_up){ /*fausse avec le rattrapage*/
             global $db;
             $c = $db->prepare("SELECT AVG(note) FROM note JOIN eval ON note.id_eval=eval.id WHERE eval.id_up= :id");
             $c->execute(['id'=> $id_up]);
@@ -104,7 +105,82 @@
             echo($classement_eval[0]);
         }
 
-        function rattrapage($id_up,$email,$num_up,$id_gp){
+
+
+        function rattrapage_non_vide($id_eval,$email){ /*Note rattrapage est vide ou pas*/
+            global $db;
+            $c = $db->prepare("SELECT note from note INNER join user on note.id_user=user.id INNER join eval on eval.id=note.id_eval where eval.id=:id and user.email=:email");
+            $c->execute(['id'=> $id_eval, 'email'=>$email]);
+            $note_rattrapage = $c->fetch();
+            if (empty($note_rattrapage[0])==FALSE){
+                return TRUE;
+            }
+        }
+
+
+
+
+        function moyenne_up_eleve($id_up,$email){
+            global $db;
+            $somme=0;
+            $somme_coef=0;
+            $moyenne=0;
+
+            $c = $db->prepare("SELECT count(id) from eval where eval.id_up=:id and eval.TYPE=:t");
+            $d=$db->prepare("SELECT id from eval where eval.id_up=:id and eval.TYPE=:t");
+            $e=$db->prepare("SELECT Coefficient from eval where id=:id_eval");
+            $f = $db->prepare("SELECT note FROM note JOIN user ON note.id_user=user.id WHERE id_eval= :id AND email=:email");
+
+
+            $c->execute(['id'=> $id_up,'t'=>'E']);
+            $nbeval = $c->fetch();
+            
+            
+            $d->execute(['id'=>$id_up,'t'=>'E']);
+        
+            /*on enlève 1 pour le rattrapage qui ne compte pas comme ça dans la  moyenne (le rattrapage a une id après les notes)*/
+            for ($i=1; $i<=$nbeval[0];$i++){
+                $id_eval=$d->fetch();
+                /*recupère les coefficients des evaluations*/
+                
+                $e->execute(['id_eval'=>$id_eval[0]]);
+                $coef=$e->fetch();
+                /*récupère les notes des évaluations*/
+                
+                $f->execute(['id'=> $id_eval[0], 'email'=>$email]);
+                $note = $f->fetch();
+
+                /*somme des coefficients et somme des notes*coef*/
+                if (empty($note[0])==false){
+                    $somme=$somme+$note[0]*$coef[0];
+                    $somme_coef=$somme_coef+$coef[0];
+                }
+                
+            }
+            
+            /*Calcul de la moyenne*/
+            if ($somme_coef!=0){
+                $moyenne=$somme/$somme_coef;
+            }
+            
+            /*Prend l'identifiant et la note du rattrapage (dernier id eval de l'up)*/
+            $d->execute(['id'=>$id_up,'t'=>'R']);
+            $id_rattrapage=$d->fetch();
+
+            $f->execute(['id'=> $id_rattrapage[0], 'email'=>$email]);
+            $note=$f->fetch();
+
+            
+            if (rattrapage_non_vide($id_rattrapage[0],$email)==true){/*Si il y a une note de rattrapage*/
+                $moyenne=($moyenne+$note[0])/2;
+            }
+
+            $arrondi=round($moyenne,2);
+            return $arrondi;
+        }
+        
+
+        function rattrapage($id_up,$email,$num_up,$id_gp){ /* dit si l'élève doit faire un rattrapage dans l'up*/
             global $db;
 
             /*prend la valeur de la moyenne de l'UP de l'éleve*/
@@ -123,18 +199,8 @@
             else
                 return FALSE;
         }
-
-        function rattrapage_non_vide($id_eval,$email){
-            global $db;
-            $c = $db->prepare("SELECT note from note INNER join user on note.id_user=user.id INNER join eval on eval.id=note.id_eval where eval.id=:id and user.email=:email");
-            $c->execute(['id'=> $id_eval, 'email'=>$email]);
-            $note_rattrapage = $c->fetch();
-            if (empty($note_rattrapage[0])==FALSE){
-                return TRUE;
-            }
-        }
-
-        function moyenne_gp_eleve($id_gp,$email){
+        
+        function moyenne_gp_eleve($id_gp,$email){ /*moyenne gp avec coef des up et rattrapage ou non */
             global $db;
             $somme=0;
             $coef=0;
@@ -144,19 +210,17 @@
                 $c->execute(['num'=> $i, 'id_gp'=>$id_gp]);
                 $coef_up = $c->fetch();
                 
-                $d = $db->prepare("SELECT avg(note) from note INNER join user on note.id_user=user.id INNER join eval on eval.id=note.id_eval INNER JOIN up on up.id=eval.id_up where up.num_up=:id and user.email=:email and up.id_gp=:id_gp");
-                $d->execute(['id'=> $i, 'email'=>$email, 'id_gp'=>$id_gp]);
-                $moyenne_up_eleve = $d->fetch();
+                $moyenne_up_eleve=moyenne_up_eleve(($id_gp-1)*4+$i,$email);
                 
-                $somme=$somme+$coef_up[0]*$moyenne_up_eleve[0];
+                $somme=$somme+$coef_up[0]*$moyenne_up_eleve;
                 $coef=$coef+$coef_up[0];
             }
             $moyenne=$somme/$coef;
             $arrondi=round($moyenne,2);
-            echo($arrondi);
+            return ($arrondi);
         }
 
-        function validation_gp($id_gp,$email){
+        function validation_gp($id_gp,$email){ /*dis si le gp est validé on prend le max de la note de rattrapage et normal ici cest faux!!!*/
             $somme=0;
             $coef=0;
             global $db;
@@ -169,11 +233,9 @@
                 $c->execute(['num'=> $i, 'id_gp'=>$id_gp]);
                 $coef_up = $c->fetch();
                 
-                $d = $db->prepare("SELECT avg(note) from note INNER join user on note.id_user=user.id INNER join eval on eval.id=note.id_eval INNER JOIN up on up.id=eval.id_up where up.num_up=:id and user.email=:email and up.id_gp=:id_gp");
-                $d->execute(['id'=> $i, 'email'=>$email,'id_gp'=>$id_gp]);
-                $moyenne_up_eleve = $d->fetch();
+                $moyenne_up_eleve=moyenne_up_eleve(($id_gp-1)*4+$i,$email);
 
-                $somme=$somme+$coef_up[0]*$moyenne_up_eleve[0];
+                $somme=$somme+$coef_up[0]*$moyenne_up_eleve;
                 $coef=$coef+$coef_up[0];
             }
             $moyenne=$somme/$coef;
@@ -186,49 +248,5 @@
             }
         }
 
-        function moyenne_up_eleve($id_up,$email){
-            global $db;
-            $somme=0;
-            $somme_coef=0;
 
-            $c = $db->prepare("SELECT count(id) from eval where eval.id_up=:id");
-            $c->execute(['id'=> $id_up]);
-            $nbeval = $c->fetch();
-            
-            $d=$db->prepare("SELECT id from eval where eval.id_up=:id");
-            $d->execute(['id'=>$id_up]);
-            
-        
-            /*on enlève 1 pour le rattrapage qui ne compte pas comme ça dans la  moyenne (le rattrapage a une id après les notes)*/
-            for ($i=1; $i<=$nbeval[0]-1;$i++){
-                $id_eval=$d->fetch();
-                /*recupère les coefficients des evaluations*/
-                $e=$db->prepare("SELECT Coefficient from eval where id=:id_eval");
-                $e->execute(['id_eval'=>$id_eval[0]]);
-                $coef=$e->fetch();
-                /*récupère les notes des évaluations*/
-                $f = $db->prepare("SELECT note FROM note JOIN user ON note.id_user=user.id WHERE id_eval= :id AND email=:email");
-                $f->execute(['id'=> $id_eval[0], 'email'=>$email]);
-                $note = $f->fetch();
-
-                /*somme des coefficients et somme des notes*coef*/
-                $somme=$somme+$note[0]*$coef[0];
-                $somme_coef=$somme_coef+$coef[0];
-            }
-            
-            /*Calcul de la moyenne*/
-            $moyenne=$somme/$somme_coef;
-            /*Prend l'identifiant et la note du rattrapage (dernier id eval de l'up)*/
-            $id_eval=$d->fetch();
-            $f->execute(['id'=> $id_eval[0], 'email'=>$email]);
-            $note=$f->fetch();
-
-            
-            if (rattrapage_non_vide($id_eval[0],$email)==true){/*Si il y a une note de rattrapage*/
-                $moyenne=($moyenne+$note[0])/2;
-            }
-
-            $arrondi=round($moyenne,2);
-            echo($arrondi);
-        }
     ?>
