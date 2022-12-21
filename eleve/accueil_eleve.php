@@ -67,7 +67,7 @@
           <!-- RATTRAPAGE-->
           <li class="cd-accordion__item">
             <!-- CHANGE COULEUR SI IL FAUT RATTRAPAGE (NON VALIDATION UP) -->
-            <?php if (rattrapage(1,$email,1,1)==True){
+            <?php if (validation_up(1,$email)==True){
              echo("<style> .UP1{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP1{background-color : #61CA6F;}</style>") ;

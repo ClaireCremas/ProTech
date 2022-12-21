@@ -138,7 +138,6 @@
             
             $d->execute(['id'=>$id_up,'t'=>'E']);
         
-            /*on enlève 1 pour le rattrapage qui ne compte pas comme ça dans la  moyenne (le rattrapage a une id après les notes)*/
             for ($i=1; $i<=$nbeval[0];$i++){
                 $id_eval=$d->fetch();
                 /*recupère les coefficients des evaluations*/
@@ -163,7 +162,7 @@
                 $moyenne=$somme/$somme_coef;
             }
             
-            /*Prend l'identifiant et la note du rattrapage (dernier id eval de l'up)*/
+            /*Prend l'identifiant et la note du rattrapage*/
             $d->execute(['id'=>$id_up,'t'=>'R']);
             $id_rattrapage=$d->fetch();
 
@@ -179,7 +178,6 @@
             return $arrondi;
         }
         
-
         function rattrapage($id_up,$email,$num_up,$id_gp){ /* dit si l'élève doit faire un rattrapage dans l'up*/
             global $db;
 
@@ -200,6 +198,85 @@
                 return FALSE;
         }
         
+        function validation_up($id_up,$email){
+            global $db;
+
+            /*prend l'identifiant du rattrapage*/
+            $c=$db->prepare("SELECT id from eval where eval.id_up=:id and eval.TYPE=:t");
+            $c->execute(['id'=>$id_up,'t'=>'R']);
+            $id_rattrapage=$c->fetch();
+
+            /*Si il y a une note de rattrapage */
+            if (rattrapage_non_vide($id_rattrapage[0],$email)==true){
+                $note_rattrapage=return_note($email,$id_rattrapage[0]);
+
+
+                $somme=0;
+                $somme_coef=0;
+                $moyenne_sans=0;
+    
+                $g = $db->prepare("SELECT count(id) from eval where eval.id_up=:id and eval.TYPE=:t");
+                $d=$db->prepare("SELECT id from eval where eval.id_up=:id and eval.TYPE=:t");
+                $e=$db->prepare("SELECT Coefficient from eval where id=:id_eval");
+                $f = $db->prepare("SELECT note FROM note JOIN user ON note.id_user=user.id WHERE id_eval= :id AND email=:email");
+                
+    
+                $g->execute(['id'=> $id_up,'t'=>'E']);
+                $nbeval = $g->fetch();
+                
+                
+                $d->execute(['id'=>$id_up,'t'=>'E']);
+            
+                for ($i=1; $i<=$nbeval[0];$i++){
+                    $id_eval=$d->fetch();
+                    /*recupère les coefficients des evaluations*/
+                    
+                    $e->execute(['id_eval'=>$id_eval[0]]);
+                    $coef=$e->fetch();
+                    /*récupère les notes des évaluations*/
+                    
+                    $f->execute(['id'=> $id_eval[0], 'email'=>$email]);
+                    $note = $f->fetch();
+    
+                    /*somme des coefficients et somme des notes*coef*/
+                    if (empty($note[0])==false){
+                        $somme=$somme+$note[0]*$coef[0];
+                        $somme_coef=$somme_coef+$coef[0];
+                    }
+                    
+                }
+                
+                /*Calcul de la moyenne*/
+                if ($somme_coef!=0){
+                    $moyenne_sans_rattrapage=$somme/$somme_coef;
+                }
+
+                /*recherche de la barre */
+                $h=$db->prepare("SELECT barre from up where up.id=:id");
+                $h->execute(['id'=>$id_up]);
+                $barre_up=$h->fetch();
+
+                if((max($note_rattrapage,$moyenne_sans_rattrapage))<$barre_up[0]){
+                    return TRUE;
+                }
+                else{
+                    return FALSE;
+                }
+
+
+            }
+            else{
+                $moyenne_up_eleve=moyenne_up_eleve($id_up,$email);
+                if($moyenne_up_eleve<$barre_up[0]){
+                    return TRUE;
+                }
+                else{
+                    return FALSE;
+                }
+            }
+
+        }
+
         function moyenne_gp_eleve($id_gp,$email){ /*moyenne gp avec coef des up et rattrapage ou non */
             global $db;
             $somme=0;
