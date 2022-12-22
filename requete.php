@@ -347,20 +347,29 @@
             $moyenne_gp=moyenne_gp_eleve($id_gp,$email);
 
             if ($moyenne_gp>=$aplus){
-                echo('A+');
+                return array('A+',4.33);
             }
             elseif($aplus>$moyenne_gp and $moyenne_gp>=$a){
-                echo('A');
+                return array('A',4);
             }
             elseif($a>$moyenne_gp and $moyenne_gp>=$b){
-                echo('B');
+                return array('B',3.33);
             }
             elseif($b>$moyenne_gp and $moyenne_gp>=$c){
-                echo('C');
+                return array('C',2.66);
             }
             else{
-                echo('Fx');
+                return array('Fx',2.66);
             }
-        
         }
-    ?>
+
+        function calcul_GPA($email){
+            $somme=0;
+            for ($i=1;$i<=4;$i++){
+                $somme=grade_gp($i,$email)[1]+$somme;
+            }
+
+            $moyenne=$somme/4;
+            $arrondi=round($moyenne,2);
+            echo($arrondi);
+        }
