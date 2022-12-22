@@ -19,7 +19,7 @@
     <h1>GP1 : <?php echo(nom_gp(1)) ?></h1>
     <!-- Bouton simulation et Statistiques -->
     <div>
-        <li><a href=""> Simulation </a> </li>
+        <li><a href="./../Simulation/simulation_GP1.php"> Simulation </a> </li>
         <li><a href="">Statistiques</a></li>
     </div>
 
