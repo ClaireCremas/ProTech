@@ -62,8 +62,8 @@
 
         <!--NOTES-->
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,1))?>  Moyenne : <?php echo(moyenne_eval(1))?> </span></a></li>
-          <li class="cd-accordion__item"><span class='note'>NOTE 2 : <?php echo(note($email,2))?> Moyenne : <?php echo(moyenne_eval(2))?></span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,1))?>  Moyenne Promo : <?php echo(moyenne_eval(1))?> </span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 2 : <?php echo(note($email,2))?> Moyenne Promo: <?php echo(moyenne_eval(2))?></span></a></li>
           <!-- RATTRAPAGE-->
           <li class="cd-accordion__item">
             <!-- CHANGE COULEUR SI IL FAUT RATTRAPAGE (NON VALIDATION UP) -->
@@ -89,7 +89,7 @@
         <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-2"><span class='UP UP2'>UP2 : <?php echo(nom_up(2,1))?></span><span class='moyenne'>Moyenne : <?php echo(moyenne_up_eleve(2,$email))?>   Coefficient : <?php echo(coef_up(2,1))?>  Barre : <?php echo(barre_up(2,1))?></span></label>
         <!-- NOTES-->
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 :<?php echo(note($email,4))?> Moyenne : <?php echo(moyenne_eval(4))?></span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 :<?php echo(note($email,4))?> Moyenne Promo : <?php echo(moyenne_eval(4))?></span></a></li>
           <li class="cd-accordion__item">
             <!-- COULEUR VALIDATION OU NON -->
             <?php if (validation_up(2,$email)==FALSE){
@@ -113,8 +113,8 @@
         <input class="cd-accordion__input" type="checkbox" name ="sub-group-3" id="sub-group-3">
         <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-3"><span class='UP UP3'>UP3 : <?php echo(nom_up(3,1))?></span><span class='moyenne'>Moyenne :  <?php echo(moyenne_up_eleve(3,$email))?>  Coefficient : <?php echo(coef_up(3,1))?> Barre : <?php echo(barre_up(3,1))?></span></label>
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,5))?> Moyenne : <?php echo(moyenne_eval(5))?></span></span></a></li>
-          <li class="cd-accordion__item"><span class='note'>NOTE 2 : <?php echo(note($email,6))?> Moyenne : <?php echo(moyenne_eval(6))?></span></span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,5))?> Moyenne Promo: <?php echo(moyenne_eval(5))?></span></span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 2 : <?php echo(note($email,6))?> Moyenne Promo: <?php echo(moyenne_eval(6))?></span></span></a></li>
           <li class="cd-accordion__item">
           <?php if (validation_up(3,$email)==FALSE){
               echo("<style> .UP3{background-color : #61CA6F ;}</style>");}
@@ -137,7 +137,7 @@
         <input class="cd-accordion__input" type="checkbox" name ="sub-group-4" id="sub-group-4">
         <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-4"><span class='UP UP4'>UP4 : <?php echo(nom_up(4,1))?></span><span class='moyenne'>Moyenne : <?php echo(moyenne_up_eleve(4,$email))?>   Coefficient : <?php echo(coef_up(4,1))?>  Barre : <?php echo(barre_up(4,1))?></span></label>
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 :<?php echo(note($email,7))?> Moyenne : <?php echo(moyenne_eval(7))?></span></span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 :<?php echo(note($email,7))?> Moyenne Promo: <?php echo(moyenne_eval(7))?></span></span></a></li>
           <?php if (validation_up(4,$email)==FALSE){
               echo("<style> .UP4{background-color : #61CA6F ;}</style>");}
               else{
@@ -160,7 +160,7 @@
 <ul class="cd-accordion margin-top-lg margin-bottom-lg">
   <li class="cd-accordion__item cd-accordion__item--has-children">
     <input class="cd-accordion__input" type="checkbox" name ="group-2" id="group-2">
-    <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-2"><span class='GP GP2'>GP 2 : <?php echo(nom_gp(2));?> </span><span class="barre"> Moyenne : <?php $moyenne_gp=moyenne_gp_eleve(2,$email);echo($moyenne_gp); ?> Barre :   <?php echo(barre_gp(2));?> Grade :</span>
+    <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-2"><span class='GP GP2'>GP 2 : <?php echo(nom_gp(2));?> </span><span class="barre"> Moyenne : <?php $moyenne_gp=moyenne_gp_eleve(2,$email);echo($moyenne_gp); ?> Barre :   <?php echo(barre_gp(2));?> Grade : <?php $grade=grade_gp(2,$email)[0]; echo($grade);?></span>
     <span><a class='info_GP' href="./GP/GP2.php">En savoir plus</a></span></label>
     
     <!-- COULEUR POUR SAVOIR SI ON VALIDE LE GP -->
@@ -187,7 +187,7 @@
 
         <!--NOTES-->
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,12))?> Moyenne : <?php echo(moyenne_eval(12))?></span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,12))?> Moyenne Promo: <?php echo(moyenne_eval(12))?></span></a></li>
         <!-- AFFICHE LE RATTRAPGE SI LE RATTRAPGE N'EST PAS VIDE-->
           <?php if (rattrapage_non_vide(13,$email)==TRUE){
               $note=return_note($email,13);
@@ -215,7 +215,7 @@
              }?> 
         
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,14))?> Moyenne : <?php echo(moyenne_eval(14))?></span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,14))?> Moyenne Promo: <?php echo(moyenne_eval(14))?></span></a></li>
 
           <!-- AFFICHE LE RATTRAPGE SI LE RATTRAPGE N'EST PAS VIDE-->
           <?php if (rattrapage_non_vide(15,$email)==TRUE){
@@ -241,7 +241,7 @@
              }?>
         
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,16))?> Moyenne : <?php echo(moyenne_eval(16))?> </span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,16))?> Moyenne Promo: <?php echo(moyenne_eval(16))?> </span></a></li>
              <!-- AFFICHE LE RATTRAPGE SI LE RATTRAPGE N'EST PAS VIDE-->
           <?php if (rattrapage_non_vide(17,$email)==TRUE){
             $note=return_note($email,17);
@@ -266,7 +266,7 @@
              }?> 
         
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,18))?> Moyenne : <?php echo(moyenne_eval(18))?></span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,18))?> Moyenne Promo: <?php echo(moyenne_eval(18))?></span></a></li>
              <!-- AFFICHE LE RATTRAPGE SI LE RATTRAPGE N'EST PAS VIDE-->
           <?php if (rattrapage_non_vide(19,$email)==TRUE){
               $note=return_note($email,19);
@@ -288,7 +288,7 @@
 <ul class="cd-accordion margin-top-lg margin-bottom-lg">
   <li class="cd-accordion__item cd-accordion__item--has-children">
     <input class="cd-accordion__input" type="checkbox" name ="group-1" id="group-3">
-    <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-3"><span class='GP GP3'>GP 3 : <?php echo(nom_gp(3));?> </span><span class='barre'> Moyenne : <?php $moyenne_gp=moyenne_gp_eleve(3,$email);echo($moyenne_gp);?> Barre :   <?php echo(barre_gp(3));?> Grade :</span>
+    <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-3"><span class='GP GP3'>GP 3 : <?php echo(nom_gp(3));?> </span><span class='barre'> Moyenne : <?php $moyenne_gp=moyenne_gp_eleve(3,$email);echo($moyenne_gp);?> Barre :   <?php echo(barre_gp(3));?> Grade :<?php $grade=grade_gp(3,$email)[0]; echo($grade);?></span>
     <span><a class='info_GP' href="./GP/GP3.php">En savoir plus</a></span></label>
     
     <!-- COULEUR POUR SAVOIR SI ON VALIDE LE GP -->
@@ -316,9 +316,9 @@
 
         <!--NOTES-->
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 : Moyenne : </span></a></li>
-          <li class="cd-accordion__item"><span class='note'>NOTE 2 : Moyenne :</span></a></li>
-          <li class="cd-accordion__item"><span class='note'>NOTE 3 : Moyenne :</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : Moyenne Promo: </span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 2 : Moyenne Promo:</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 3 : Moyenne Promo:</span></a></li>
         </ul>
       </li>
 
@@ -336,9 +336,9 @@
              }?>
         
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 : Moyenne :</span></a></li>
-          <li class="cd-accordion__item"><span class='note'>NOTE 2 : Moyenne :</span></a></li>
-          <li class="cd-accordion__item"><span class='note'>NOTE 3 : Moyenne :</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : Moyenne Promo:</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 2 : Moyenne Promo:</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 3 : Moyenne Promo:</span></a></li>
         </ul>
       </li>
 
@@ -355,9 +355,9 @@
              }?> 
 
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 : Moyenne :</span></a></li>
-          <li class="cd-accordion__item"><span class='note'>NOTE 2 : Moyenne :</span></a></li>
-          <li class="cd-accordion__item"><span class='note'>NOTE 3 : Moyenne :</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : Moyenne Promo:</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 2 : Moyenne Promo:</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 3 : Moyenne Promo:</span></a></li>
         </ul>
       </li>
 
@@ -374,9 +374,9 @@
              }?>
 
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 : Moyenne :</span></a></li>
-          <li class="cd-accordion__item"><span class='note'>NOTE 2 : Moyenne :</span></a></li>
-          <li class="cd-accordion__item"><span class='note'>NOTE 3 : Moyenne :</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : Moyenne Promo:</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 2 : Moyenne Promo:</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 3 : Moyenne Promo:</span></a></li>
         </ul>
       </li>
 
@@ -388,7 +388,7 @@
 <ul class="cd-accordion margin-top-lg margin-bottom-lg">
   <li class="cd-accordion__item cd-accordion__item--has-children">
     <input class="cd-accordion__input" type="checkbox" name ="group-4" id="group-4">
-    <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-4"><span class='GP GP4'>GP 4 : <?php echo(nom_gp(4));?> </span><span class='barre'>Moyenne : <?php $moyenne_gp=moyenne_gp_eleve(4,$email);echo($moyenne_gp); ?> Barre :   <?php echo(barre_gp(4));?> Grade :</span>
+    <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-4"><span class='GP GP4'>GP 4 : <?php echo(nom_gp(4));?> </span><span class='barre'>Moyenne : <?php $moyenne_gp=moyenne_gp_eleve(4,$email);echo($moyenne_gp); ?> Barre :   <?php echo(barre_gp(4));?> Grade : <?php $grade=grade_gp(4,$email)[0]; echo($grade);?></span>
     <span><a class='info_GP' href="./GP/GP4.php">En savoir plus</a></span></label>
     
     <!-- COULEUR POUR SAVOIR SI ON VALIDE LE GP -->
@@ -414,7 +414,7 @@
 
         <!--NOTES-->
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,41))?> Moyenne :<?php echo(moyenne_eval(41))?> </span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,41))?> Moyenne Promo:<?php echo(moyenne_eval(41))?> </span></a></li>
              <!-- AFFICHE LE RATTRAPGE SI LE RATTRAPGE N'EST PAS VIDE-->
             <?php if (rattrapage_non_vide(45,$email)==TRUE){
               $note=return_note($email,45);
@@ -435,7 +435,7 @@
               echo("<style> .UP14{background-color : #FF4545 ;}</style>") ;
              }?> 
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,40))?> Moyenne : <?php echo(moyenne_eval(40))?></span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,40))?> Moyenne Promo: <?php echo(moyenne_eval(40))?></span></a></li>
              <!-- AFFICHE LE RATTRAPGE SI LE RATTRAPGE N'EST PAS VIDE-->
             <?php if (rattrapage_non_vide(44,$email)==TRUE){
               $note=return_note($email,44);
@@ -455,7 +455,7 @@
               echo("<style> .UP15{background-color : #FF4545 ;}</style>") ;
              }?> 
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,42))?> Moyenne : <?php echo(moyenne_eval(42))?></span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,42))?> Moyenne Promo: <?php echo(moyenne_eval(42))?></span></a></li>
              <!-- AFFICHE LE RATTRAPGE SI LE RATTRAPGE N'EST PAS VIDE-->
             <?php if (rattrapage_non_vide(46,$email)==TRUE){
               $note=return_note($email,46);
@@ -475,7 +475,7 @@
               echo("<style> .UP16{background-color : #FF4545 ;}</style>") ;
              }?> 
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,43))?> Moyenne : <?php echo(moyenne_eval(43))?></span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,43))?> Moyenne Promo: <?php echo(moyenne_eval(43))?></span></a></li>
              <!-- AFFICHE LE RATTRAPGE SI LE RATTRAPGE N'EST PAS VIDE-->
             <?php if (rattrapage_non_vide(47,$email)==TRUE){
               $note=return_note($email,47);

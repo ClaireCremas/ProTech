@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="GP.css">
+    <link rel="stylesheet" href="GP1.css">
     <title>Document</title>
 </head>
 
@@ -17,9 +17,9 @@
 <body>
     <?php $email=$_SESSION['email'] ?>
     <h1>GP2 : <?php echo(nom_gp(2)) ?></h1>
-    <div>
-        <li><a href=""> Simulation </a> </li>
-        <li><a href="">Statistiques</a></li>
+    <div class='option'>
+        <li><a href="" class='simulation'> Simulation </a> </li>
+        <li><a href="" class='simulation'>Statistiques</a></li>
     </div>
     <div class='UP UP1'> 
     <?php if (validation_up(5,$email)==True){
@@ -166,8 +166,8 @@
           </li>
         </li>
     </div>
-    <div class="retour">
-        <li><a href="./../accueil_eleve.php">RETOUR</a></li>
+    <div>
+        <li><a href="./../accueil_eleve.php" class="retour">RETOUR</a></li>
     </div>
 </body>
 </html>

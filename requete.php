@@ -314,49 +314,51 @@
                 $d=$db->prepare("SELECT id from eval where eval.id_up=:id and eval.TYPE=:t");
                 $d->execute(['id'=>($id_gp-1)*4+$i,'t'=>'R']);
                 $id_rattrapage=$d->fetch();
+
                 if(rattrapage_non_vide($id_rattrapage[0],$email)==TRUE){
                     $somme=$somme+return_max_rattrapage_moyenne(($id_gp-1)*4+$i,$email)*$coef_up[0];
-
+                    $val=return_max_rattrapage_moyenne(($id_gp-1)*4+$i,$email);
                 }
                 else{
                     $moyenne_up_eleve=moyenne_up_eleve(($id_gp-1)*4+$i,$email);
                     $somme=$somme+$coef_up[0]*$moyenne_up_eleve;
                 }
-                
                 $coef=$coef+$coef_up[0];
+                
+            }
+            
                 $moyenne=$somme/$coef;
-            if ($moyenne<$barre_gp[0]){
-                return TRUE;
-            }
-            else{
-                return FALSE;
-            }
-            }
+                if ($moyenne<$barre_gp[0]){
+                    return TRUE;
+                }
+                else{
+                    return FALSE;
+                }
         }
 
         function grade_gp($id_gp,$email){
             global $db;
-            $d=$db->prepare("SELECT 'A+',A,B,C from gp where id=:id");
+            $d=$db->prepare("SELECT 'A+',A,B from gp where id=:id");
             $d->execute(['id'=>$id_gp]);
             $grade=$d->fetch();
             $aplus=$grade['A+'];
             $a=$grade['A'];
             $b=$grade['B'];
-            $c=$grade['C'];
 
             $moyenne_gp=moyenne_gp_eleve($id_gp,$email);
-
-            if ($moyenne_gp>=$aplus){
-                return array('A+',4.33);
-            }
-            elseif($aplus>$moyenne_gp and $moyenne_gp>=$a){
-                return array('A',4);
-            }
-            elseif($a>$moyenne_gp and $moyenne_gp>=$b){
-                return array('B',3.33);
-            }
-            elseif($b>$moyenne_gp and $moyenne_gp>=$c){
-                return array('C',2.66);
+            if (validation_gp($id_gp,$email)==FALSE){
+                if ($moyenne_gp>=$aplus){
+                    return array('A+',4.33);
+                }
+                elseif($aplus>$moyenne_gp and $moyenne_gp>=$a){
+                    return array('A',4);
+                }
+                elseif($a>$moyenne_gp and $moyenne_gp>=$b){
+                    return array('B',3.33);
+                }
+                else{
+                    return array('C',2.66);
+                }
             }
             else{
                 return array('Fx',2.66);
