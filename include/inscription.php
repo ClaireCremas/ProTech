@@ -1,12 +1,12 @@
 <!-- INSCRIPTION AU SITE --->
 
 <form method="post"> 
-    <h1 class='connection'>INSCRIVEZ-VOUS A NOTRE BASE DE DONNEE :</h1>
-    <input type="text" name="newnom" id="newnom" placeholder="ajoute ton nom" required><br/>
-    <input type="text" name="newprenom" id="newprenom" placeholder="met ton prénom" required><br/>
-    <input type="text" name="newemail" id="newemail" placeholder="votre email" required><br/> 
-    <input type="password" name="newpassword" id="newpassword" placeholder="votre mot de passe" required><br/>
-    <input type="password" name="cpassword" id="cpassword" placeholder="confirmez votre mot de passe" required><br/>
+    <h2 class='connection'>INSCRIVEZ-VOUS A NOTRE BASE DE DONNEE :</h2>
+    <input type="text" name="newnom" id="newnom" placeholder="Nom" required><br/>
+    <input type="text" name="newprenom" id="newprenom" placeholder="Prénom" required><br/>
+    <input type="text" name="newemail" id="newemail" placeholder="Email" required><br/> 
+    <input type="password" name="newpassword" id="newpassword" placeholder="Mot de passe" required><br/>
+    <input type="password" name="cpassword" id="cpassword" placeholder="Confirmez Mot de passe" required><br/>
     <input type="submit" name="formsend_2" id="formsend_2" value="Inscription">
 </form>
 

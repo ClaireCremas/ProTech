@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"><!-- ajout de css-->
+    <link rel="stylesheet" href="style1.css"><!-- ajout de css-->
     <title>Note UP ET GP</title>
 </head>
 
@@ -23,11 +23,11 @@
         <?php
             if (isset($_SESSION['email']) && (isset($_SESSION['date']))){
             ?>
-            <p> Votre pseudo : <?= $_SESSION['email']; ?></p>
-            <p> Votre date de création : <?= $_SESSION['date']; ?></p>
+            <p class='text'> Votre pseudo : <?= $_SESSION['email']; ?></p>
+            <p class='text'> Votre date de création : <?= $_SESSION['date']; ?></p>
             <?php
             }else{
-                echo "Veuillez vous connectez à votre compte";
+                echo "<p class='text'>Veuillez vous connectez à votre compte : </p>";
             }
             ?>
     </div>

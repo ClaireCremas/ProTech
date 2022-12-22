@@ -13,15 +13,20 @@ div.titre{ /*Augmentation de l'espace où se trouve le titre*/
 }
 
 h1{ /*Modification du tritre*/
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
     text-align: center;
 }
 
 h2.connection{ /*Modifie les titres connectez vous et inscrivez vous*/
-    font-size: 20px;
-    padding: 15px;
+    font-size: 25px;
+    padding: 10px;
+    font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
 }
 
+.text{
+    font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
+    margin-left: 10px;
+}
 input{
     margin: 1px;
 }

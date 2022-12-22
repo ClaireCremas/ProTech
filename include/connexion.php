@@ -2,11 +2,11 @@
 
 <form method="post"> 
     <div>
-        <h1 class='connection'>CONNECTEZ-VOUS : </h1>
+        <h2 class='connection'>CONNECTEZ-VOUS : </h2>
     </div>
     <div>
-        <input type="text" name="email" id="email" placeholder="votre email" required><br/> 
-        <input type="password" name="password" id="password" placeholder="votre mot de passe" required><br/>
+        <input type="text" name="email" id="email" placeholder="Email" required><br/> 
+        <input type="password" name="password" id="password" placeholder="Mot de passe" required><br/>
         <button type="submit" name="formsend_1" id="formsend"> Connexion </button>
     </div>
 </form> 
