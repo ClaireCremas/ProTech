@@ -1,4 +1,4 @@
-<!-- Page accueil côté élèves --->
+<!-- Page dieu --->
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -22,7 +22,7 @@
     <div class="eleve">
         <p><span class='nom'>Nom</span> : <?php echo($_SESSION['nom']) ?> </p>
         <p><span class='nom'>Prénom</span> : <?php echo($_SESSION['prenom']) ?> </p>
-        <p> <span class='nom'>Promo</span> : </p>
+        <p> <span class='nom'>Promo</span> : <?php echo($_SESSION['statut']) ?> </p>
         <p><span class='nom'>GPA  </span> : <?php calcul_GPA($email);?> </p>
     </div>
         

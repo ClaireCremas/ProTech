@@ -38,16 +38,16 @@
                         'newnom'=>$newnom,
                         'newprenom'=>$newprenom
                     ]);
-                    echo "le compte a été créé";
+                    echo "Votre compte a été créé avec succès !";
                 }else{
-                    echo "cet email est déjà utilisé";
+                    echo "Cet email est déjà utilisé";
                 }
 
             }else{
-                echo "les 2 mots de passe ne sont pas les mêmes";
+                echo "Les 2 mots de passe ne sont pas identiques";
             }
         }else{
-            echo "les champs ne sont pas tous remplis";
+            echo "Veuillez remplir tous les champs";
         }
     }
 ?>
