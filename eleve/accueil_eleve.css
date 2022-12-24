@@ -7,6 +7,57 @@ body{
       font-size: 3rem;
   }
   
+
+  .ongletannees{
+    overflow: hidden;
+    background-color: #ECECEE;
+    background-position: bottom;
+    background-repeat: repeat-x;
+  }
+
+  .ongletannees ul{
+    list-style: none;
+    background: #6A5ACD;
+    font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
+    color: #fff;
+    margin-left: 50px;
+    padding: 10px 35px 10px 7px;
+    border-radius: 10px;
+    text-decoration: none;
+    display : inline-block;
+  }
+
+  .ongletannees li{
+    float: left;
+    margin-left: 30px;
+  }
+
+  .ongletannees li a{
+    text-decoration:none;
+    color: white;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    text-align: right;
+    align-items: right;
+    flex-wrap: wrap;
+  }
+
+  .ongletannees ul:hover{
+    background: #61259e;
+    font-size: 105%;
+  }
+
+ .contenuonglet{
+    display: none;
+ }
+  
+ .contenuonglet:target{
+    display: block;
+  }
+
+
   .eleve{
     font-family: "Klima","open sans",Helvetica,Arial,sans-serif;
     text-transform: capitalize;

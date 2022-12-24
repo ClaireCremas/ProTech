@@ -28,14 +28,19 @@
         
    
 
-    <div class = "class">
-        <ul>
-            <!-- Si l'élève a notes dans 1A, 2A... -->
-            <li><a href="#1A">1A</a></li>
-            <li><a href="#2A">2A</a></li>
-        </ul>
-    </div>
-  
+<div class = "ongletannees">
+    <ul>
+        <!-- Si l'élève a notes dans 1A, 2A... -->
+        <li><a href="#1A">1A</a></li>
+        <li>|</li>
+        <li><a href="#2A">2A</a></li>
+        <li>|</li>
+        <li><a href="#3A">3A</a></li>
+    </ul>
+</div>
+ 
+
+<div id="1A" class="contenuonglet">
 <!-- Menu Accordeon -->
 
 <!--GP1-->
@@ -487,6 +492,10 @@
     </ul>
   </li>
 </ul>
+</div>
+
+<div id="2A" class="contenuonglet">2A vide</div>
+<div id="3A" class="contenuonglet">3A vide</div>
 
 </body>
 </html>
