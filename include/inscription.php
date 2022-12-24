@@ -1,7 +1,7 @@
 <!-- INSCRIPTION AU SITE --->
 
 <form method="post"> 
-    <h2 class='connection'>INSCRIVEZ-VOUS A NOTRE BASE DE DONNEE :</h2>
+    <h2 class='connection'>INSCRIPTION :</h2>
     <input type="text" name="newnom" id="newnom" placeholder="Nom" required><br/>
     <input type="text" name="newprenom" id="newprenom" placeholder="Prénom" required><br/>
     <input type="text" name="newemail" id="newemail" placeholder="Email" required><br/> 

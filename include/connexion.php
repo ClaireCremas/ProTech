@@ -2,7 +2,7 @@
 
 <form method="post"> 
     <div>
-        <h2 class='connection'>CONNECTEZ-VOUS : </h2>
+        <h2 class='connection'>CONNEXION : </h2>
     </div>
     <div>
         <input type="text" name="email" id="email" placeholder="Email" required><br/> 
