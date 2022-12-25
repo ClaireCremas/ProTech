@@ -1,93 +1,83 @@
 body{
     background-color: #ECECEE;
 }
-
 h1{
     text-align: center;
     font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
     font-size: 3rem;
 }
-
-.ongletannees{
-  overflow: hidden;
-  background-color: #ECECEE;
-  background-position: bottom;
-  background-repeat: repeat-x;
+.professeur{
+    font-family: "Klima","open sans",Helvetica,Arial,sans-serif;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-around;
 }
-
-.ongletannees ul{
-  list-style: none;
-  background: #6A5ACD;
-  font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
-  color: #fff;
-  margin-left: 50px;
-  padding: 10px 35px 10px 7px;
-  border-radius: 10px;
-  text-decoration: none;
-  display : inline-block;
-}
-
-.ongletannees li{
-  float: left;
-  margin-left: 30px;
-}
-
-.ongletannees li a{
-  text-decoration:none;
-  color: white;
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: right;
-  text-align: right;
-  align-items: right;
-  flex-wrap: wrap;
-}
-
-.ongletannees ul:hover{
-  background: #61259e;
-  font-size: 105%;
-}
-
-.contenuonglet{
-  display: none;
-}
-
-.contenuonglet:target{
-  display: block;
-}
-
-
-.eleve{
-  font-family: "Klima","open sans",Helvetica,Arial,sans-serif;
-  text-transform: capitalize;
-  display: flex;
-  justify-content: space-around;
-}
-
 .nom{
-  text-decoration: underline;
+    text-decoration: underline;
 }
+.cours{
+    overflow: hidden;
+    background-color: #ECECEE;
+    background-position: bottom;
+    background-repeat: repeat-x;
+}
+.cours ul{
+    list-style: none;
+    background: #6A5ACD;
+    font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
+    color: #fff;
+    margin-left: 50px;
+    padding: 10px 35px 10px 7px;
+    border-radius: 10px;
+    text-decoration: none;
+    display : inline-block;
+}
+.cours li{
+    float: left;
+    margin-left: 30px;
+}
+.cours li a{
+    text-decoration:none;
+    color: white;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    text-align: right;
+    align-items: right;
+    flex-wrap: wrap;
+}
+.cours ul:hover{
+    background: #61259e;
+    font-size: 102%;
+}
+.contenucours{
+    display: none;
+}
+.contenucours:target{
+    display: block;
+}
+
 .GP{
-  font-size:large;
-  font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
-  cursor: pointer;
-  border: 0;
-  box-shadow: inset 0 0 0 1px #ECECEE;
-  padding: .625rem 1.5rem .85rem;
-  border-radius: 1.3125rem;
-  color:black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 3rem;
-  min-width: 15rem;
-  font-size: 1rem;
-  letter-spacing: .025rem;
-  line-height: 1.25rem;
-  font-weight: 400;
-  box-sizing: border-box;
-  margin: 10px;
+    font-size:large;
+    font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
+    cursor: pointer;
+    border: 0;
+    box-shadow: inset 0 0 0 1px #ECECEE;
+    padding: .625rem 1.5rem .85rem;
+    border-radius: 1.3125rem;
+    color:black;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    min-height: 3rem;
+    min-width: 15rem;
+    font-size: 1rem;
+    letter-spacing: .025rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    box-sizing: border-box;
+    margin: 10px;
 }
 
 .GP:hover{
@@ -113,7 +103,6 @@ h1{
   line-height: 1.25rem;
   font-weight: 400;
   box-sizing: border-box;
-  
 }
 
 .UP{
@@ -192,7 +181,6 @@ h1{
 
 .info_GP:hover{
   background: #B7B7B7;
-  
 }
 
 .note{
@@ -201,28 +189,27 @@ h1{
 
 .cd-accordion__item{
   list-style: none;
-  
 }
 
 .cd-accordion__input { /*hide native checkbox*/
     position: absolute;
     opacity: 0;
 }
-
+  
 .cd-accordion__label {
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: var(--space-sm) var(--space-md);
-  background: var(--cd-color-1);
-  box-shadow: inset 0 -1px lightness(var(--cd-color-1), 1.2);
-  color: var(--color-white);
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--cd-color-1);
+    box-shadow: inset 0 -1px lightness(var(--cd-color-1), 1.2);
+    color: var(--color-white);
 }
 
 .cd-accordion__sub {
-  display: none; /* by default hide all sub menus*/
+    display: none; /* by default hide all sub menus*/
 }
 
 .cd-accordion__input:checked ~ .cd-accordion__sub { /* show children when item is checked*/
-  display: block;
+    display: block;
 }

@@ -375,3 +375,11 @@
             $arrondi=round($moyenne,2);
             echo($arrondi);
         }
+
+        function role($email){
+            global $db;
+            $c = $db->prepare("SELECT statut FROM user WHERE id= :id");
+            $c->execute(['id'=> $email]);
+            $role = $c->fetch();
+            echo($role[0]);
+        }
