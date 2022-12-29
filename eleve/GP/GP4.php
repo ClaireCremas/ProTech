@@ -12,10 +12,11 @@
     include './../../barre_tete.php';
     include './../../include/database.php'; #connexion à la base de donnée
     global $db; #permet d'avoir la base de donnée sous le nom db
-    include('./../../requete.php')
+    include('./../../requete.php');
+    $email=$_SESSION['email'];
 ?>
 <body>
-    <?php $email=$_SESSION['email'] ?>
+    <?php  ?>
     <h1>GP4: <?php echo(nom_gp(4)) ?></h1>
     <!-- Bouton simulation et Statistiques -->
     <div class='option'>
@@ -25,19 +26,20 @@
 
     <!-- Parti UP1 -->
     <div class='UP UP1'> 
+        <?php $id_up=13; ?>
         <!-- Couleur UP -->
-    <?php if (validation_up(13,$email)==True){
+    <?php if (validation_up($id_up,$email)==True){
              echo("<style> .UP1{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP1{background-color : #61CA6F;}</style>") ;
              }?>
 
-        <p>UP1 : <?php echo(nom_up(1,4)) ?></p> <!-- nom de l'up-->
+        <p>UP1 : <?php echo(nom_up($id_up)) ?></p> <!-- nom de l'up-->
         <li> <!-- Donnée de l'up-->
-            <ul>Moyenne : <?php $moyenne=moyenne_up_eleve(13,$email); echo($moyenne); ?> </ul>
+            <ul>Moyenne : <?php $moyenne=moyenne_up_eleve($id_up,$email); echo($moyenne); ?> </ul>
             <ul>Classement : </ul>
-            <ul>Coefficient : <?php coef_up(1,4) ?> </ul>
-            <ul>Moyenne groupe : <?php moyenne_up(13) ?> </ul>
+            <ul>Coefficient : <?php coef_up($id_up) ?> </ul>
+            <ul>Moyenne groupe : <?php moyenne_up($id_up) ?> </ul>
         </li>
 
         <!-- Différente note de l'up1-->
@@ -70,18 +72,20 @@
 
     <!--          UP2          -->
     <div class='UP UP2'> 
+        <?php $id_up=14; ?>
         <!-- Couleur de l'UP2 -->
-    <?php if (validation_up(14,$email)==True){
+    <?php if (validation_up($id_up,$email)==True){
              echo("<style> .UP2{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP2{background-color : #61CA6F;}</style>") ;
              }?>
 
-        <p>UP2 : <?php echo(nom_up(2,4)) ?></p> <!-- Nom de l'UP2-->
-        <li>
-            <ul>Moyenne : <?php $moyenne=moyenne_up_eleve(14,$email);echo($moyenne); ?> </ul>
+        <p>UP2 : <?php echo(nom_up($id_up)) ?></p> <!-- Nom de l'UP2-->
+        <li> <!-- Donnée de l'up-->
+            <ul>Moyenne : <?php $moyenne=moyenne_up_eleve($id_up,$email); echo($moyenne); ?> </ul>
             <ul>Classement : </ul>
-            <ul>Coefficient : <?php coef_up(2,4) ?> </ul>
+            <ul>Coefficient : <?php coef_up($id_up) ?> </ul>
+            <ul>Moyenne groupe : <?php moyenne_up($id_up) ?> </ul>
         </li>
 
         <li>
@@ -111,18 +115,20 @@
 
     <div class='UP UP3'>  
         <!-- Couleur de de l'UP3-->
-    <?php if (validation_up(15,$email)==True){
+        <?php $id_up=15;?>
+    <?php if (validation_up($id_up,$email)==True){
              echo("<style> .UP3{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP3{background-color : #61CA6F;}</style>") ;
              }?>
 
         <!-- Nom et donnée de l'UP3-->
-        <p>UP3 : <?php echo(nom_up(3,4)) ?></p> 
-        <li>
-            <ul>Moyenne : <?php $moyenne=moyenne_up_eleve(15,$email); echo($moyenne) ?> </ul>
+        <p>UP3 : <?php echo(nom_up($id_up)) ?></p> 
+        <li> <!-- Donnée de l'up-->
+            <ul>Moyenne : <?php $moyenne=moyenne_up_eleve($id_up,$email); echo($moyenne); ?> </ul>
             <ul>Classement : </ul>
-            <ul>Coefficient : <?php coef_up(3,4) ?> </ul>
+            <ul>Coefficient : <?php coef_up($id_up) ?> </ul>
+            <ul>Moyenne groupe : <?php moyenne_up($id_up) ?> </ul>
         </li>
 
 
@@ -153,18 +159,20 @@
         <div class='UP UP4'> 
 
         <!-- Couleur de l'UP4-->
-    <?php if (validation_up(16,$email)==True){
+        <?php $id_up=16; ?>
+    <?php if (validation_up($id_up,$email)==True){
              echo("<style> .UP4{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP4{background-color : #61CA6F;}</style>") ;
              }?>
 
             <!-- Nom et donnée de l'UP4-->
-        <p>UP4 : <?php echo(nom_up(4,4)) ?></p>
-        <li>
-            <ul>Moyenne : <?php $moyenne=moyenne_up_eleve(16,$email); echo($moyenne); ?> </ul>
+        <p>UP4 : <?php echo(nom_up($id_up)) ?></p>
+        <li> <!-- Donnée de l'up-->
+            <ul>Moyenne : <?php $moyenne=moyenne_up_eleve($id_up,$email); echo($moyenne); ?> </ul>
             <ul>Classement : </ul>
-            <ul>Coefficient : <?php coef_up(4,4) ?> </ul>
+            <ul>Coefficient : <?php coef_up($id_up) ?> </ul>
+            <ul>Moyenne groupe : <?php moyenne_up($id_up) ?> </ul>
         </li>
         <li>
             <li class="note">

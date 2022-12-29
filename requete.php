@@ -16,18 +16,18 @@
             echo($barre_gp[0]);
         }
 
-        function nom_up($num_up,$id_gp){
+        function nom_up($id_up){
             global $db;
-            $c = $db->prepare("SELECT nom FROM up WHERE num_UP= :num AND id_gp=:id_gp");
-            $c->execute(['num'=> $num_up, 'id_gp'=>$id_gp]);
+            $c = $db->prepare("SELECT nom FROM up WHERE id=:id");
+            $c->execute(['id'=>$id_up]);
             $nom_up = $c->fetch();
             echo($nom_up[0]);
         }
 
-        function barre_up($num_up,$id_gp){
+        function barre_up($id_up){
             global $db;
-            $c = $db->prepare("SELECT barre FROM up WHERE num_UP= :num AND id_gp=:id_gp");
-            $c->execute(['num'=> $num_up, 'id_gp'=>$id_gp]);
+            $c = $db->prepare("SELECT barre FROM up WHERE id=:id");
+            $c->execute(['id'=>$id_up]);
             $barre_up = $c->fetch();
             echo($barre_up[0]);
         }
@@ -40,10 +40,10 @@
             return $barre_up[0];
         }
 
-        function coef_up($num_up,$id_gp){
+        function coef_up($id_up){
             global $db;
-            $c = $db->prepare("SELECT coefficient FROM up WHERE num_UP= :num AND id_gp=:id_gp");
-            $c->execute(['num'=> $num_up, 'id_gp'=>$id_gp]);
+            $c = $db->prepare("SELECT coefficient FROM up WHERE id=:id");
+            $c->execute(['id'=>$id_up]);
             $coef_up = $c->fetch();
             echo($coef_up[0]);
         }
@@ -292,8 +292,8 @@
             $coef=0;
             
             for ($i = 1; $i <= 4; $i++) {
-                $c = $db->prepare("SELECT coefficient FROM up WHERE num_UP= :num AND id_gp=:id_gp");
-                $c->execute(['num'=> $i, 'id_gp'=>$id_gp]);
+                $c = $db->prepare("SELECT coefficient FROM up WHERE id=:id");
+                $c->execute(['id'=> ($id_gp-1)*4+$i]);
                 $coef_up = $c->fetch();
                 
                 $moyenne_up_eleve=moyenne_up_eleve(($id_gp-1)*4+$i,$email);
@@ -318,8 +318,8 @@
             $barre_gp = $e->fetch();
             
             for ($i = 1; $i <= 4; $i++) {
-                $c = $db->prepare("SELECT coefficient FROM up WHERE num_UP= :num AND id_gp=:id_gp");
-                $c->execute(['num'=> $i, 'id_gp'=>$id_gp]);
+                $c = $db->prepare("SELECT coefficient FROM up WHERE id=:id");
+                $c->execute(['id'=>(($id_gp-1)*4+$i)]);
                 $coef_up = $c->fetch();
 
                 $d=$db->prepare("SELECT id from eval where eval.id_up=:id and eval.TYPE=:t");
@@ -406,8 +406,8 @@
             $coef=0;
             
             for ($i = 1; $i <= 4; $i++) {
-                $c = $db->prepare("SELECT coefficient FROM up WHERE num_UP= :num AND id_gp=:id_gp");
-                $c->execute(['num'=> $i, 'id_gp'=>$id_gp]);
+                $c = $db->prepare("SELECT coefficient FROM up WHERE id=:id");
+                $c->execute(['id'=> ($id_gp-1)*4+$i]);
                 $coef_up = $c->fetch();
                 if ((($id_gp-1)*4+$i)==$id_up_simulation){
                     $moyenne_simulation=moyenne_simulation_up($id_up_simulation,$email,$note);
@@ -453,7 +453,7 @@
             $coef_simulation=0;
             /*coefficient*/
             global $db;
-            $c = $db->prepare("SELECT coefficient FROM up WHERE num_UP= :num AND id_gp=:id_gp");
+            $c = $db->prepare("SELECT coefficient FROM up WHERE id=:id");
 
 
             /*barre gp*/
@@ -463,13 +463,13 @@
            
 
             for ($i = 1; $i <= 4; $i++) {
-                if ($i==$id_up_simulation){ /*cas où c'est l'id du rattrapage*/
-                    $c->execute(['num'=> $i, 'id_gp'=>$id_gp]);
+                if ($i+($id_gp-1)*4==$id_up_simulation){ /*cas où c'est l'id du rattrapage*/
+                    $c->execute(['id'=> ($id_gp-1)*4+$i]);
                     $coef_up = $c->fetch();
                     $coef_simulation=$coef_up[0];
                 }
                 else{ /*reste*/
-                    $c->execute(['num'=> $i, 'id_gp'=>$id_gp]);
+                    $c->execute(['id'=> ($id_gp-1)*4+$i]);
                     $coef_up = $c->fetch();
 
                     $d=$db->prepare("SELECT id from eval where eval.id_up=:id and eval.TYPE=:t");

@@ -18,21 +18,27 @@
     <?php $email=$_SESSION['email'] ?>
     <h1>GP2 : <?php echo(nom_gp(2)) ?></h1>
     <div class='option'>
-        <li><a href="" class='simulation'> Simulation </a> </li>
+        <li><a href="./../Simulation/simulation_GP2.php" class='simulation'> Simulation </a> </li>
         <li><a href="" class='simulation'>Statistiques</a></li>
     </div>
+
+
+
+
     <div class='UP UP1'> 
-    <?php if (validation_up(5,$email)==True){
+        <?php $id_up=5;?>
+    <?php if (validation_up($id_up,$email)==True){
              echo("<style> .UP1{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP1{background-color : #61CA6F;}</style>") ;
              }?>
 
-        <p>UP1 : <?php echo(nom_up(1,2)) ?></p>
-        <li>
-            <ul>Moyenne : <?php moyenne_up(5) ?> </ul>
+        <p>UP1 : <?php echo(nom_up($id_up)) ?></p>
+        <li> <!-- Donnée de l'up-->
+            <ul>Moyenne : <?php $moyenne=moyenne_up_eleve($id_up,$email); echo($moyenne); ?> </ul>
             <ul>Classement : </ul>
-            <ul>Coefficient : <?php coef_up(1,2) ?> </ul>
+            <ul>Coefficient : <?php coef_up($id_up) ?> </ul>
+            <ul>Moyenne groupe : <?php moyenne_up($id_up) ?> </ul>
         </li>
         <li>
             <li class="note">
@@ -59,16 +65,18 @@
     </div>
     <!--          UP2          -->
     <div class='UP UP2'> 
-    <?php if (validation_up(6,$email)==True){
+    <?php $id_up=6; ?>
+    <?php if (validation_up($id_up,$email)==True){
              echo("<style> .UP2{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP2{background-color : #61CA6F;}</style>") ;
              }?>
-        <p>UP2 : <?php echo(nom_up(2,2)) ?></p>
-        <li>
-            <ul>Moyenne : <?php moyenne_up(2) ?> </ul>
+        <p>UP2 : <?php echo(nom_up($id_up)) ?></p>
+        <li> <!-- Donnée de l'up-->
+            <ul>Moyenne : <?php $moyenne=moyenne_up_eleve($id_up,$email); echo($moyenne); ?> </ul>
             <ul>Classement : </ul>
-            <ul>Coefficient : <?php coef_up(2,2) ?> </ul>
+            <ul>Coefficient : <?php coef_up($id_up) ?> </ul>
+            <ul>Moyenne groupe : <?php moyenne_up($id_up) ?> </ul>
         </li>
         <li>
             <li class="note">
@@ -93,17 +101,19 @@
 
     <!--                UP3              -->
     <div class='UP UP3'> 
-    <?php if (validation_up(7,$email)==True){
+    <?php $id_up=7; ?>
+    <?php if (validation_up($id_up,$email)==True){
              echo("<style> .UP3{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP3{background-color : #61CA6F;}</style>") ;
              }?>
 
-        <p>UP3 : <?php echo(nom_up(3,2)) ?></p>
-        <li>
-            <ul>Moyenne : <?php moyenne_up(3) ?> </ul>
+        <p>UP3 : <?php echo(nom_up($id_up)) ?></p>
+        <li> <!-- Donnée de l'up-->
+            <ul>Moyenne : <?php $moyenne=moyenne_up_eleve($id_up,$email); echo($moyenne); ?> </ul>
             <ul>Classement : </ul>
-            <ul>Coefficient : <?php coef_up(3,2) ?> </ul>
+            <ul>Coefficient : <?php coef_up($id_up) ?> </ul>
+            <ul>Moyenne groupe : <?php moyenne_up($id_up) ?> </ul>
         </li>
         <li>
             <li class="note">
@@ -131,17 +141,19 @@
 
         <!--                UP4              -->
         <div class='UP UP4'> 
-    <?php if (validation_up(8,$email)==True){
+        <?php $id_up=8; ?>
+    <?php if (validation_up($id_up,$email)==True){
              echo("<style> .UP4{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .UP4{background-color : #61CA6F;}</style>") ;
              }?>
 
-        <p>UP4 : <?php echo(nom_up(4,2)) ?></p>
-        <li>
-            <ul>Moyenne : <?php moyenne_up(4) ?> </ul>
+        <p>UP4 : <?php echo(nom_up($id_up)) ?></p>
+        <li> <!-- Donnée de l'up-->
+            <ul>Moyenne : <?php $moyenne=moyenne_up_eleve($id_up,$email); echo($moyenne); ?> </ul>
             <ul>Classement : </ul>
-            <ul>Coefficient : <?php coef_up(4,2) ?> </ul>
+            <ul>Coefficient : <?php coef_up($id_up) ?> </ul>
+            <ul>Moyenne groupe : <?php moyenne_up($id_up) ?> </ul>
         </li>
         <li>
             <li class="note">

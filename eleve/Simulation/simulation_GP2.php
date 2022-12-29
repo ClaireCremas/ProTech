@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="simulation_GP.css">
-    <title>Simulation GP1</title>
+    <title>Simulation GP2</title>
 </head>
 <body>
 
@@ -16,7 +16,7 @@
     global $db; #permet d'avoir la base de donnée sous le nom db
     include('./../../requete.php'); #Ajout de la feuille des requete
     $email=$_SESSION['email']; #Mise à jour de l'email de l'utilisateur connecté
-    $id_gp=1; #ICI c'est la simulation du GP1
+    $id_gp=2; #ICI c'est la simulation du GP1
 ?>
 
 
@@ -24,14 +24,14 @@
 
 
     <!-- TITRE DE LA PAGE -->
-    <h1>SIMULATION GP1 : <?php echo(nom_gp($id_gp)) ?> </h1> 
+    <h1>SIMULATION GP2 : <?php echo(nom_gp($id_gp)) ?> </h1> 
 
 
 
 
 
     <!-- UP1 -->
-    <?php $id_up=1; #on modifie l'identifiant ?>
+    <?php $id_up=5; #on modifie l'identifiant ?>
 
     <div class='UP UP1'>
         <p> UP1 : <?php echo(nom_up($id_up,$id_gp)) ?> </p> <!-- nom de l'up-->
@@ -102,7 +102,7 @@
 
     <!-- UP2 -->
     <div class='UP UP2'>
-        <?php $id_up=2; #on modifie l'identifiant?>
+        <?php $id_up=6; #on modifie l'identifiant?>
         <p>UP2 : <?php echo(nom_up($id_up,$id_gp)) ?></p> <!-- nom de l'up-->
         <li> <!-- Donnée de l'up-->
             <ul>Note actuelle : <?php $moyenne=moyenne_up_eleve($id_up,$email); echo($moyenne); ?> </ul>
@@ -166,7 +166,7 @@
 
     <!-- UP3 -->
         <div class='UP UP3'>
-        <?php $id_up=3;?>
+        <?php $id_up=7;?>
         <p>UP3 : <?php echo(nom_up($id_up,$id_gp)) ?></p> <!-- nom de l'up-->
             <li> <!-- Donnée de l'up-->
                 <ul>Note actuelle : <?php $moyenne=moyenne_up_eleve($id_up,$email); echo($moyenne); ?> </ul>
@@ -230,7 +230,7 @@
 
     <!-- UP4 -->
         <div class='UP UP4'>
-        <?php $id_up=4; ?>
+        <?php $id_up=8; ?>
         <p>UP4 : <?php echo(nom_up($id_up,$id_gp)) ?></p> <!-- nom de l'up-->
         <li> <!-- Donnée de l'up-->
             <ul>Note actuelle : <?php $moyenne=moyenne_up_eleve($id_up,$email); echo($moyenne); ?> </ul>
@@ -290,7 +290,7 @@
 
 
     <div class='retour'>
-        <a href="./../GP/GP1.php"> RETOUR</a>
+        <a href="./../GP/GP2.php"> RETOUR</a>
     </div>
 
 
