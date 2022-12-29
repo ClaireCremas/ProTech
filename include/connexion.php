@@ -36,10 +36,10 @@
                     
 
                     /*Est ce un élève ou un prof ?*/
-                    if($result['TYPE']==1){ /*Connexion vers accueil eleve*/
+                    if($result['TYPE']==1){ /*Connexion vers acceuil eleve*/
                         header('Location: ./eleve/accueil_eleve.php');
                     }
-                    else{ /*Connexion vers accueil prof*/
+                    else{ /*Connexion vers acceuil prof*/
                         header('Location: ./prof/accueil_prof.php');
                         echo("connexion prof");
                     }
@@ -49,7 +49,7 @@
                 }
 
             } else{
-                echo ("Le compte " .$email ." n'existe pas");
+                echo ("Le compte" .$email ."n'existe pas");
             }
 
     
