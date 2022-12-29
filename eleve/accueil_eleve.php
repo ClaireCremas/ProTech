@@ -21,8 +21,8 @@
 <h1> PROMETHEE GPA</h1>
     <div class="eleve">
         <p><span class='nom'>Nom</span> : <?php echo($_SESSION['nom']) ?> </p>
-        <p><span class='nom'>Prénom</span> : <?php echo($_SESSION['prenom']) ?> </p>
-        <p> <span class='nom'>Promo</span> : <?php echo($_SESSION['statut']) ?> </p>
+        <p><span class='nom'>Prénom</span> : <?php echo($_SESSION['prenom']); ?> </p>
+        <p> <span class='nom'>Promo</span> : <?php echo($_SESSION['statut']); ?> </p>
         <p><span class='nom'>GPA  </span> : <?php calcul_GPA($email);?> </p>
     </div>
         
@@ -67,7 +67,7 @@
 
         <!--NOTES-->
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
-          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,1))?>  Moyenne Promo : <?php echo(moyenne_eval(1))?> </span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,1)); ?>  Moyenne Promo : <?php echo(moyenne_eval(1))?> </span></a></li>
           <li class="cd-accordion__item"><span class='note'>NOTE 2 : <?php echo(note($email,2))?> Moyenne Promo: <?php echo(moyenne_eval(2))?></span></a></li>
           <!-- RATTRAPAGE-->
           <li class="cd-accordion__item">

@@ -33,6 +33,7 @@
                     $_SESSION['date']=$result['date'];
                     $_SESSION['nom']=$result['nom'];
                     $_SESSION['prenom']=$result['prenom'];
+                    $_SESSION['statut']=$result['statut'];
                     
 
                     /*Est ce un élève ou un prof ?*/

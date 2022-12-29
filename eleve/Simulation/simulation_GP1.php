@@ -28,25 +28,104 @@
             <li>
                 <li class="note"> 
                     <ul>UP VALIDE ? : </ul>
-                    <ul> Note pour valider : </ul>
-                    <ul>Nouvelle moyenne : </ul>
-                    <ul>Nouveau Grade : </ul>
+                    <?php if (validation_up(1,$email)==TRUE){
+                        $note_pour_valider=return_barre_up(1);
+                        $new_moyenne_up=moyenne_simulation_up(1,$email,$note_pour_valider);
+                        $new_moyenne_gp=moyenne_simulation_gp(1,$email,1,$note_pour_valider);
+                        $new_grade=grade_gp_moyenne($new_moyenne_gp,1);
+                        echo("<ul>NON </ul>
+                        <ul> Note pour valider : $note_pour_valider </ul>
+                        <ul>Nouvelle moyenne : $new_moyenne_up</ul>
+                        <ul>Nouveau Grade : $new_grade </ul>");
+                    }
+                    else{
+                        echo("<ul>OUI</ul>");
+                    }?>
+
                 </li>
 
 
                 <li class="note"> <!-- Note 2-->
                     <ul>GP VALIDE ? :</ul>
-                    <ul> Note pour valider :</ul>
-                    <ul>Nouvelle moyenne : </ul>
-                    <ul>Nouveau Grade :</ul>
+                    <?php if (validation_gp(1,$email)==TRUE){
+                        $note_pour_valider=note_valider_gp(1,$email,1);
+                        $new_moyenne_up=moyenne_simulation_up(1,$email,$note_pour_valider);
+                        $new_moyenne_gp=moyenne_simulation_gp(1,$email,1,$note_pour_valider);
+                        $new_grade=grade_gp_moyenne($new_moyenne_gp,1);
+
+                        echo("<ul>NON </ul>
+                        <ul> Note pour valider : $note_pour_valider </ul>
+                        <ul>Nouvelle moyenne : $new_moyenne_up </ul>
+                        <ul>Nouveau Grade : $new_grade </ul>");
+                    }
+                    else{
+                        echo("<ul>OUI</ul>");
+                    }?>
                 </li>
 
                 <li class="note">
                 <ul> Grade voulu :  </ul>
+                <input type="text" id="grade">
+                <input type="submit">
                 <ul> Note à avoir :   </ul>
                 <ul> Note affichée sur le bulletin : </ul>
           </li>
     </div>
+    <!-- UP2 -->
+    <div class='UP UP2'>
+        <p>UP2 : <?php echo(nom_up(2,1)) ?></p> <!-- nom de l'up-->
+            <li> <!-- Donnée de l'up-->
+                <ul>Note actuelle : <?php $moyenne=moyenne_up_eleve(2,$email); echo($moyenne); ?> </ul>
+            </li>
+
+        <!-- UP valide-->
+            <li>
+                <li class="note"> 
+                    <ul>UP VALIDE ? : </ul>
+                    <?php if (validation_up(2,$email)==TRUE){
+                        $note_pour_valider=return_barre_up(2);
+                        $new_moyenne_up=moyenne_simulation_up(2,$email,$note_pour_valider);
+                        $new_moyenne_gp=moyenne_simulation_gp(1,$email,2,$note_pour_valider);
+                        $new_grade=grade_gp_moyenne($new_moyenne_gp,1);
+                        echo("<ul>NON </ul>
+                        <ul> Note pour valider : $note_pour_valider </ul>
+                        <ul>Nouvelle moyenne : $new_moyenne_up</ul>
+                        <ul>Nouveau Grade : $new_grade </ul>");
+                    }
+                    else{
+                        echo("<ul>OUI</ul>");
+                    }?>
+
+                </li>
+
+
+                <li class="note"> <!-- Note 2-->
+                    <ul>GP VALIDE ? :</ul>
+                    <?php if (validation_gp(1,$email)==TRUE){
+                        $note_pour_valider=note_valider_gp(1,$email,2);
+                        $new_moyenne_up=moyenne_simulation_up(2,$email,$note_pour_valider);
+                        $new_moyenne_gp=moyenne_simulation_gp(1,$email,2,$note_pour_valider);
+                        $new_grade=grade_gp_moyenne($new_moyenne_gp,1);
+
+                        echo("<ul>NON </ul>
+                        <ul> Note pour valider : $note_pour_valider </ul>
+                        <ul>Nouvelle moyenne : $new_moyenne_up </ul>
+                        <ul>Nouveau Grade : $new_grade </ul>");
+                    }
+                    else{
+                        echo("<ul>OUI</ul>");
+                    }?>
+                </li>
+
+                <li class="note">
+                <ul> Grade voulu :  </ul>
+                <input type="text" id="grade">
+                <input type="submit">
+                <ul> Note à avoir :   </ul>
+                <ul> Note affichée sur le bulletin : </ul>
+          </li>
+    </div>
+
 
 
 
