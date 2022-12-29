@@ -27,7 +27,7 @@
             <p class='text'> Votre date de création : <?= $_SESSION['date']; ?></p>
             <?php
             }else{
-                echo "<p class='text'>Connectez-vous, ou inscrivez-vous pour créer un compte :</p>";
+                echo "<p class='text'>Connectez-vous, ou incrivez-vous pour créer un compte :</p>";
             }
             ?>
     </div>
