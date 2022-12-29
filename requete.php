@@ -128,8 +128,8 @@
             $moyenne=0;
 
             $c = $db->prepare("SELECT count(id) from eval where eval.id_up=:id and eval.TYPE=:t");
-            $d=$db->prepare("SELECT id from eval where eval.id_up=:id and eval.TYPE=:t");
-            $e=$db->prepare("SELECT Coefficient from eval where id=:id_eval");
+            $d = $db->prepare("SELECT id from eval where eval.id_up=:id and eval.TYPE=:t");
+            $e = $db->prepare("SELECT Coefficient from eval where id=:id_eval");
             $f = $db->prepare("SELECT note FROM note JOIN user ON note.id_user=user.id WHERE id_eval= :id AND email=:email");
 
 
