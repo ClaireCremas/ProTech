@@ -488,7 +488,8 @@
                 
             }
             $note_a_avoir=($coef*$barre_gp[0]-$somme)/$coef_simulation;
-            return $note_a_avoir;
+            $arrondi=round($note_a_avoir,2);
+            return $arrondi;
 
         }
         
