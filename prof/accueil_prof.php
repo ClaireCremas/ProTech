@@ -55,7 +55,7 @@
 
 
 <!--Langues vivantes-->
-<div id="LV" class="contenucours">Contenu tronc langues vivantes</div>
+<div id="LV" class="contenucours">Contenu langues vivantes</div>
 
 
 
@@ -77,7 +77,19 @@
              echo("<style> .GP1{background-color : #FF4545;}</style>");}
              else{
               echo("<style> .GP1{background-color : #61CA6F;}</style>") ;
-             }?>  
+             }?>
+    
+
+    <!-- LISTES ELEVES GP -->
+    <ul>
+    <?php
+      $req = $db->query('SELECT nom, url_fichier FROM listes WHERE nom="X_ICM2021.xlsx"');
+
+      while($data = $req->fetch()){
+          echo ('<a href="'.$data['url_fichier'].'">Télécharger la liste des élèves du GP'.'</a>');
+      }
+    ?>
+    </ul>
 
 
     
@@ -91,6 +103,9 @@
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
           <li class="cd-accordion__item"><span class='note'>Moyenne Promo : <?php echo(moyenne_eval(1))?> </span></a></li>
           <li class="cd-accordion__item"><span class='note'>Moyenne Promo: <?php echo(moyenne_eval(2))?></span></a></li>
+          
+          <?php include('./../ajoutnote.php')?>
+          
           <!-- RATTRAPAGE-->
           <li class="cd-accordion__item">
             <!-- CHANGE COULEUR SI IL FAUT RATTRAPAGE (NON VALIDATION UP) -->
@@ -118,6 +133,7 @@
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
           <li class="cd-accordion__item"><span class='note'>Moyenne Promo : <?php echo(moyenne_eval(4))?></span></a></li>
           <li class="cd-accordion__item">
+          <?php include('./../ajoutnote.php')?>
             <!-- COULEUR VALIDATION OU NON -->
             <?php if (validation_up(2,$email)==FALSE){
               echo("<style> .UP2{background-color : #61CA6F ;}</style>");}
@@ -143,6 +159,7 @@
           <li class="cd-accordion__item"><span class='note'>Moyenne Promo: <?php echo(moyenne_eval(5))?></span></span></a></li>
           <li class="cd-accordion__item"><span class='note'>Moyenne Promo: <?php echo(moyenne_eval(6))?></span></span></a></li>
           <li class="cd-accordion__item">
+          <?php include('./../ajoutnote.php')?>
           <?php if (validation_up(3,$email)==FALSE){
               echo("<style> .UP3{background-color : #61CA6F ;}</style>");}
               else{
@@ -165,6 +182,7 @@
         <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-4"><span class='UP UP4'>UP4 : <?php echo(nom_up(4,1))?></span><span class='moyenne'>Moyenne : <?php echo(moyenne_up_eleve(4,$email))?>   Coefficient : <?php echo(coef_up(4,1))?>  Barre : <?php echo(barre_up(4,1))?></span></label>
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
           <li class="cd-accordion__item"><span class='note'>Moyenne Promo: <?php echo(moyenne_eval(7))?></span></span></a></li>
+          <?php include('./../ajoutnote.php')?>
           <?php if (validation_up(4,$email)==FALSE){
               echo("<style> .UP4{background-color : #61CA6F ;}</style>");}
               else{
@@ -203,7 +221,7 @@
       <li class="cd-accordion__item cd-accordion__item--has-children">
         <input class="cd-accordion__input" type="checkbox" name ="sub-group-5" id="sub-group-5">
         <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-5"><span class='UP UP5'>UP1 : <?php echo(nom_up(1,2))?></span><span class='moyenne'>Moyenne : <?php echo(moyenne_up_eleve(5,$email))?>    Coefficient : <?php echo(coef_up(1,2))?>  Barre : <?php echo(barre_up(1,2))?></span></label>
-
+        
         <!-- CHANGE COULEUR SI IL FAUT RATTRAPAGE (NON VALIDATION UP) -->
         <?php if (validation_up(5,$email)==FALSE){
               echo("<style> .UP5{background-color : #61CA6F ;}</style>");}
@@ -215,6 +233,7 @@
         <!--NOTES-->
         <ul class="cd-accordion__sub cd-accordion__sub--l2">
           <li class="cd-accordion__item"><span class='note'>Moyenne Promo: <?php echo(moyenne_eval(12))?></span></a></li>
+          <?php include('./../ajoutnote.php')?>
         <!-- AFFICHE LE RATTRAPGE SI LE RATTRAPGE N'EST PAS VIDE-->
           <?php if (rattrapage_non_vide(13,$email)==TRUE){
               $note=return_note($email,13);
@@ -525,6 +544,7 @@
 <!--TRONC COMMUN 2A-->
 <div id="TC2A" class="contenucours">
 
+
 <ul class="cd-accordion margin-top-lg margin-bottom-lg">
   <li class="cd-accordion__item cd-accordion__item--has-children">
     <input class="cd-accordion__input" type="checkbox" name ="group-1" id="group-1">
@@ -537,7 +557,6 @@
              else{
               echo("<style> .GP1{background-color : #61CA6F;}</style>") ;
              }?>  
-
 
     
     <!--UP1 GP-->
