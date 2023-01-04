@@ -86,11 +86,37 @@
 
             <!-- Simulation pour avoir le grade demandé-->
             <li class="note">
-                <ul> Grade voulu :  </ul>
-                <input type="text" id="grade">
-                <input type="submit">
-                <ul> Note à avoir :   </ul>
-                <ul> Note affichée sur le bulletin : </ul>
+                <ul> Grade voulu : 
+                    <form method="post">
+                        <input type="text" id="grade" name="grade">
+                        <input type='submit' name='grade_send1' id='grade_send1'>
+                    </form>
+                </ul>
+
+                <?php if(isset($_POST['grade_send1'])){
+                    $grade_voulu=$_POST['grade'];
+                    $note_pour_grade=note_pour_avoir_grade($id_gp,$email,$id_up,$grade_voulu);
+                    if($grade_voulu=='A+'){
+                        echo("<ul> Note à avoir : $note_pour_grade </ul>
+                        <ul> Note affichée sur le bulletin : </ul>");
+                    }
+                    elseif($grade_voulu=='A'){
+                        echo("<ul> Note à avoir : $note_pour_grade</ul>
+                        <ul> Note affichée sur le bulletin : </ul>");
+                    }
+                    elseif($grade_voulu=='B'){
+                        echo("<ul> Note à avoir : $note_pour_grade</ul>
+                        <ul> Note affichée sur le bulletin : </ul>");
+                    }
+                    elseif($grade_voulu=='C'){
+                        echo("<ul> Note à avoir : </ul>
+                        <ul> Note affichée sur le bulletin : $note_pour_grade </ul>");
+                    }
+                    else{
+                        echo("ce grade n'existe pas");
+                    }
+                }
+                ?>
             </li>
         </li>
     </div>
@@ -147,14 +173,39 @@
             </li>
 
 
-            <!-- Donne la note pour avoir le grade demandé-->
+            <!-- Simulation pour avoir le grade demandé-->
             <li class="note">
-                <ul> Grade voulu :  </ul>
-                <input type="text" id="grade">
-                <input type="submit">
-                <ul> Note à avoir :   </ul>
-                <ul> Note affichée sur le bulletin : </ul>
-          </li>
+                <ul> Grade voulu : 
+                    <form method="post">
+                        <input type="text" id="grade" name="grade">
+                        <input type='submit' name='grade_send2' id='grade_send2'>
+                    </form>
+                </ul>
+
+                <?php if(isset($_POST['grade_send2'])){
+                    $grade_voulu=$_POST['grade'];
+                    $note_pour_grade=note_pour_avoir_grade($id_gp,$email,$id_up,$grade_voulu);
+                    if($grade_voulu=='A+'){
+                        echo("<ul> Note à avoir : $note_pour_grade </ul>
+                        <ul> Note affichée sur le bulletin : </ul>");
+                    }
+                    elseif($grade_voulu=='A'){
+                        echo("<ul> Note à avoir : $note_pour_grade</ul>
+                        <ul> Note affichée sur le bulletin : </ul>");
+                    }
+                    elseif($grade_voulu=='B'){
+                        echo("<ul> Note à avoir : $note_pour_grade</ul>
+                        <ul> Note affichée sur le bulletin : </ul>");
+                    }
+                    elseif($grade_voulu=='C'){
+                        echo("<ul> Note à avoir : </ul>
+                        <ul> Note affichée sur le bulletin : $note_pour_grade </ul>");
+                    }
+                    else{
+                        echo("ce grade n'existe pas");
+                    }
+                }
+                ?>
 
         </li>
     </div>
@@ -211,13 +262,40 @@
             </li>
 
 
-            <li class="note">
-                <ul> Grade voulu :  </ul>
-                <input type="text" id="grade">
-                <input type="submit">
-                <ul> Note à avoir :   </ul>
-                <ul> Note affichée sur le bulletin : </ul>
-          </li>
+                      <!-- Simulation pour avoir le grade demandé-->
+                      <li class="note">
+                <ul> Grade voulu : 
+                    <form method="post">
+                        <input type="text" id="grade" name="grade">
+                        <input type='submit' name='grade_send3' id='grade_send3'>
+                    </form>
+                </ul>
+
+                <?php if(isset($_POST['grade_send3'])){
+                    $grade_voulu=$_POST['grade'];
+                    $note_pour_grade=note_pour_avoir_grade($id_gp,$email,$id_up,$grade_voulu);
+                    if($grade_voulu=='A+'){
+                        echo("<ul> Note à avoir : $note_pour_grade </ul>
+                        <ul> Note affichée sur le bulletin : </ul>");
+                    }
+                    elseif($grade_voulu=='A'){
+                        echo("<ul> Note à avoir : $note_pour_grade</ul>
+                        <ul> Note affichée sur le bulletin : </ul>");
+                    }
+                    elseif($grade_voulu=='B'){
+                        echo("<ul> Note à avoir : $note_pour_grade</ul>
+                        <ul> Note affichée sur le bulletin : </ul>");
+                    }
+                    elseif($grade_voulu=='C'){
+                        echo("<ul> Note à avoir : </ul>
+                        <ul> Note affichée sur le bulletin : $note_pour_grade </ul>");
+                    }
+                    else{
+                        echo("ce grade n'existe pas");
+                    }
+                }
+                ?>
+            </li>
 
         </li>
     </div>
@@ -277,13 +355,40 @@
                 }?>
             </li>
 
-            <li class="note">
-                <ul> Grade voulu :  </ul>
-                <input type="text" id="grade">
-                <input type="submit">
-                <ul> Note à avoir :   </ul>
-                <ul> Note affichée sur le bulletin : </ul>
-          </li>
+                        <!-- Simulation pour avoir le grade demandé-->
+                        <li class="note">
+                <ul> Grade voulu : 
+                    <form method="post">
+                        <input type="text" id="grade" name="grade">
+                        <input type='submit' name='grade_send4' id='grade_send4'>
+                    </form>
+                </ul>
+
+                <?php if(isset($_POST['grade_send4'])){
+                    $grade_voulu=$_POST['grade'];
+                    $note_pour_grade=note_pour_avoir_grade($id_gp,$email,$id_up,$grade_voulu);
+                    if($grade_voulu=='A+'){
+                        echo("<ul> Note à avoir : $note_pour_grade </ul>
+                        <ul> Note affichée sur le bulletin : </ul>");
+                    }
+                    elseif($grade_voulu=='A'){
+                        echo("<ul> Note à avoir : $note_pour_grade</ul>
+                        <ul> Note affichée sur le bulletin : </ul>");
+                    }
+                    elseif($grade_voulu=='B'){
+                        echo("<ul> Note à avoir : $note_pour_grade</ul>
+                        <ul> Note affichée sur le bulletin : </ul>");
+                    }
+                    elseif($grade_voulu=='C'){
+                        echo("<ul> Note à avoir : </ul>
+                        <ul> Note affichée sur le bulletin : $note_pour_grade </ul>");
+                    }
+                    else{
+                        echo("ce grade n'existe pas");
+                    }
+                }
+                ?>
+            </li>
         </li>
     </div>
 

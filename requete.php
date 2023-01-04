@@ -403,12 +403,12 @@
             echo($role[0]);
         }
 
-        function moyenne_simulation_up($id_up,$email,$note){
+        function moyenne_simulation_up($id_up,$email,$note){ /*note quand on simule la note de rattrapage*/
             $moyenne_up=moyenne_up_eleve($id_up,$email);
             return ($moyenne_up+$note)/2;
         }
 
-        function moyenne_simulation_gp($id_gp,$email,$id_up_simulation,$note){
+        function moyenne_simulation_gp($id_gp,$email,$id_up_simulation,$note){ /*moyenne gp quand on simule la note de rattrapage de l'up*/
             global $db;
             $somme=0;
             $coef=0;
@@ -455,7 +455,7 @@
             }
         }
 
-        function note_valider_gp($id_gp,$email,$id_up_simulation){
+        function note_valider_gp($id_gp,$email,$id_up_simulation){ /*note qu'il faut pour valider le gp*/
             $coef=0;
             $somme=0;
             $coef_simulation=0;
@@ -496,6 +496,59 @@
                 
             }
             $note_a_avoir=($coef*$barre_gp[0]-$somme)/$coef_simulation;
+            $arrondi=round($note_a_avoir,2);
+            return $arrondi;
+
+        }
+
+        function note_pour_avoir_grade($id_gp,$email,$id_up_simulation,$grade_voulu){
+            $coef=0;
+            $somme=0;
+            $coef_simulation=0;
+            /*coefficient*/
+            global $db;
+            $c = $db->prepare("SELECT coefficient FROM up WHERE id=:id");
+
+
+            /*barre gp*/
+            if($grade_voulu=='A+'){
+                $grade_voulu='Aplus';
+            }
+            elseif($grade_voulu=='C'){
+                $grade_voulu=='barre';
+            }
+            $d=$db->prepare("SELECT $grade_voulu from gp where id=:id");
+            $d->execute(['id'=>$id_gp]);
+            $seuil_grade=$d->fetch();
+           
+
+            for ($i = 1; $i <= 4; $i++) {
+                if ($i+($id_gp-1)*4==$id_up_simulation){ /*cas où c'est l'id du rattrapage*/
+                    $c->execute(['id'=> ($id_gp-1)*4+$i]);
+                    $coef_up = $c->fetch();
+                    $coef_simulation=$coef_up[0];
+                    $moyenne_up_simulation_eleve=moyenne_up_eleve(($id_gp-1)*4+$i,$email);
+                }
+                else{ /*reste*/
+                    $c->execute(['id'=> ($id_gp-1)*4+$i]);
+                    $coef_up = $c->fetch();
+
+                    $d=$db->prepare("SELECT id from eval where eval.id_up=:id and eval.TYPE=:t");
+                    $d->execute(['id'=>($id_gp-1)*4+$i,'t'=>'R']);
+                    $id_rattrapage=$d->fetch();
+                    if(rattrapage_non_vide($id_rattrapage[0],$email)==TRUE){
+                        $somme=$somme+return_max_rattrapage_moyenne(($id_gp-1)*4+$i,$email)*$coef_up[0];
+                        $val=return_max_rattrapage_moyenne(($id_gp-1)*4+$i,$email);
+                    }
+                    else{
+                        $moyenne_up_eleve=moyenne_up_eleve(($id_gp-1)*4+$i,$email);
+                        $somme=$somme+$coef_up[0]*$moyenne_up_eleve;
+                    }
+                }
+                $coef=$coef+$coef_up[0];
+                
+            }
+            $note_a_avoir=($coef*$seuil_grade[0]-$somme)*2/($coef_simulation*$moyenne_up_simulation_eleve);
             $arrondi=round($note_a_avoir,2);
             return $arrondi;
 
