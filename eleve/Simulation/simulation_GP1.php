@@ -64,23 +64,28 @@
             </li>
 
             <!-- GP valide -->
-            <li class="note"> 
+            <li class="note">
                 <ul>GP VALIDE ? :</ul>
-
-                <?php if (validation_gp($id_gp,$email)==TRUE){ #Si le gp n'est pas validé on affiche :
+                <?php if (validation_gp($id_gp,$email)==TRUE){
                     $note_pour_valider=note_valider_gp($id_gp,$email,$id_up);
-                    $new_moyenne_up=moyenne_simulation_up($id_up,$email,$note_pour_valider);
-                    $new_moyenne_gp=moyenne_simulation_gp($id_gp,$email,$id_up,$note_pour_valider);
-                    $new_grade=grade_gp_moyenne($new_moyenne_gp,$id_gp);
-
-                    echo("<ul>NON </ul>
-                        <ul> Note pour valider : $note_pour_valider </ul>
-                        <ul>Nouvelle moyenne : $new_moyenne_up </ul>
-                        <ul>Nouveau Grade : $new_grade </ul>");
-                }
-                else{
-                    echo("<ul>OUI</ul>"); #le GP est validé
-                }?>
+                    if ($note_pour_valider>20){
+                        echo("<ul>Impossible de valider avec cet UP</ul>");
+                    }
+                    else{
+                        $new_moyenne_up=moyenne_simulation_up($id_up,$email,$note_pour_valider);
+                        $new_moyenne_gp=moyenne_simulation_gp($id_gp,$email,$id_up,$note_pour_valider);
+                        $new_grade=grade_gp_moyenne($new_moyenne_gp,$id_gp);
+    
+                        echo("<ul>NON </ul>
+                            <ul> Note pour valider : $note_pour_valider </ul>
+                            <ul>Nouvelle moyenne : $new_moyenne_up </ul>
+                            <ul>Nouveau Grade : $new_grade </ul>");
+                    }
+                    }
+                    else{
+                        echo("<ul>OUI</ul>");
+                    }
+                ?>
             </li>
 
 
@@ -153,25 +158,30 @@
                 }?>
             </li>
 
-            <!-- GP valide-->
-            <li class="note"> 
+            <!-- GP valide -->
+            <li class="note">
                 <ul>GP VALIDE ? :</ul>
-                <?php if (validation_gp($id_gp,$email)==TRUE){#si le gp n'est pas validé 
+                <?php if (validation_gp($id_gp,$email)==TRUE){
                     $note_pour_valider=note_valider_gp($id_gp,$email,$id_up);
-                    $new_moyenne_up=moyenne_simulation_up(2,$email,$note_pour_valider);
-                    $new_moyenne_gp=moyenne_simulation_gp($id_gp,$email,$id_up,$note_pour_valider);
-                    $new_grade=grade_gp_moyenne($new_moyenne_gp,$id_gp);
-
-                    echo("<ul>NON </ul>
-                        <ul> Note pour valider : $note_pour_valider </ul>
-                        <ul>Nouvelle moyenne : $new_moyenne_up </ul>
-                        <ul>Nouveau Grade : $new_grade </ul>");
-                }
-                else{
-                    echo("<ul>OUI</ul>");
-                }?>
+                    if ($note_pour_valider>20){
+                        echo("<ul>Impossible de valider avec cet UP</ul>");
+                    }
+                    else{
+                        $new_moyenne_up=moyenne_simulation_up($id_up,$email,$note_pour_valider);
+                        $new_moyenne_gp=moyenne_simulation_gp($id_gp,$email,$id_up,$note_pour_valider);
+                        $new_grade=grade_gp_moyenne($new_moyenne_gp,$id_gp);
+    
+                        echo("<ul>NON </ul>
+                            <ul> Note pour valider : $note_pour_valider </ul>
+                            <ul>Nouvelle moyenne : $new_moyenne_up </ul>
+                            <ul>Nouveau Grade : $new_grade </ul>");
+                    }
+                    }
+                    else{
+                        echo("<ul>OUI</ul>");
+                    }
+                ?>
             </li>
-
 
             <!-- Simulation pour avoir le grade demandé-->
             <li class="note">
@@ -242,23 +252,29 @@
                 }?>
             </li>
 
-            <!-- GP Valide -->
-            <li class="note"> 
+            <!-- GP valide -->
+            <li class="note">
                 <ul>GP VALIDE ? :</ul>
                 <?php if (validation_gp($id_gp,$email)==TRUE){
                     $note_pour_valider=note_valider_gp($id_gp,$email,$id_up);
-                    $new_moyenne_up=moyenne_simulation_up($id_up,$email,$note_pour_valider);
-                    $new_moyenne_gp=moyenne_simulation_gp($id_gp,$email,$id_up,$note_pour_valider);
-                    $new_grade=grade_gp_moyenne($new_moyenne_gp,$id_gp);
-
-                    echo("<ul>NON </ul>
-                        <ul> Note pour valider : $note_pour_valider </ul>
-                        <ul>Nouvelle moyenne : $new_moyenne_up </ul>
-                        <ul>Nouveau Grade : $new_grade </ul>");
-                }
-                else{
-                    echo("<ul>OUI</ul>");
-                }?>
+                    if ($note_pour_valider>20){
+                        echo("<ul>Impossible de valider avec cet UP</ul>");
+                    }
+                    else{
+                        $new_moyenne_up=moyenne_simulation_up($id_up,$email,$note_pour_valider);
+                        $new_moyenne_gp=moyenne_simulation_gp($id_gp,$email,$id_up,$note_pour_valider);
+                        $new_grade=grade_gp_moyenne($new_moyenne_gp,$id_gp);
+    
+                        echo("<ul>NON </ul>
+                            <ul> Note pour valider : $note_pour_valider </ul>
+                            <ul>Nouvelle moyenne : $new_moyenne_up </ul>
+                            <ul>Nouveau Grade : $new_grade </ul>");
+                    }
+                    }
+                    else{
+                        echo("<ul>OUI</ul>");
+                    }
+                ?>
             </li>
 
 
@@ -341,18 +357,24 @@
                 <ul>GP VALIDE ? :</ul>
                 <?php if (validation_gp($id_gp,$email)==TRUE){
                     $note_pour_valider=note_valider_gp($id_gp,$email,$id_up);
-                    $new_moyenne_up=moyenne_simulation_up($id_up,$email,$note_pour_valider);
-                    $new_moyenne_gp=moyenne_simulation_gp($id_gp,$email,$id_up,$note_pour_valider);
-                    $new_grade=grade_gp_moyenne($new_moyenne_gp,$id_gp);
-
-                    echo("<ul>NON </ul>
-                        <ul> Note pour valider : $note_pour_valider </ul>
-                        <ul>Nouvelle moyenne : $new_moyenne_up </ul>
-                        <ul>Nouveau Grade : $new_grade </ul>");
-                }
-                else{
-                    echo("<ul>OUI</ul>");
-                }?>
+                    if ($note_pour_valider>20){
+                        echo("<ul>Impossible de valider avec cet UP</ul>");
+                    }
+                    else{
+                        $new_moyenne_up=moyenne_simulation_up($id_up,$email,$note_pour_valider);
+                        $new_moyenne_gp=moyenne_simulation_gp($id_gp,$email,$id_up,$note_pour_valider);
+                        $new_grade=grade_gp_moyenne($new_moyenne_gp,$id_gp);
+    
+                        echo("<ul>NON </ul>
+                            <ul> Note pour valider : $note_pour_valider </ul>
+                            <ul>Nouvelle moyenne : $new_moyenne_up </ul>
+                            <ul>Nouveau Grade : $new_grade </ul>");
+                    }
+                    }
+                    else{
+                        echo("<ul>OUI</ul>");
+                    }
+                ?>
             </li>
 
                         <!-- Simulation pour avoir le grade demandé-->

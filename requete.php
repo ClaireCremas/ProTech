@@ -497,8 +497,7 @@
             }
             $note_a_avoir=($coef*$barre_gp[0]-$somme)/$coef_simulation;
             $arrondi=round($note_a_avoir,2);
-            return $arrondi;
-
+                return $arrondi;
         }
 
         function note_pour_avoir_grade($id_gp,$email,$id_up_simulation,$grade_voulu){
