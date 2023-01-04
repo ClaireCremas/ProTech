@@ -38,6 +38,8 @@
                         'newnom'=>$newnom,
                         'newprenom'=>$newprenom
                     ]);
+                    $r = $db->prepare("UPDATE user SET nom=(SELECT UPPER(nom)) WHERE nom=:nom ");  #met le nom en majuscule
+                    $r-> execute(['nom'=> $newnom]);
                     echo "Votre compte a été créé avec succès !";
                 }else{
                     echo "Cet email est déjà utilisé";

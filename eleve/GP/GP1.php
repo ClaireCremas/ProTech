@@ -48,23 +48,23 @@
         <li><!-- NOTE 1-->
             <li class="note"> 
                 <ul>Note 1</ul>
-                <ul> Note : <?php note($email,1) ?></ul>
+                <ul>Note : <?php note($email,1) ?></ul>
                 <ul>Classement : <?php classement_eval($email,1) ?> </ul>
-                <ul>Coefficient : </ul>
+                <ul>Coefficient : <?php coef_eval(1) ?> </ul>
                 <ul>Moyenne Groupe : <?php moyenne_eval(1) ?></ul>
                 <ul>Ecart-Type : <?php ecart_type_eval(1)?> </ul>
-                <ul>Note min/ Note max : <?php min_note(1) ?> <?php echo('/') ?> <?php max_note(1) ?></ul>
+                <ul>Note min / Note max : <?php min_note(1) ?> <?php echo('/') ?> <?php max_note(1) ?></ul>
             </li>
 
 
             <li class="note"> <!-- Note 2-->
                 <ul>Note 2</ul>
-                <ul> Note : <?php note($email,2) ?></ul>
+                <ul>Note : <?php note($email,2) ?></ul>
                 <ul>Classement : <?php classement_eval($email,2) ?></ul>
-                <ul>Coefficient :</ul>
+                <ul>Coefficient : <?php coef_eval(2) ?> </ul>
                 <ul>Moyenne Groupe : <?php moyenne_eval(2) ?></ul>
-                <ul>Ecart-Type :  <?php ecart_type_eval(2)?></ul>
-                <ul>Note min/ Note max : <?php min_note(2) ?> <?php echo('/') ?> <?php max_note(2) ?></ul>
+                <ul>Ecart-Type : <?php ecart_type_eval(2)?></ul>
+                <ul>Note min / Note max : <?php min_note(2) ?> <?php echo('/') ?> <?php max_note(2) ?></ul>
             </li>
 
             <!-- Note de rattrapage si elle existe -->
@@ -104,10 +104,10 @@
                 <ul>Note 1</ul>
                 <ul> Note : <?php note($email,4) ?></ul>
                 <ul>Classement : <?php classement_eval($email,4) ?></ul>
-                <ul>Coefficient : </ul>
+                <ul>Coefficient : <?php coef_eval(4) ?></ul>
                 <ul>Moyenne Groupe : <?php moyenne_eval(4) ?></ul>
                 <ul>Ecart-Type : <?php ecart_type_eval(4)?> </ul>
-                <ul>Note min/ Note max : <?php min_note(4) ?> <?php echo('/') ?> <?php max_note(4) ?></ul>
+                <ul>Note min / Note max : <?php min_note(4) ?> <?php echo('/') ?> <?php max_note(4) ?></ul>
             </li>
             
         </li>
@@ -147,10 +147,10 @@
                 <ul>Note 1</ul>
                 <ul> Note : <?php note($email,5) ?></ul>
                 <ul>Classement : <?php classement_eval($email,5) ?> </ul>
-                <ul>Coefficient : </ul>
+                <ul>Coefficient : <?php coef_eval(5) ?></ul>
                 <ul>Moyenne Groupe : <?php moyenne_eval(5) ?></ul>
                 <ul>Ecart-Type : <?php ecart_type_eval(5)?> </ul>
-                <ul>Note min/ Note max : <?php min_note(5) ?> <?php echo('/') ?> <?php max_note(5) ?></ul>
+                <ul>Note min / Note max : <?php min_note(5) ?> <?php echo('/') ?> <?php max_note(5) ?></ul>
             </li>
 
 
@@ -158,10 +158,10 @@
                 <ul>Note 2</ul>
                 <ul> Note : <?php note($email,6) ?></ul>
                 <ul>Classement : <?php classement_eval($email,6) ?></ul>
-                <ul>Coefficient :</ul>
+                <ul>Coefficient : <?php coef_eval(6) ?></ul>
                 <ul>Moyenne Groupe : <?php moyenne_eval(6) ?></ul>
-                <ul>Ecart-Type :  <?php ecart_type_eval(6)?></ul>
-                <ul>Note min/ Note max : <?php min_note(6) ?> <?php echo('/') ?> <?php max_note(6) ?></ul>
+                <ul>Ecart-Type : <?php ecart_type_eval(6)?></ul>
+                <ul>Note min / Note max : <?php min_note(6) ?> <?php echo('/') ?> <?php max_note(6) ?></ul>
             </li>
 
             <!-- Note de rattrapage si elle existe -->
@@ -200,10 +200,10 @@
                 <ul>Note 1</ul>
                 <ul> Note : <?php note($email,7) ?></ul>
                 <ul>Classement : <?php classement_eval($email,7) ?> </ul>
-                <ul>Coefficient : </ul>
+                <ul>Coefficient : <?php coef_eval(7) ?></ul>
                 <ul>Moyenne Groupe : <?php moyenne_eval(7) ?></ul>
                 <ul>Ecart-Type : <?php ecart_type_eval(7)?> </ul>
-                <ul>Note min/ Note max : <?php min_note(7) ?> <?php echo('/') ?> <?php max_note(7) ?></ul>
+                <ul>Note min / Note max : <?php min_note(7) ?> <?php echo('/') ?> <?php max_note(7) ?></ul>
             </li>
 
 

@@ -37,10 +37,10 @@
                     
 
                     /*Est ce un élève ou un prof ?*/
-                    if($result['TYPE']==1){ /*Connexion vers acceuil eleve*/
+                    if($result['TYPE']==1){ /*Connexion vers accueil eleve*/
                         header('Location: ./eleve/accueil_eleve.php');
                     }
-                    else{ /*Connexion vers acceuil prof*/
+                    else{ /*Connexion vers accueil prof*/
                         header('Location: ./prof/accueil_prof.php');
                         echo("connexion prof");
                     }

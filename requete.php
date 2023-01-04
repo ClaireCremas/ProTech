@@ -48,6 +48,14 @@
             echo($coef_up[0]);
         }
 
+        function coef_eval($num_eval){
+            global $db;
+            $c = $db->prepare("SELECT coefficient FROM eval WHERE id=:num");
+            $c->execute(['num'=> $num_eval]);
+            $coef_eval = $c->fetch();
+            echo($coef_eval[0]);
+        }
+
         function note($email,$id_eval){
             global $db;
             $c = $db->prepare("SELECT note FROM note JOIN user ON note.id_user=user.id WHERE id_eval= :id AND email=:email");
@@ -113,8 +121,8 @@
 
         function classement_eval($email,$id_eval){
             global $db;
-            $c = $db->prepare("SELECT COUNT(note)+1 FROM note WHERE note.note>(SELECT note from note join user on note.id_user=user.id where note.id_eval=:id and user.email=:email) AND note.id_eval=:id");
-            $c->execute(['id'=> $id_eval, 'email'=>$email]);
+            $c = $db->prepare("SELECT COUNT(note)+1 FROM note WHERE note.note>(SELECT note.note from note join user on note.id_user=user.id where note.id_eval=:id and user.email=:email) AND note.id_eval=:id");
+            $c->execute(['id'=>$id_eval, 'email'=>$email]);
             $classement_eval = $c->fetch();
             echo($classement_eval[0]);
         }
