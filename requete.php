@@ -1,6 +1,6 @@
 <?php 
     
-        function nom_gp($id_gp){
+        function nom_gp($id_gp){ /*Affiche le nom du gp*/
             global $db;
             $c = $db->prepare("SELECT nom FROM gp WHERE id= :id");
             $c->execute(['id'=> $id_gp]);
@@ -8,7 +8,7 @@
             echo($nom_gp[0]);
         }
         
-        function barre_gp($id_gp){
+        function barre_gp($id_gp){ /*Affiche la barre du GP*/
             global $db;
             $c = $db->prepare("SELECT barre FROM gp WHERE id= :id");
             $c->execute(['id'=> $id_gp]);
@@ -16,7 +16,7 @@
             echo($barre_gp[0]);
         }
 
-        function nom_up($id_up){
+        function nom_up($id_up){ /*Affiche le nom de l'up*/
             global $db;
             $c = $db->prepare("SELECT nom FROM up WHERE id=:id");
             $c->execute(['id'=>$id_up]);
@@ -24,7 +24,7 @@
             echo($nom_up[0]);
         }
 
-        function barre_up($id_up){
+        function barre_up($id_up){ /*Affiche la barre de l'up*/
             global $db;
             $c = $db->prepare("SELECT barre FROM up WHERE id=:id");
             $c->execute(['id'=>$id_up]);
@@ -32,7 +32,7 @@
             echo($barre_up[0]);
         }
 
-        function return_barre_up($id_up){
+        function return_barre_up($id_up){ /*retourne la barre de l'up*/
             global $db;
             $c = $db->prepare("SELECT barre FROM up WHERE id=:id");
             $c->execute(['id'=>$id_up]);
@@ -40,7 +40,7 @@
             return $barre_up[0];
         }
 
-        function coef_up($id_up){
+        function coef_up($id_up){ /*affiche le coef de l'up*/
             global $db;
             $c = $db->prepare("SELECT coefficient FROM up WHERE id=:id");
             $c->execute(['id'=>$id_up]);
@@ -48,7 +48,7 @@
             echo($coef_up[0]);
         }
 
-        function coef_eval($num_eval){
+        function coef_eval($num_eval){ /*Affiche le coef de l'evaluation*/
             global $db;
             $c = $db->prepare("SELECT coefficient FROM eval WHERE id=:num");
             $c->execute(['num'=> $num_eval]);
@@ -56,7 +56,7 @@
             echo($coef_eval[0]);
         }
 
-        function note($email,$id_eval){
+        function note($email,$id_eval){ /*affiche la note de l'élève si elle existe*/
             global $db;
             $c = $db->prepare("SELECT note FROM note JOIN user ON note.id_user=user.id WHERE id_eval= :id AND email=:email");
             $c->execute(['id'=> $id_eval, 'email'=>$email]);
@@ -67,15 +67,18 @@
             
         }
 
-        function return_note($email,$id_eval){
+        function return_note($email,$id_eval){ /*retourne la note*/
             global $db;
             $c = $db->prepare("SELECT note FROM note JOIN user ON note.id_user=user.id WHERE id_eval= :id AND email=:email");
             $c->execute(['id'=> $id_eval, 'email'=>$email]);
             $note = $c->fetch();
-            return($note[0]);
+            if (empty($note[0])==false){ /*Affiche si la note existe*/
+                return ($note[0]);
+            }
+            return 0; /*l'élève a 0 si il n'y a pas de note*/
         }
 
-        function moyenne_up($id_up){ /*fausse avec le rattrapage*/
+        function moyenne_up($id_up){ /*Affiche la moyenne de l'up de la promo*/ /*fausse avec le rattrapage et ajouter les coefficients*/
             global $db;
             $c = $db->prepare("SELECT AVG(note) FROM note JOIN eval ON note.id_eval=eval.id WHERE eval.id_up= :id");
             $c->execute(['id'=> $id_up]);
@@ -84,7 +87,7 @@
             echo($arrondi);
         }
 
-        function moyenne_eval($id_eval){
+        function moyenne_eval($id_eval){ /*Affiche moyenne de la classe de l'évaluation*/
             global $db;
             $c = $db->prepare("SELECT AVG(note) from note join eval on note.id_eval=eval.id where id_eval=:id");
             $c->execute(['id'=> $id_eval]);
@@ -94,7 +97,7 @@
             
         }
 
-        function ecart_type_eval($id_eval){
+        function ecart_type_eval($id_eval){ /* Affiche ecart type de l'évaluation*/
             global $db;
             $c = $db->prepare("SELECT STDDEV(note) from note join eval on note.id_eval=eval.id where id_eval=:id");
             $c->execute(['id'=> $id_eval]);
@@ -103,7 +106,7 @@
             echo($arrondi);
         }
 
-        function min_note($id_eval){
+        function min_note($id_eval){ /*Affiche la plus petite note de l'évaluation*/
             global $db;
             $c = $db->prepare("SELECT MIN(note) from note join eval on note.id_eval=eval.id where id_eval=:id");
             $c->execute(['id'=> $id_eval]);
@@ -111,7 +114,7 @@
             echo($min_note[0]);
         }
 
-        function max_note($id_eval){
+        function max_note($id_eval){ /*Affiche la note maximale de l'évaluation*/
             global $db;
             $c = $db->prepare("SELECT MAX(note) from note join eval on note.id_eval=eval.id where id_eval=:id");
             $c->execute(['id'=> $id_eval]);
@@ -119,7 +122,7 @@
             echo($max_note[0]);
         }
 
-        function classement_eval($email,$id_eval){
+        function classement_eval($email,$id_eval){ /*Affiche le classement de l'étudiant pour une évaluation*/
             global $db;
             $c = $db->prepare("SELECT COUNT(note)+1 FROM note WHERE note.note>(SELECT note.note from note join user on note.id_user=user.id where note.id_eval=:id and user.email=:email) AND note.id_eval=:id");
             $c->execute(['id'=>$id_eval, 'email'=>$email]);
@@ -129,7 +132,7 @@
 
 
 
-        function rattrapage_non_vide($id_eval,$email){ /*Note rattrapage est vide ou pas*/
+        function rattrapage_non_vide($id_eval,$email){ /*Retourne true si il y existe une note de rattrapage*/
             global $db;
             $c = $db->prepare("SELECT note from note INNER join user on note.id_user=user.id INNER join eval on eval.id=note.id_eval where eval.id=:id and user.email=:email");
             $c->execute(['id'=> $id_eval, 'email'=>$email]);
@@ -137,10 +140,11 @@
             if (empty($note_rattrapage[0])==FALSE){
                 return TRUE;
             }
+            return FALSE;
         }
 
 
-        function moyenne_up_eleve($id_up,$email){
+        function moyenne_up_eleve($id_up,$email){ /*Affiche la moyenne de l'up de l'élève avec le cas où il y a un rattrapage ou non*/
             global $db;
             $somme=0;
             $somme_coef=0;
@@ -201,7 +205,7 @@
 
 
 
-        function return_max_rattrapage_moyenne($id_up,$email){
+        function return_max_rattrapage_moyenne($id_up,$email){ /*Retourne la maximum entre la note de rattrapage et la moyenne de l'up sans rattrapage*/
             global $db;
                         /*prend l'identifiant du rattrapage*/
                         $c=$db->prepare("SELECT id from eval where eval.id_up=:id and eval.TYPE=:t");
@@ -223,11 +227,11 @@
                             $f = $db->prepare("SELECT note FROM note JOIN user ON note.id_user=user.id WHERE id_eval= :id AND email=:email");
                             
                 
-                            $g->execute(['id'=> $id_up,'t'=>'E']);
+                            $g->execute(['id'=> $id_up,'t'=>'E']); /*compte le nombre d'evals*/
                             $nbeval = $g->fetch();
                             
                             
-                            $d->execute(['id'=>$id_up,'t'=>'E']);
+                            $d->execute(['id'=>$id_up,'t'=>'E']); /*prend l'id de la première eval*/
                         
                             for ($i=1; $i<=$nbeval[0];$i++){
                                 $id_eval=$d->fetch();
@@ -249,7 +253,7 @@
                             }
                             
                             /*Calcul de la moyenne*/
-                            if ($somme_coef!=0){
+                            if ($somme_coef!=0){/*Pour ne pas diviser par 0*/
                                 $moyenne_sans_rattrapage=$somme/$somme_coef;
                             }
             
@@ -260,7 +264,10 @@
                         }
             }
 
-        function validation_up($id_up,$email){ /*validation des UP et on choisit le max lorsqu'il y a un rattrapage*/
+
+
+
+        function validation_up($id_up,$email){ /*retourne true si l'up est validé*/ 
              global $db;
                 /*prend l'identifiant du rattrapage*/
                 $c=$db->prepare("SELECT id from eval where eval.id_up=:id and eval.TYPE=:t");
@@ -273,7 +280,7 @@
                 $barre_up=$h->fetch();
 
             if (rattrapage_non_vide($id_rattrapage[0],$email)==true){
-                if((return_max_rattrapage_moyenne($id_up,$email))<$barre_up[0]){
+                if((return_max_rattrapage_moyenne($id_up,$email))<$barre_up[0]){ /*On prend la note la plus élevé entre le rattrapage et la moyenne*/
                     return TRUE;
                 }
                 else{
@@ -317,7 +324,7 @@
 
 
 
-        function validation_gp($id_gp,$email){ /*dis si le gp est validé on prend le max de la note de rattrapage et normal ici cest faux!!!*/
+        function validation_gp($id_gp,$email){ /*retourne true si le gp n'est pas validé on prend le max de la note de rattrapage et normal*/
             $somme=0;
             $coef=0;
             global $db;
@@ -336,7 +343,6 @@
 
                 if(rattrapage_non_vide($id_rattrapage[0],$email)==TRUE){
                     $somme=$somme+return_max_rattrapage_moyenne(($id_gp-1)*4+$i,$email)*$coef_up[0];
-                    $val=return_max_rattrapage_moyenne(($id_gp-1)*4+$i,$email);
                 }
                 else{
                     $moyenne_up_eleve=moyenne_up_eleve(($id_gp-1)*4+$i,$email);
@@ -355,7 +361,7 @@
                 }
         }
 
-        function grade_gp($id_gp,$email){
+        function grade_gp($id_gp,$email){ /* retourne un couple qui est la barre du gp de l'élève et la note*/
             global $db;
             $d=$db->prepare("SELECT 'A+',A,B from gp where id=:id");
             $d->execute(['id'=>$id_gp]);
@@ -384,7 +390,7 @@
             }
         }
 
-        function calcul_GPA($email){
+        function calcul_GPA($email){ /*affiche le GPA de l'élève*/
             $somme=0;
             for ($i=1;$i<=4;$i++){
                 $somme=grade_gp($i,$email)[1]+$somme;
@@ -395,7 +401,7 @@
             echo($arrondi);
         }
 
-        function role($email){
+        function role($email){ /*Affiche le role ou la promo de l'élève*/
             global $db;
             $c = $db->prepare("SELECT statut FROM user WHERE id= :id");
             $c->execute(['id'=> $email]);
@@ -403,12 +409,12 @@
             echo($role[0]);
         }
 
-        function moyenne_simulation_up($id_up,$email,$note){ /*note quand on simule la note de rattrapage*/
+        function moyenne_simulation_up($id_up,$email,$note){ /* retourne la nouvelle moyenne quand on simule la note de rattrapage*/
             $moyenne_up=moyenne_up_eleve($id_up,$email);
             return ($moyenne_up+$note)/2;
         }
 
-        function moyenne_simulation_gp($id_gp,$email,$id_up_simulation,$note){ /*moyenne gp quand on simule la note de rattrapage de l'up*/
+        function moyenne_simulation_gp($id_gp,$email,$id_up_simulation,$note){ /*retourn la nouvelle emoyenne gp quand on simule la note de rattrapage de l'up*/
             global $db;
             $somme=0;
             $coef=0;
@@ -432,7 +438,7 @@
         }
 
 
-        function grade_gp_moyenne($moyenne,$id_gp){
+        function grade_gp_moyenne($moyenne,$id_gp){ /*retoune le grade en fonction de la moyenne mise en variable*/
             global $db;
             $d=$db->prepare("SELECT 'A+',A,B from gp where id=:id");
             $d->execute(['id'=>$id_gp]);
@@ -455,7 +461,7 @@
             }
         }
 
-        function note_valider_gp($id_gp,$email,$id_up_simulation){ /*note qu'il faut pour valider le gp*/
+        function note_valider_gp($id_gp,$email,$id_up_simulation){ /*retourne la note qu'il faut avoir pour valider le gp*/
             $coef=0;
             $somme=0;
             $coef_simulation=0;
@@ -499,6 +505,10 @@
             $arrondi=round($note_a_avoir,2);
                 return $arrondi;
         }
+
+
+
+
 
         function note_pour_avoir_grade($id_gp,$email,$id_up_simulation,$grade_voulu){
             $coef=0;
