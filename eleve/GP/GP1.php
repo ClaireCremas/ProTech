@@ -21,7 +21,7 @@
     <!-- Bouton simulation et Statistiques -->
     <div class='option'>
         <li><a href="./../Simulation/simulation_GP1.php" class='simulation'> Simulation </a> </li>
-        <li><a href="" class='simulation'>Statistiques</a></li>
+
     </div>
 
     <!-- Parti UP1 -->

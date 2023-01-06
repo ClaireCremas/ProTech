@@ -21,7 +21,7 @@
     <!-- Bouton simulation et Statistiques -->
     <div class='option'>
         <li><a href="" class='simulation'> Simulation </a> </li>
-        <li><a href="" class='simulation'>Statistiques</a></li>
+
     </div>
 
     <!-- Parti UP1 -->

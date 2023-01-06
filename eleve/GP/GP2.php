@@ -19,7 +19,7 @@
     <h1>GP2 : <?php echo(nom_gp(2)) ?></h1>
     <div class='option'>
         <li><a href="./../Simulation/simulation_GP2.php" class='simulation'> Simulation </a> </li>
-        <li><a href="" class='simulation'>Statistiques</a></li>
+
     </div>
 
 
