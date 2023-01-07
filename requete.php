@@ -48,6 +48,14 @@
             echo($coef_up[0]);
         }
 
+        function nom_eval($id_eval){ /*Affiche le nom de l'eval*/
+            global $db;
+            $c = $db->prepare("SELECT nom FROM eval WHERE id= :id");
+            $c->execute(['id'=> $id_eval]);
+            $nom_eval = $c->fetch();
+            return($nom_eval[0]);
+        }
+
         function coef_eval($num_eval){ /*Affiche le coef de l'evaluation*/
             global $db;
             $c = $db->prepare("SELECT coefficient FROM eval WHERE id=:num");
@@ -146,7 +154,7 @@
                 if ($nb_note[0]-$absence_justifiee){
                     $somme=$somme/($nb_note[0]-$absence_justifiee);
                     $arrondi=round($somme,2);
-                    echo($arrondi);
+                    return($arrondi);
                 }
             }
         
@@ -654,3 +662,42 @@
             $trouveideleve = $c->fetch();
             echo($trouveideleve[0]);
         }
+
+
+
+
+        function id_eval_up($id_up){ /*Renvoie la liste des id des evaluations de l'up*/
+            global $db;
+            $c = $db->prepare("SELECT id FROM eval WHERE id_up= :id");
+            $c->execute(['id'=> $id_up]);
+            $id_eval = array();
+            while ($data = $c->fetch() ) {
+                $id_eval[] = $data['id'];
+            }
+            return($id_eval);
+        }
+
+
+        function id_rattrapage_up($id_up){ /*Renvoie l'id de l'evaluation rattrapage de l'up*/
+            global $db;
+            $c = $db->prepare("SELECT id from eval WHERE TYPE='R' AND id_up=:id");
+            $c->execute(['id'=> $id_up]);
+            $id_rat = $c->fetch();
+            return($id_rat);
+        }
+
+
+
+        function id_up_gp($id_gp){ /*Renvoie la liste des id des up du gp*/
+            global $db;
+            $c = $db->prepare("SELECT id FROM up WHERE id_gp= :id");
+            $c->execute(['id'=> $id_up]);
+            $id_up = array();
+            while ($data = $c->fetch() ) {
+                $id_up[] = $data['id'];
+            }
+            return($id_up);
+        }
+
+
+
