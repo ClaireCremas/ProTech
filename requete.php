@@ -647,3 +647,10 @@
         }
         
 
+        function trouveideleve($nom, $prenom){ /*Trouve id de l'élève à partir nom et prénom*/
+            global $db;
+            $c = $db->prepare("SELECT id FROM user WHERE nom= :nom AND prenom= :prenom");
+            $c->execute(['nom'=> $nom, 'prenom'=> $prenom]);
+            $trouveideleve = $c->fetch();
+            echo($trouveideleve[0]);
+        }
