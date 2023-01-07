@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 
 include('../vendor/autoload.php'); #appel à phpSpreadsheet
 include('../include/database.php'); #connexion à la base de donnée
@@ -9,7 +9,7 @@ use PhpOfficePhpSpreadsheetSpreadsheet;
 use PhpOfficePhpSpreadsheetReaderXlsx;
 
 
-function rentrernote($notesatraiter, $notestraitees){
+function rentrernote($notesatraiter, $notestraitees, $id_up){
 
     # pointeur sur le dossier des notes à rentrer
     $rep = @opendir($notesatraiter);
@@ -18,13 +18,22 @@ function rentrernote($notesatraiter, $notestraitees){
     }
 
 
+    #nom eval, id_up, coef
+    #INSERT INTO eval(nom, id_up, Coefficient, TYPE) VALUES ("$nom_eval", $id_up, $coef, "E")
+
+
+
+
     while(!empty("../" . $notesatraiter . "/")){
         $file = readdir($rep); # on prend le nom d'un fichier dans le dossier
         if(!$file){
             echo "Pas de fichier dans notesatraiter" ;
         }
 
-        $fichier_note = \PhpOfficePhpSpreadsheetIOFactory::load($file);
+        $reader = new PhpOfficePhpSpreadsheetReaderXlsx;
+        $fichier_note = $reader->load($file);
+
+        #$fichier_note = \PhpOfficePhpSpreadsheetIOFactory::load($file);
         if(!$fichier_note){
             echo "Ouverture notesatraiter impossible" ;
         }
@@ -43,10 +52,8 @@ function rentrernote($notesatraiter, $notestraitees){
             $eleve -> echo(trouveideleve($nom, $prenom));
             $db -> query("INSERT INTO note (id_user, note) VALUES ('$eleve', '$note')");
 
-            if($db){
-                $compteur++;
-            }
-            
+            $compteur++;
+
         }
 
         #déplacer fichier dans notestraitees
