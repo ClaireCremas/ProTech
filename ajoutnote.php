@@ -22,11 +22,10 @@
 
 
 
-<?php session_start();
+<?php 
 
 include('../vendor/autoload.php'); #appel à phpSpreadsheet
 include('../include/database.php'); #connexion à la base de donnée
-include('./../requete.php');
 global $db; #permet d'avoir la base de donnée sous le nom db
 
 use PhpOfficePhpSpreadsheetSpreadsheet;
