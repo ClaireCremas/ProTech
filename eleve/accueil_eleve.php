@@ -613,6 +613,116 @@
 
 
 
+<!--    GP5     -->
+<?php $id_gp=5; ?>
+<ul class="cd-accordion margin-top-lg margin-bottom-lg">
+  <li class="cd-accordion__item cd-accordion__item--has-children">
+    <input class="cd-accordion__input" type="checkbox" name ="group-1" id="group-5">
+    <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-5"><span class='GP GP5'>GP 5 : <?php echo(nom_gp($id_gp));?> </span><span class='barre'> Moyenne : <?php $moyenne_gp=moyenne_gp_eleve($id_gp,$email);echo($moyenne_gp);?> Barre :   <?php echo(barre_gp($id_gp));?> Grade :<?php $grade=grade_gp($id_gp,$email)[0]; echo($grade);?></span>
+    <span><a class='info_GP' href="./GP/GP5.php">En savoir plus</a></span></label>
+    
+    <!-- COULEUR POUR SAVOIR SI ON VALIDE LE GP -->
+    <?php if (validation_gp($id_gp,$email)==True){
+             echo("<style> .GP5{background-color : #FF4545;}</style>");}
+             else{
+              echo("<style> .GP5{background-color : #61CA6F;}</style>") ;
+             }?>  
+    
+    
+
+    <!--UP1 GP5-->
+    <?php $id_up=17; ?>
+    <ul class="cd-accordion__sub cd-accordion__sub--l1">
+      <li class="cd-accordion__item cd-accordion__item--has-children">
+        <input class="cd-accordion__input" type="checkbox" name ="sub-group-9" id="sub-group-17">
+        <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-17"><span class='UP UP17'>UP 1 : <?php echo(nom_up($id_up))?> </span><span class='moyenne'>Moyenne :  <?php echo(moyenne_up_eleve($id_up,$email))?>   Coefficient : <?php echo(coef_up($id_up))?>   Barre : <?php echo(barre_up($id_up))?> </span></label>
+
+        <!-- CHANGE COULEUR SI IL FAUT RATTRAPAGE (NON VALIDATION UP) -->
+        <?php if (validation_up($id_up,$email)==FALSE){
+              echo("<style> .UP17{background-color : #61CA6F ;}</style>");}
+              else{
+              echo("<style> .UP17{background-color : #FF4545 ;}</style>") ;
+             }?>
+
+
+        <!--NOTES-->
+        <ul class="cd-accordion__sub cd-accordion__sub--l2">
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : Moyenne Promo: </span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 2 : Moyenne Promo:</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 3 : Moyenne Promo:</span></a></li>
+        </ul>
+      </li>
+
+
+      <!--UP2 GP5-->
+      <?php $id_up=18; ?>
+      <li class="cd-accordion__item cd-accordion__item--has-children">
+        <input class="cd-accordion__input" type="checkbox" name ="sub-group-10" id="sub-group-18">
+        <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-18"><span class='UP UP18'>UP2 : <?php echo(nom_up($id_up))?></span><span class='moyenne'>Moyenne : <?php echo(moyenne_up_eleve($id_up,$email))?>   Coefficient : <?php echo(coef_up($id_up))?>  Barre : <?php echo(barre_up($id_up))?></span></label>
+        
+        <!-- CHANGE COULEUR SI IL FAUT RATTRAPAGE (NON VALIDATION UP) -->
+        <?php if (validation_up($id_up,$email)==FALSE){
+              echo("<style> .UP18{background-color : #61CA6F ;}</style>");}
+              else{
+              echo("<style> .UP18{background-color : #FF4545 ;}</style>") ;
+             }?>
+        
+        <ul class="cd-accordion__sub cd-accordion__sub--l2">
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : Moyenne Promo:</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 2 : Moyenne Promo:</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 3 : Moyenne Promo:</span></a></li>
+        </ul>
+      </li>
+
+    <!--UP3 GP5-->
+    <?php $id_up=19; ?>
+    <li class="cd-accordion__item cd-accordion__item--has-children">
+        <input class="cd-accordion__input" type="checkbox" name ="sub-group-11" id="sub-group-19">
+        <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-19"><span class='UP UP19'>UP3 : <?php echo(nom_up($id_up))?></span><span class='moyenne'>Moyenne : <?php echo(moyenne_up_eleve($id_up,$email))?>   Coefficient : <?php echo(coef_up($id_up))?> Barre : <?php echo(barre_up($id_up))?></span></label>
+        
+        <!-- CHANGE COULEUR SI IL FAUT RATTRAPAGE (NON VALIDATION UP) -->
+        <?php if (validation_up($id_up,$email)==FALSE){
+              echo("<style> .UP19{background-color : #61CA6F ;}</style>");}
+              else{
+              echo("<style> .UP19{background-color : #FF4545 ;}</style>") ;
+             }?> 
+
+        <ul class="cd-accordion__sub cd-accordion__sub--l2">
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : Moyenne Promo:</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 2 : Moyenne Promo:</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 3 : Moyenne Promo:</span></a></li>
+        </ul>
+      </li>
+
+    <!--UP4 GP5-->
+    <?php $id_up=20; ?>
+    <li class="cd-accordion__item cd-accordion__item--has-children">
+        <input class="cd-accordion__input" type="checkbox" name ="sub-group-12" id="sub-group-20">
+        <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-20"><span class='UP UP20'>UP4 : <?php echo(nom_up($id_up))?></span><span class='moyenne'>Moyenne : <?php echo(moyenne_up_eleve($id_up,$email))?>   Coefficient : <?php echo(coef_up($id_up))?>  Barre : <?php echo(barre_up($id_up))?></span></label>
+        
+        <!-- CHANGE COULEUR SI IL FAUT RATTRAPAGE (NON VALIDATION UP) -->
+        <?php if (validation_up($id_up,$email)==FALSE){
+              echo("<style> .UP20{background-color : #61CA6F ;}</style>");}
+              else{
+              echo("<style> .UP20{background-color : #FF4545 ;}</style>") ;
+             }?>
+
+        <ul class="cd-accordion__sub cd-accordion__sub--l2">
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : Moyenne Promo:</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 2 : Moyenne Promo:</span></a></li>
+          <li class="cd-accordion__item"><span class='note'>NOTE 3 : Moyenne Promo:</span></a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
 
 
 
@@ -636,9 +746,151 @@
 
 
   <div id="2A" class="contenuonglet">
-            Il Y A RIEN ENCORE ! 
-            C'EST TOUT POUR LE MOMENT
 
+<!--MAJEUR-->
+<?php $c=$db->prepare('SELECT id_majeur from user where email=:email');
+$c->execute(['email'=>$email]);
+$id_gp_requete=$c->fetch();
+$id_gp=$id_gp_requete[0];?>
+
+<ul class="cd-accordion margin-top-lg margin-bottom-lg">
+  <li class="cd-accordion__item cd-accordion__item--has-children">
+    <input class="cd-accordion__input" type="checkbox" name ="group-2" id="group-2">
+    <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-2"><span class='GP GP2'>Majeur : <?php echo(nom_gp($id_gp));?> </span><span class="barre"> Moyenne : <?php $moyenne_gp=moyenne_gp_eleve($id_gp,$email);echo($moyenne_gp); ?> Barre :   <?php echo(barre_gp($id_gp));?> Grade : <?php $grade=grade_gp($id_gp,$email)[0]; echo($grade);?></span>
+    <span><a class='info_GP' href="./GP/majeur.php">En savoir plus</a></span></label>
+    
+    <!-- COULEUR POUR SAVOIR SI ON VALIDE LE GP -->
+    <?php if (validation_gp($id_gp,$email)==True){
+             echo("<style> .GP2{background-color : #FF4545;}</style>");}
+             else{
+              echo("<style> .GP2{background-color : #61CA6F;}</style>") ;
+             }?>  
+    
+    
+    <!--UP1 MAJEUR-->
+    <?php 
+    $d=$db->prepare('SELECT id from up where id_gp=:id') ;
+    $d->execute(['id'=> $id_gp]);
+    $id_up_requete=$d->fetch();
+    $id_up=$id_up_requete[0]?>
+
+    <ul class="cd-accordion__sub cd-accordion__sub--l1">
+      <li class="cd-accordion__item cd-accordion__item--has-children">
+        <input class="cd-accordion__input" type="checkbox" name ="sub-group-5" id="sub-group-5">
+        <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-5"><span class='UP UP5'>UP1 : <?php echo(nom_up($id_up))?></span><span class='moyenne'>Moyenne : <?php echo(moyenne_up_eleve($id_up,$email))?>    Coefficient : <?php echo(coef_up($id_up))?>  Barre : <?php echo(barre_up($id_up))?></span></label>
+
+        <!-- CHANGE COULEUR SI IL FAUT RATTRAPAGE (NON VALIDATION UP) -->
+        <?php if (validation_up($id_up,$email)==FALSE){
+              echo("<style> .UP5{background-color : #61CA6F ;}</style>");}
+              else{
+              echo("<style> .UP5{background-color : #FF4545 ;}</style>") ;
+             }?> 
+
+
+        <!--NOTES-->
+        <ul class="cd-accordion__sub cd-accordion__sub--l2">
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,12))?> Moyenne Promo: <?php echo(moyenne_eval(12))?></span></a></li>
+        <!-- AFFICHE LE RATTRAPGE SI LE RATTRAPGE N'EST PAS VIDE-->
+          <?php if (rattrapage_non_vide(13,$email)==TRUE){
+              $note=return_note($email,13);
+              echo("<li class='cd-accordion__item'><span class='note'> Note Rattrapage : $note </span></li>");
+            } ?>
+        
+        </ul>
+
+        
+
+      </li>
+        
+      
+
+    <!--UP2 MAJEUR-->
+    <?php 
+    $id_up=6; ?>
+      <li class="cd-accordion__item cd-accordion__item--has-children">
+        <input class="cd-accordion__input" type="checkbox" name ="sub-group-6" id="sub-group-6">
+        <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-6"><span class='UP UP6'>UP2 : <?php echo(nom_up($id_up))?></span><span class='moyenne'>Moyenne : <?php echo(moyenne_up_eleve($id_up,$email))?>   Coefficient : <?php echo(coef_up($id_up))?>  Barre : <?php echo(barre_up($id_up))?></span></label>
+        
+        <!-- CHANGE COULEUR SI IL FAUT RATTRAPAGE (NON VALIDATION UP) -->
+        <?php if (validation_up($id_up,$email)==FALSE){
+              echo("<style> .UP6{background-color : #61CA6F ;}</style>");}
+              else{
+              echo("<style> .UP6{background-color : #FF4545 ;}</style>") ;
+             }?> 
+        
+        <ul class="cd-accordion__sub cd-accordion__sub--l2">
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,14))?> Moyenne Promo: <?php echo(moyenne_eval(14))?></span></a></li>
+
+          <!-- AFFICHE LE RATTRAPGE SI LE RATTRAPGE N'EST PAS VIDE-->
+          <?php if (rattrapage_non_vide(15,$email)==TRUE){
+            $note=return_note($email,15);
+              echo("<li class='cd-accordion__item'><span class='note'> Note Rattrapage : $note </span></li>");
+            } ?>
+        </ul>
+
+        
+
+      </li>
+
+    <!--UP3 MAJEUR-->
+    <?php $id_up=7; ?>
+    <li class="cd-accordion__item cd-accordion__item--has-children">
+        <input class="cd-accordion__input" type="checkbox" name ="sub-group-7" id="sub-group-7">
+        <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-7"><span class='UP UP7'>UP3 : <?php echo(nom_up($id_up))?></span><span class='moyenne'>Moyenne : <?php echo(moyenne_up_eleve($id_up,$email))?>   Coefficient : <?php echo(coef_up($id_up))?>  Barre : <?php echo(barre_up($id_up))?></span></label>
+        
+        <!-- CHANGE COULEUR SI IL FAUT RATTRAPAGE (NON VALIDATION UP) -->
+        <?php if (validation_up($id_up,$email)==FALSE){
+              echo("<style> .UP7{background-color : #61CA6F ;}</style>");}
+              else{
+              echo("<style> .UP7{background-color : #FF4545 ;}</style>") ;
+             }?>
+        
+        <ul class="cd-accordion__sub cd-accordion__sub--l2">
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,16))?> Moyenne Promo: <?php echo(moyenne_eval(16))?> </span></a></li>
+             <!-- AFFICHE LE RATTRAPGE SI LE RATTRAPGE N'EST PAS VIDE-->
+          <?php if (rattrapage_non_vide(17,$email)==TRUE){
+            $note=return_note($email,17);
+              echo("<li class='cd-accordion__item'><span class='note'> Note Rattrapage : $note </span></li>");
+            } ?>
+        </ul>
+
+        
+
+      </li>
+
+    <!--UP4 MAJEUR-->
+    <?php $id_up=8; ?>
+    <li class="cd-accordion__item cd-accordion__item--has-children">
+        <input class="cd-accordion__input" type="checkbox" name ="sub-group-8" id="sub-group-8">
+        <label class="cd-accordion__label cd-accordion__label--icon-folder" for="sub-group-8"><span class='UP UP8'>UP4 : <?php echo(nom_up($id_up))?></span><span class='moyenne'>Moyenne : <?php echo(moyenne_up_eleve($id_up,$email))?>   Coefficient :<?php echo(coef_up($id_up))?>  Barre : <?php echo(barre_up($id_up))?></span></label>
+        
+        <!-- CHANGE COULEUR SI IL FAUT RATTRAPAGE (NON VALIDATION UP) -->
+        <?php if (validation_up($id_up,$email)==FALSE){
+              echo("<style> .UP8{background-color : #61CA6F ;}</style>");}
+              else{
+              echo("<style> .UP8{background-color : #FF4545 ;}</style>") ;
+             }?> 
+        
+        <ul class="cd-accordion__sub cd-accordion__sub--l2">
+          <li class="cd-accordion__item"><span class='note'>NOTE 1 : <?php echo(note($email,18))?> Moyenne Promo: <?php echo(moyenne_eval(18))?></span></a></li>
+             <!-- AFFICHE LE RATTRAPGE SI LE RATTRAPGE N'EST PAS VIDE-->
+          <?php if (rattrapage_non_vide(19,$email)==TRUE){
+              $note=return_note($email,19);
+              echo("<li class='cd-accordion__item'><span class='note'> Note Rattrapage : $note </span></li>");
+            } ?>
+        </ul>
+
+        
+
+      </li>
+
+    </ul>
+  </li>
+  
+</ul> <!-- cd-accordion -->
+
+
+ 
 
 
 

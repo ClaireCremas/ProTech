@@ -62,9 +62,16 @@
             $c->execute(['id'=> $id_eval, 'email'=>$email]);
             $note = $c->fetch();
             if (empty($note[0])==false){ /*Affiche si la note existe*/
-                echo($note[0]);
+                if ($note[0]=='30'){
+                    echo(0);
+                }
+                elseif($note[0]=='40'){
+                    echo('ABS');
+                }
+                else{
+                    echo($note[0]);
+                }
             }
-            
         }
 
         function return_note($email,$id_eval){ /*retourne la note*/
@@ -73,29 +80,76 @@
             $c->execute(['id'=> $id_eval, 'email'=>$email]);
             $note = $c->fetch();
             if (empty($note[0])==false){ /*Affiche si la note existe*/
-                return ($note[0]);
+                if ($note[0]=='30'){
+                    return 0;
+                }
+                elseif($note[0]=='40'){
+                    return 'ABS';
+                }
+                else{
+                    return $note[0];
+                }
             }
             return 0; /*l'élève a 0 si il n'y a pas de note*/
         }
 
         function moyenne_up($id_up){ /*Affiche la moyenne de l'up de la promo*/ /*fausse avec le rattrapage et ajouter les coefficients*/
             global $db;
-            $c = $db->prepare("SELECT AVG(note) FROM note JOIN eval ON note.id_eval=eval.id WHERE eval.id_up= :id");
+            $absence_justifiee=0;
+            $somme=0;
+            $c = $db->prepare("SELECT note FROM note JOIN eval ON note.id_eval=eval.id WHERE eval.id_up= :id");
             $c->execute(['id'=> $id_up]);
-            $moyenne_up = $c->fetch();
-            $arrondi=round($moyenne_up[0],2);
-            echo($arrondi);
-        }
+
+            $d=$db->prepare("SELECT count(note) from note JOIN eval ON note.id_eval=eval.id WHERE eval.id_up= :id");
+            $d->execute(['id'=> $id_up]);
+            $nb_note=$d->fetch();
+            for ($i=1;$i<=$nb_note[0];$i++){
+                $note = $c->fetch();
+                if ($note[0]==30){
+                    $somme=$somme+0;
+                }
+                elseif ($note[0]==40){
+                    $absence_justifiee=$absence_justifiee+1;
+                }
+                else{
+                    $somme=$somme+$note[0];
+                }
+            }
+                $somme=$somme/($nb_note[0]-$absence_justifiee);
+                $arrondi=round($somme,2);
+                echo($arrondi);
+            }
+        
 
         function moyenne_eval($id_eval){ /*Affiche moyenne de la classe de l'évaluation*/
             global $db;
-            $c = $db->prepare("SELECT AVG(note) from note join eval on note.id_eval=eval.id where id_eval=:id");
+            $absence_justifiee=0;
+            $somme=0;
+            $c = $db->prepare("SELECT note FROM note JOIN eval ON note.id_eval=eval.id WHERE note.id_eval= :id");
             $c->execute(['id'=> $id_eval]);
-            $moyenne_eval = $c->fetch();
-            $arrondi=round($moyenne_eval[0],2);
-            echo($arrondi);
-            
-        }
+
+            $d=$db->prepare("SELECT count(note) from note JOIN eval ON note.id_eval=eval.id WHERE note.id_eval= :id");
+            $d->execute(['id'=> $id_eval]);
+            $nb_note=$d->fetch();
+            for ($i=1;$i<=$nb_note[0];$i++){
+                $note = $c->fetch();
+                if ($note[0]==30){
+                    $somme=$somme+0;
+                }
+                elseif ($note[0]==40){
+                    $absence_justifiee=$absence_justifiee+1;
+                }
+                else{
+                    $somme=$somme+$note[0];
+                }
+            }
+                if ($nb_note[0]-$absence_justifiee){
+                    $somme=$somme/($nb_note[0]-$absence_justifiee);
+                    $arrondi=round($somme,2);
+                    echo($arrondi);
+                }
+            }
+        
 
         function ecart_type_eval($id_eval){ /* Affiche ecart type de l'évaluation*/
             global $db;
@@ -175,8 +229,13 @@
 
                 /*somme des coefficients et somme des notes*coef*/
                 if (empty($note[0])==false){
+                    if ($note[0]=='30'){
+                        $somme_coef=$somme_coef+$coef[0];
+                    }
+                    elseif ($note[0]!='40'){
                     $somme=$somme+$note[0]*$coef[0];
                     $somme_coef=$somme_coef+$coef[0];
+                    }
                 }
                 
             }
@@ -190,16 +249,19 @@
             $d->execute(['id'=>$id_up,'t'=>'R']);
             $id_rattrapage=$d->fetch();
 
-            $f->execute(['id'=> $id_rattrapage[0], 'email'=>$email]);
-            $note=$f->fetch();
+            if (empty($id_rattrapage)==FALSE){
+                $f->execute(['id'=> $id_rattrapage[0], 'email'=>$email]);
+                $note=$f->fetch();
 
             
-            if (rattrapage_non_vide($id_rattrapage[0],$email)==true){/*Si il y a une note de rattrapage*/
-                $moyenne=($moyenne+$note[0])/2;
-            }
+                if (rattrapage_non_vide($id_rattrapage[0],$email)==true){/*Si il y a une note de rattrapage*/
+                    $moyenne=($moyenne+$note[0])/2;
+                }
 
-            $arrondi=round($moyenne,2);
-            return $arrondi;
+                $arrondi=round($moyenne,2);
+                return $arrondi;
+            }
+            
         }
         
 
@@ -214,6 +276,7 @@
             
                         /*Si il y a une note de rattrapage */
                         if (rattrapage_non_vide($id_rattrapage[0],$email)==true){
+                            
                             $note_rattrapage=return_note($email,$id_rattrapage[0]);
             
             
@@ -244,10 +307,14 @@
                                 $f->execute(['id'=> $id_eval[0], 'email'=>$email]);
                                 $note = $f->fetch();
                 
-                                /*somme des coefficients et somme des notes*coef*/
                                 if (empty($note[0])==false){
+                                    if ($note[0]=='30'){
+                                        $somme_coef=$somme_coef+$coef[0];
+                                    }
+                                    elseif ($note[0]!='40'){
                                     $somme=$somme+$note[0]*$coef[0];
                                     $somme_coef=$somme_coef+$coef[0];
+                                    }
                                 }
                                 
                             }
@@ -278,24 +345,23 @@
                 $h=$db->prepare("SELECT barre from up where up.id=:id");
                 $h->execute(['id'=>$id_up]);
                 $barre_up=$h->fetch();
-
-            if (rattrapage_non_vide($id_rattrapage[0],$email)==true){
-                if((return_max_rattrapage_moyenne($id_up,$email))<$barre_up[0]){ /*On prend la note la plus élevé entre le rattrapage et la moyenne*/
-                    return TRUE;
+                if ((empty($id_rattrapage)==FALSE) and (rattrapage_non_vide($id_rattrapage[0],$email)==true)){
+                    if((return_max_rattrapage_moyenne($id_up,$email))<$barre_up[0]){ /*On prend la note la plus élevé entre le rattrapage et la moyenne*/
+                        return TRUE;
+                    }
+                    else{
+                        return FALSE;
+                    }
                 }
                 else{
-                    return FALSE;
+                    $moyenne_up_eleve=moyenne_up_eleve($id_up,$email);
+                    if($moyenne_up_eleve<$barre_up[0]){
+                        return TRUE;
+                    }
+                    else{
+                        return FALSE;
+                    }
                 }
-            }
-            else{
-                $moyenne_up_eleve=moyenne_up_eleve($id_up,$email);
-                if($moyenne_up_eleve<$barre_up[0]){
-                    return TRUE;
-                }
-                else{
-                    return FALSE;
-                }
-            }
 
         }
 
@@ -305,20 +371,35 @@
             global $db;
             $somme=0;
             $coef=0;
-            
-            for ($i = 1; $i <= 4; $i++) {
+
+            $d=$db->prepare("SELECT count(id) FROM up where id_gp=:id_gp");
+            $d->execute(['id_gp'=>$id_gp]);
+            $nb_up=$d->fetch();
+
+
+            $e=$db->prepare("SELECT id FROM up where id_gp=:id_gp");
+            $e->execute(['id_gp'=>$id_gp]);
+
+            for ($i = 1; $i <= $nb_up[0]; $i++) {
+                $id_up=$e->fetch();
+
+                
                 $c = $db->prepare("SELECT coefficient FROM up WHERE id=:id");
-                $c->execute(['id'=> ($id_gp-1)*4+$i]);
+                $c->execute(['id'=> $id_up[0]]);
                 $coef_up = $c->fetch();
                 
-                $moyenne_up_eleve=moyenne_up_eleve(($id_gp-1)*4+$i,$email);
+                $moyenne_up_eleve=moyenne_up_eleve($id_up[0],$email);
                 
                 $somme=$somme+$coef_up[0]*$moyenne_up_eleve;
                 $coef=$coef+$coef_up[0];
             }
-            $moyenne=$somme/$coef;
-            $arrondi=round($moyenne,2);
-            return ($arrondi);
+            if ($coef!=0){
+                $moyenne=$somme/$coef;
+                $arrondi=round($moyenne,2);
+                return ($arrondi);
+            }
+            return 0;
+           
         }
 
 
@@ -340,19 +421,21 @@
                 $d=$db->prepare("SELECT id from eval where eval.id_up=:id and eval.TYPE=:t");
                 $d->execute(['id'=>($id_gp-1)*4+$i,'t'=>'R']);
                 $id_rattrapage=$d->fetch();
-
-                if(rattrapage_non_vide($id_rattrapage[0],$email)==TRUE){
-                    $somme=$somme+return_max_rattrapage_moyenne(($id_gp-1)*4+$i,$email)*$coef_up[0];
-                }
-                else{
-                    $moyenne_up_eleve=moyenne_up_eleve(($id_gp-1)*4+$i,$email);
-                    $somme=$somme+$coef_up[0]*$moyenne_up_eleve;
-                }
-                $coef=$coef+$coef_up[0];
-                
+                if (empty($id_rattrapage)==FALSE){
+                    if(rattrapage_non_vide($id_rattrapage[0],$email)==TRUE){
+                        $somme=$somme+return_max_rattrapage_moyenne(($id_gp-1)*4+$i,$email)*$coef_up[0];
+                    }
+                    else{
+                        $moyenne_up_eleve=moyenne_up_eleve(($id_gp-1)*4+$i,$email);
+                        $somme=$somme+$coef_up[0]*$moyenne_up_eleve;
+                    }
+                    $coef=$coef+$coef_up[0];
+                }                
             }
-            
-                $moyenne=$somme/$coef;
+                if ($coef!=0){
+                    $moyenne=$somme/$coef;
+                }
+                else{$moyenne=0;}
                 if ($moyenne<$barre_gp[0]){
                     return TRUE;
                 }
