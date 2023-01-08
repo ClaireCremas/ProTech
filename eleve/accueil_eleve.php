@@ -1,4 +1,3 @@
-
 <!-- Page Eleve --->
 
 <!DOCTYPE html>
@@ -99,6 +98,7 @@
                 <label class='cd-accordion__label cd-accordion__label--icon-folder' for='sub-group-$num_up'>
                 <span class='UP UP$num_up'>UP $num_up_gp : $nom </span><span class='moyenne'>Moyenne : $moy_eleve     Coefficient : $coef   Barre : $barre </span></label> ");
       
+          /* Affichage evaluations */
           echo("<ul class='cd-accordion__sub cd-accordion__sub--l2'>");
                   $id_eval_up = id_eval_up($num_up);
                   foreach ($id_eval_up as $num_eval) {
@@ -185,6 +185,8 @@
                 <label class='cd-accordion__label cd-accordion__label--icon-folder' for='sub-group-$num_up'>
                 <span class='UP UP$num_up'>UP $num_up_gp : $nom </span><span class='moyenne'>Moyenne : $moy_eleve     Coefficient : $coef   Barre : $barre </span></label> ");
       
+
+          /* Affichage evaluations */
           echo("<ul class='cd-accordion__sub cd-accordion__sub--l2'>");
                   $id_eval_up = id_eval_up($num_up);
                   foreach ($id_eval_up as $num_eval) {
@@ -278,6 +280,8 @@
                 <label class='cd-accordion__label cd-accordion__label--icon-folder' for='sub-group-$num_up'>
                 <span class='UP UP$num_up'>UP $num_up_gp : $nom </span><span class='moyenne'>Moyenne : $moy_eleve     Coefficient : $coef   Barre : $barre </span></label> ");
       
+
+            /* Affichage evaluations */
           echo("<ul class='cd-accordion__sub cd-accordion__sub--l2'>");
                   $id_eval_up = id_eval_up($num_up);
                   foreach ($id_eval_up as $num_eval) {

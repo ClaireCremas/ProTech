@@ -17,7 +17,7 @@
     global $up_note;
 ?>
 
-<?php include('./../requete.php')?>
+<?php include('./../requete.php')?> /
 
 <body>
 <?php $email=$_SESSION['email'] ?>
@@ -29,7 +29,7 @@
         <p><span class='nom'>Rôle</span> : <?php  ?> </p>
     </div>
         
-   
+
 
 
 <!--Onglets-->
@@ -53,8 +53,9 @@
 </div>
 
 
+
 <?php 
-$liste_types_gp = ['TC1A', 'TC2A', 'majeure', 'TB1', 'TB2', 'TB3', 'defi'];
+$liste_types_gp = ['TC1A', 'TC2A', 'majeure', 'TB1', 'TB2', 'TB3', 'defi'];  
 foreach($liste_types_gp as $nom_type_gp) {
 
   echo("<div id='$nom_type_gp' class='contenucours'>");
@@ -68,7 +69,8 @@ foreach($liste_types_gp as $nom_type_gp) {
       <li class='cd-accordion__item cd-accordion__item--has-children'>
       <input class='cd-accordion__input' type='checkbox' name ='group-$id_gp' id='group-$id_gp'>
       <label class='cd-accordion__label cd-accordion__label--icon-folder' for='group-$id_gp'>  <span class='GP GP$id_gp'> $nom </span><span class='barre'> Barre : $barre </span></label>");
-      include('./../barresGP.php');
+      include('./../barresGP.php');  # Inclusion de la modification des barres de GP
+    
     /* LISTES ELEVES GP */ 
     echo('<ul>');
     $req = $db->query('SELECT nom, url_fichier FROM listes WHERE nom="X_ICM2021.xlsx"');
@@ -93,7 +95,7 @@ foreach($liste_types_gp as $nom_type_gp) {
                     <input class='cd-accordion__input' type='checkbox' name ='sub-group-$num_up' id='sub-group-$num_up'>
                     <label class='cd-accordion__label cd-accordion__label--icon-folder' for='sub-group-$num_up'><span class='UP UP$num_up'>UP$num_up_gp : $nom </span><span class='moyenne'>Moyenne : $moy_eleve   Coefficient : $coef  Barre : $barre</span></label> 
                     <ul class='cd-accordion__sub cd-accordion__sub--l2'>");
-                    include('./../barresUP.php');
+                    include('./../barresUP.php');  # Inclusion de la modification des barres de l'UP
                     $id_eval_up = id_eval_up($num_up);
                     foreach ($id_eval_up as $num_eval) {
                       $moy=moyenne_eval($num_eval);
@@ -108,9 +110,7 @@ foreach($liste_types_gp as $nom_type_gp) {
 
                     echo("</ul>
                     </li>");
-                    
-
-                    
+                                    
             }
             
             echo('</ul>
