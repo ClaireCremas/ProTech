@@ -21,6 +21,7 @@
 
 
 include('../vendor/autoload.php'); #appel à phpSpreadsheet
+#include('./../requete.php');
 #include('../include/database.php'); #connexion à la base de donnée
 #global $db; #permet d'avoir la base de donnée sous le nom db
 
@@ -35,11 +36,13 @@ if(!$rep){
     echo 'Erreur fichier notesatraiter';
 }
 
+$numero_eval = 50;
+
 if (isset($_POST['submit'])){
     $nom_eval = $_POST['eval'];
     $coef = $_POST['coef'];
-    db -> query("INSERT INTO eval (nom, id_up, Coefficient, TYPE) VALUES ('$nom_eval', $num_up, $coef, 'E')");
-    $id_eval = ideval($nom_eval, $num_up, $coef);
+    $db -> query("INSERT INTO eval (nom, id_up, Coefficient, TYPE) VALUES ('$nom_eval', $num_up, $coef, 'E')");
+    $numero_eval = ideval($nom_eval, $num_up, $coef);
 }
 
 
@@ -54,7 +57,7 @@ while(false !== ($file = readdir($rep))){
             echo "Ouverture notesatraiter impossible" ;
         }
         
-        $sheet = $fichier_note->getActiveSheet() ;
+        $sheet = $fichier_note->getActiveSheet();
         $nb_eleves = $sheet->getCell('D1')->getCalculatedValue();
         
         
@@ -66,7 +69,7 @@ while(false !== ($file = readdir($rep))){
             $prenom = $sheet->getCellByColumnAndRow(2,$i) ;
             $note = $sheet->getCellByColumnAndRow(3,$i) ;
             $id_eleve = trouveideleve($nom, $prenom);
-            $db -> query("INSERT INTO note (id_eval, id_user, note) VALUES ($id_eval, $id_eleve, $note)");
+            $db -> query("INSERT INTO note (id_eval, id_user, note) VALUES ('$numero_eval', '$id_eleve', '$note')");
             
             $compteur++;
             
@@ -121,7 +124,7 @@ closedir($rep);
     </br>
     Ajouter une note :
     <form actions="accueil_prof.php" method="POST" enctype="multipart/form-data">
-        Nom de l'évaluation : <input type="text" name="eval" /></br>
+        Nom de l évaluation : <input type="text" name="eval" /></br>
         Coefficient : <input type="number" name="coef" /></br>
         <input type="file" name="fichier" /> </br>
         <input type="submit" value="Valider pour ajouter une note" />
