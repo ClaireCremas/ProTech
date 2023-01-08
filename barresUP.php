@@ -1,10 +1,10 @@
 <?php
 
-if(isset(($_POST['barre'])) and $antibouclebarreUP == 0){
-    $barre = $_POST['barre'];
-    $db -> query("UPDATE 'up' SET barre = $barre WHERE id = $num_up");
+$nom_barre="barre_$num_up";
+if(isset($_POST[$nom_barre])){
+    $barre = $_POST[$nom_barre];
+    $db -> query("UPDATE up SET barre = $barre WHERE id = $num_up");
     echo 'Barre modifiée avec succès';
-    $antibouclebarreUP = 1;
 }
 
 ?>
@@ -27,25 +27,24 @@ if(isset(($_POST['barre'])) and $antibouclebarreUP == 0){
             background: #3CB371;
             box-shadow: #3CB371;
         }
-        div.barreGPUP{
-            font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
+        <?php echp("
+        form.formbarre_$num_up{
+            font-family: 'Klima', 'Open Sans', Helvetica, Arial, sans-serif;
             margin-top: 0px;
             margin-left: 0px;
             margin-bottom: 30px;
-        }
-        form.formbarre{
             padding-left: 0px;
             font-size: 0.85rem;
-        }
+        }"); ?>
     </style>
 </head>
 
-<body>
+<body class="barreUPGP">
     </br>
-    <div class="barreGPUP">
-        <form class="formbarre" actions="accueil_prof.php" method="POST" enctype="multipart/form-data">
-            Nouvelle barre : <input type="number" name="barre" />
-            <input type="submit" name="bouton" value="Valider pour modifier la barre" />
-        </form>
+    <?php echo("<div class='barreGPUP_$num_up'>");?>
+        <?php echo("<form class='formbarre_$num_up' actions='accueil_prof.php' method='POST' enctype='multipart/form-data'>
+            Nouvelle barre : <input type='number' name='barre_$num_up' />
+            <input type='submit' name='bouton_$num_up' value='Valider pour modifier la barre' />
+        </form> "); ?>
     </div>
 </body>

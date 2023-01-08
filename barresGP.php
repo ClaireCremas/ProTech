@@ -1,6 +1,7 @@
 <?php
+
 $nom_barre="barre_$id_gp";
-if(isset(($_POST[$nom_barre]))){
+if(isset($_POST[$nom_barre])){
     $barre = $_POST[$nom_barre];
     $db -> query("UPDATE gp SET barre = $barre WHERE id = $id_gp");
     echo 'Barre modifiée avec succès';
@@ -26,18 +27,19 @@ if(isset(($_POST[$nom_barre]))){
             background: #3CB371;
             box-shadow: #3CB371;
         }
-        div.barreGPUP{
-            font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
+        <?php echo("
+        form.formbarre_$id_gp{
+            font-family: 'Klima', 'Open Sans', Helvetica, Arial, sans-serif;
+            padding-top: 0px;
             margin-top: 0px;
-        }
-        form.formbarre{
             padding-left: 40px;
+            padding-bottom: 10px;
             font-size: 0.85rem;
-        }
+        }"); ?>
     </style>
 </head>
 
-<body>
+<body class="barreUPGP">
     </br>
     <?php echo("<div class='barreGPUP_$id_gp'>");?>
         <?php echo("<form class='formbarre_$id_gp' actions='accueil_prof.php' method='POST' enctype='multipart/form-data'>
