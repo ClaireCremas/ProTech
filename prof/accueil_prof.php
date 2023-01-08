@@ -15,6 +15,10 @@
     global $db; #permet d'avoir la base de donnée sous le nom db
     global $gp_note;
     global $up_note;
+    global $antibouclebarreGP;
+    $antibouclebarreGP = 0;
+    global $antibouclebarreUP;
+    $antibouclebarreUP = 0;
 ?>
 
 <?php include('./../requete.php')?>
@@ -68,7 +72,7 @@ foreach($liste_types_gp as $nom_type_gp) {
       <li class='cd-accordion__item cd-accordion__item--has-children'>
       <input class='cd-accordion__input' type='checkbox' name ='group-$id_gp' id='group-$id_gp'>
       <label class='cd-accordion__label cd-accordion__label--icon-folder' for='group-$id_gp'>  <span class='GP GP$id_gp'> $nom </span><span class='barre'> Barre : $barre </span></label>");
-
+      include('./../barresGP.php');
     /* LISTES ELEVES GP */ 
     echo('<ul>');
     $req = $db->query('SELECT nom, url_fichier FROM listes WHERE nom="X_ICM2021.xlsx"');
@@ -86,6 +90,7 @@ foreach($liste_types_gp as $nom_type_gp) {
             $coef = coef_up($num_up,$id_gp);
             $barre = return_barre_up($num_up,$id_gp);
             $num_up_gp = num_up_gp($num_up);
+            #include('./../barresUP.php');
 
             /*Affichage des Eval*/
             echo("<li class='cd-accordion__item cd-accordion__item--has-children'>
