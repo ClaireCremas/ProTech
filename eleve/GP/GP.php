@@ -20,13 +20,14 @@
 
 <body>
     <h1> <?php echo(nom_gp($id_gp)) ?> </h1>
-    <!-- Bouton simulation et Statistiques -->
+
+    <!-- Bouton simulation -->
     <div class='option'>
         <?php echo("<li><a href='./../Simulation/simulation_GP.php?num_gp=$id_gp' class='simulation'> Simulation </a></li>"); ?>
 
     </div>
 
-    <!-- Partie UP1 -->
+    <!-- Affichage des UP -->
 
     <?php 
     $id_up_gp = id_up_gp($id_gp);
@@ -53,7 +54,7 @@
             <ul>Classement : </ul>
             <ul>Coefficient : $coef </ul>
             <ul>Moyenne groupe : </ul>
-            </li>"); 
+            </li>"); # Statistiques de l'UP
             
 
             $id_eval_up = id_eval_up($id_up);
@@ -69,7 +70,7 @@
             echo("<li class='note'> 
                 <ul>Note $i</ul> <ul>Note : $note </ul> <ul>Classement : $class </ul> <ul>Coefficient : $coef </ul>
                 <ul>Moyenne Groupe : $moy </ul> <ul>Ecart-Type : $ecart_type </ul> <ul>Note min / Note max : $min / $max </ul>
-                </li>");
+                </li>");  # Statistiques de l'évaluation
                 $i++;
             }
 
