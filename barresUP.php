@@ -1,5 +1,5 @@
 <?php
-echo $num_up;
+
 if(isset(($_POST['barre'])) and $antibouclebarreUP == 0){
     $barre = $_POST['barre'];
     $db -> query("UPDATE 'up' SET barre = $barre WHERE id = $num_up");
@@ -30,9 +30,11 @@ if(isset(($_POST['barre'])) and $antibouclebarreUP == 0){
         div.barreGPUP{
             font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
             margin-top: 0px;
+            margin-left: 0px;
+            margin-bottom: 30px;
         }
         form.formbarre{
-            padding-left: 40px;
+            padding-left: 0px;
             font-size: 0.85rem;
         }
     </style>

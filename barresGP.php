@@ -1,5 +1,5 @@
 <?php
-echo $id_gp;
+
 if(isset(($_POST['barre'])) and $antibouclebarreGP == 0){
     $barre = $_POST['barre'];
     $db -> query("UPDATE gp SET barre = $barre WHERE id = $id_gp");

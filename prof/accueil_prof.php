@@ -90,13 +90,14 @@ foreach($liste_types_gp as $nom_type_gp) {
             $coef = coef_up($num_up,$id_gp);
             $barre = return_barre_up($num_up,$id_gp);
             $num_up_gp = num_up_gp($num_up);
-            #include('./../barresUP.php');
+            
 
             /*Affichage des Eval*/
             echo("<li class='cd-accordion__item cd-accordion__item--has-children'>
                     <input class='cd-accordion__input' type='checkbox' name ='sub-group-$num_up' id='sub-group-$num_up'>
                     <label class='cd-accordion__label cd-accordion__label--icon-folder' for='sub-group-$num_up'><span class='UP UP$num_up'>UP$num_up_gp : $nom </span><span class='moyenne'>Moyenne : $moy_eleve   Coefficient : $coef  Barre : $barre</span></label> 
                     <ul class='cd-accordion__sub cd-accordion__sub--l2'>");
+                    #include('./../barresUP.php');
                     $id_eval_up = id_eval_up($num_up);
                     foreach ($id_eval_up as $num_eval) {
                       $moy=moyenne_eval($num_eval);
@@ -107,11 +108,13 @@ foreach($liste_types_gp as $nom_type_gp) {
                     $moy=moyenne_eval($num_rat);
                     $nom=nom_eval($num_rat);
                     echo("<li class='cd-accordion__item'><span class='note'> $nom  Moyenne Promo : $moy </span></li>");
+                    include('./../ajoutnote.php');
 
                     echo("</ul>
                     </li>");
+                    
 
-                    include('./../ajoutnote.php');
+                    
             }
             
             echo('</ul>

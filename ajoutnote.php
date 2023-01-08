@@ -115,7 +115,7 @@ closedir($rep);
         }
         div.ajoutnote{
             font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
-            margin: 0px 10px 30px 10px;
+            margin: 0px 10px 30px 0px;
         }
         h2.titreh2{
             border-bottom: 1px dashed green;
