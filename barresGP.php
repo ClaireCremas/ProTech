@@ -1,10 +1,9 @@
 <?php
-
-if(isset(($_POST['barre'])) and $antibouclebarreGP == 0){
-    $barre = $_POST['barre'];
+$nom_barre="barre_$id_gp";
+if(isset(($_POST[$nom_barre]))){
+    $barre = $_POST[$nom_barre];
     $db -> query("UPDATE gp SET barre = $barre WHERE id = $id_gp");
     echo 'Barre modifiée avec succès';
-    $antibouclebarreGP = 1;
 }
 
 ?>
@@ -40,10 +39,10 @@ if(isset(($_POST['barre'])) and $antibouclebarreGP == 0){
 
 <body>
     </br>
-    <div class="barreGPUP">
-        <form class="formbarre" actions="accueil_prof.php" method="POST" enctype="multipart/form-data">
-            Nouvelle barre : <input type="number" name="barre" />
-            <input type="submit" name="bouton" value="Valider pour modifier la barre" />
-        </form>
+    <?php echo("<div class='barreGPUP_$id_gp'>");?>
+        <?php echo("<form class='formbarre_$id_gp' actions='accueil_prof.php' method='POST' enctype='multipart/form-data'>
+            Nouvelle barre : <input type='number' name='barre_$id_gp' />
+            <input type='submit' name='bouton_$id_gp' value='Valider pour modifier la barre' />
+        </form> "); ?>
     </div>
 </body>

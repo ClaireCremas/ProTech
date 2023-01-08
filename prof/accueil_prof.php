@@ -15,10 +15,6 @@
     global $db; #permet d'avoir la base de donnée sous le nom db
     global $gp_note;
     global $up_note;
-    global $antibouclebarreGP;
-    $antibouclebarreGP = 0;
-    global $antibouclebarreUP;
-    $antibouclebarreUP = 0;
 ?>
 
 <?php include('./../requete.php')?>
