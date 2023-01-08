@@ -22,7 +22,7 @@
     <h1> <?php echo(nom_gp($id_gp)) ?> </h1>
     <!-- Bouton simulation et Statistiques -->
     <div class='option'>
-        <?php echo("<li><a href='./../Simulation/simulation_GP1.php' class='simulation'> Simulation </a></li>"); ?>
+        <?php echo("<li><a href='./../Simulation/simulation_GP.php?num_gp=$id_gp' class='simulation'> Simulation </a></li>"); ?>
 
     </div>
 
