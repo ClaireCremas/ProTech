@@ -660,7 +660,7 @@
             $c = $db->prepare("SELECT id FROM user WHERE nom= :nom AND prenom= :prenom");
             $c->execute(['nom'=> $nom, 'prenom'=> $prenom]);
             $trouveideleve = $c->fetch();
-            return $trouveideleve;
+            return $trouveideleve[0];
         }
 
         function ideval($nom, $id_up, $Coefficient){
@@ -668,7 +668,7 @@
             $c = $db->prepare("SELECT id from eval WHERE nom =:nom AND id_up =:id_up AND Coefficient =:Coefficient");
             $c -> execute(['nom' => $nom, 'id_up' => $id_up, 'Coefficient' => $Coefficient]);
             $ideval = $c -> fecth();
-            return $ideval;
+            return $ideval[0];
         }
 
 
