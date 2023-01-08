@@ -26,7 +26,7 @@
 <body>
 
 <!-- TITRE -->
-  <h1> PROMETHEE GPA</h1>
+  <h1>ACCUEIL ELEVE</h1>
 
 
   <!-- Données de l'élève -->

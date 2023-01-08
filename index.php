@@ -17,7 +17,7 @@
 
 <body>
     <div class="titre">
-        <h1> BIENVENUE SUR LE SITE POUR CONNAITRE VOTRE GPA</h1>
+        <h1> OUTIL D'ASSISTANCE A LA NOTATION DES UP ET GP</h1>
     </div>
     <div>
         <?php
