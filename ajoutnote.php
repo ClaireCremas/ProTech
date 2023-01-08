@@ -41,6 +41,7 @@ if ($telechargement){    # Création d'une évaluation
     $coef = $_POST['coef'];
     $db -> query("INSERT INTO eval (nom, id_up, Coefficient, TYPE) VALUES ('$nom_eval', $num_up, $coef, 'E')");
     $numero_eval = ideval($nom_eval);
+    $telechargement = False;
 }
 
 
