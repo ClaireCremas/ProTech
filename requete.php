@@ -691,7 +691,9 @@
             $c = $db->prepare("SELECT id from eval WHERE TYPE='R' AND id_up=:id");
             $c->execute(['id'=> $id_up]);
             $id_rat = $c->fetch();
-            return($id_rat[0]);
+            if (empty($id_rat) == 0) {
+                return ($id_rat[0]);
+            }
         }
 
 

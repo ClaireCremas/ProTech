@@ -14,10 +14,10 @@
     global $db; #permet d'avoir la base de donnée sous le nom db
     include('./../../requete.php');
     $email=$_SESSION['email'];
-    $id_gp=1;
+    $id_gp=$_GET['num_gp'];
 ?>
 <body>
-    <h1>GP1 : <?php echo(nom_gp($id_gp)) ?></h1>
+    <h1>GP1 : <?php echo($id_gp) ?></h1>
     <!-- Bouton simulation et Statistiques -->
     <div class='option'>
         <li><a href="./../Simulation/simulation_GP1.php" class='simulation'> Simulation </a> </li>
