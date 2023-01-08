@@ -54,7 +54,7 @@
 
 
 <?php 
-$liste_types_gp = ['TC1A', 'TC2A', 'majeures', 'TB1', 'TB2', 'TB3', 'défi'];
+$liste_types_gp = ['TC1A', 'TC2A', 'majeure', 'TB1', 'TB2', 'TB3', 'defi'];
 foreach($liste_types_gp as $nom_type_gp) {
 
   echo("<div id='$nom_type_gp' class='contenucours'>");
@@ -98,10 +98,15 @@ foreach($liste_types_gp as $nom_type_gp) {
                       $nom=nom_eval($num_eval);
                       echo("<li class='cd-accordion__item'><span class='note'> $nom  Moyenne Promo : $moy </span></li>"); }
 
-                      echo("</ul>
-                      </li>");
+                    $num_rat=id_rattrapage_up($num_up);
+                    $moy=moyenne_eval($num_rat);
+                    $nom=nom_eval($num_rat);
+                    echo("<li class='cd-accordion__item'><span class='note'> $nom  Moyenne Promo : $moy </span></li>");
 
-                      #include('./../ajoutnote.php')
+                    echo("</ul>
+                    </li>");
+
+                    #include('./../ajoutnote.php');
             }
             
             echo('</ul>
@@ -112,12 +117,6 @@ foreach($liste_types_gp as $nom_type_gp) {
       }
   
 ?>  
-
-
-
-
-
-<
 
 
 </body>

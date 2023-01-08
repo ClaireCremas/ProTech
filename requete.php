@@ -71,13 +71,13 @@
             $note = $c->fetch();
             if (empty($note[0])==false){ /*Affiche si la note existe*/
                 if ($note[0]=='30'){
-                    echo(0);
+                    return(0);
                 }
                 elseif($note[0]=='40'){
-                    echo('ABS');
+                    return('ABS');
                 }
                 else{
-                    echo($note[0]);
+                    return($note[0]);
                 }
             }
         }
@@ -666,9 +666,9 @@
 
 
 
-        function id_eval_up($id_up){ /*Renvoie la liste des id des evaluations de l'up*/
+        function id_eval_up($id_up){ /*Renvoie la liste des id des evaluations de l'up hors rattrapage*/
             global $db;
-            $c = $db->prepare("SELECT id FROM eval WHERE id_up= :id");
+            $c = $db->prepare("SELECT id FROM eval WHERE TYPE='E' AND id_up= :id");
             $c->execute(['id'=> $id_up]);
             $id_eval = array();
             while ($data = $c->fetch() ) {
@@ -683,7 +683,7 @@
             $c = $db->prepare("SELECT id from eval WHERE TYPE='R' AND id_up=:id");
             $c->execute(['id'=> $id_up]);
             $id_rat = $c->fetch();
-            return($id_rat);
+            return($id_rat[0]);
         }
 
 
@@ -701,7 +701,7 @@
 
 
 
-        function num_up_gp($id_up){ /*Renvoie l'id de l'evaluation rattrapage de l'up*/
+        function num_up_gp($id_up){ /*Renvoie le numero de l'UP au sein de son GP*/
             global $db;
             $c = $db->prepare("SELECT num_UP from up WHERE id=:id");
             $c->execute(['id'=> $id_up]);
