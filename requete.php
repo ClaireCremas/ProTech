@@ -663,6 +663,14 @@
             echo($trouveideleve[0]);
         }
 
+        function ideval($nom, $id_up, $Coefficient){
+            global $db;
+            $c = $db->prepare("SELECT id from eval WHERE nom =:nom AND id_up =:id_up AND Coefficient =:Coefficient");
+            $c -> execute(['nom' => $nom, 'id_up' => $id_up, 'Coefficient' => $Coefficient]);
+            $ideval = $c -> fecth();
+            echo($ideval[0]);
+        }
+
 
 
 
