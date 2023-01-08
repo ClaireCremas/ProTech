@@ -5,7 +5,7 @@
             $c = $db->prepare("SELECT nom FROM gp WHERE id= :id");
             $c->execute(['id'=> $id_gp]);
             $nom_gp = $c->fetch();
-            echo($nom_gp[0]);
+            return($nom_gp[0]);
         }
         
         function barre_gp($id_gp){ /*Affiche la barre du GP*/
@@ -13,7 +13,7 @@
             $c = $db->prepare("SELECT barre FROM gp WHERE id= :id");
             $c->execute(['id'=> $id_gp]);
             $barre_gp = $c->fetch();
-            echo($barre_gp[0]);
+            return($barre_gp[0]);
         }
 
         function nom_up($id_up){ /*Affiche le nom de l'up*/
@@ -21,7 +21,7 @@
             $c = $db->prepare("SELECT nom FROM up WHERE id=:id");
             $c->execute(['id'=>$id_up]);
             $nom_up = $c->fetch();
-            echo($nom_up[0]);
+            return($nom_up[0]);
         }
 
         function barre_up($id_up){ /*Affiche la barre de l'up*/
@@ -45,7 +45,7 @@
             $c = $db->prepare("SELECT coefficient FROM up WHERE id=:id");
             $c->execute(['id'=>$id_up]);
             $coef_up = $c->fetch();
-            echo($coef_up[0]);
+            return($coef_up[0]);
         }
 
         function nom_eval($id_eval){ /*Affiche le nom de l'eval*/
@@ -71,13 +71,13 @@
             $note = $c->fetch();
             if (empty($note[0])==false){ /*Affiche si la note existe*/
                 if ($note[0]=='30'){
-                    echo(0);
+                    return(0);
                 }
                 elseif($note[0]=='40'){
-                    echo('ABS');
+                    return('ABS');
                 }
                 else{
-                    echo($note[0]);
+                    return($note[0]);
                 }
             }
         }
@@ -666,9 +666,9 @@
 
 
 
-        function id_eval_up($id_up){ /*Renvoie la liste des id des evaluations de l'up*/
+        function id_eval_up($id_up){ /*Renvoie la liste des id des evaluations de l'up hors rattrapage*/
             global $db;
-            $c = $db->prepare("SELECT id FROM eval WHERE id_up= :id");
+            $c = $db->prepare("SELECT id FROM eval WHERE TYPE='E' AND id_up= :id");
             $c->execute(['id'=> $id_up]);
             $id_eval = array();
             while ($data = $c->fetch() ) {
@@ -683,7 +683,7 @@
             $c = $db->prepare("SELECT id from eval WHERE TYPE='R' AND id_up=:id");
             $c->execute(['id'=> $id_up]);
             $id_rat = $c->fetch();
-            return($id_rat);
+            return($id_rat[0]);
         }
 
 
@@ -691,7 +691,7 @@
         function id_up_gp($id_gp){ /*Renvoie la liste des id des up du gp*/
             global $db;
             $c = $db->prepare("SELECT id FROM up WHERE id_gp= :id");
-            $c->execute(['id'=> $id_up]);
+            $c->execute(['id'=> $id_gp]);
             $id_up = array();
             while ($data = $c->fetch() ) {
                 $id_up[] = $data['id'];
@@ -700,4 +700,24 @@
         }
 
 
+
+        function num_up_gp($id_up){ /*Renvoie le numero de l'UP au sein de son GP*/
+            global $db;
+            $c = $db->prepare("SELECT num_UP from up WHERE id=:id");
+            $c->execute(['id'=> $id_up]);
+            $id_up = $c->fetch();
+            return($id_up[0]);
+        }
+
+
+        function id_type_gp($type_gp){ /*Renvoie la liste des id des gp du type voulu*/
+            global $db;
+            $c = $db->prepare("SELECT id FROM gp WHERE type_gp=:type_gp");
+            $c->execute(['type_gp'=> $type_gp]);
+            $id_type_gp = array();
+            while ($data = $c->fetch() ) {
+                $id_type_gp[] = $data['id'];
+            }
+            return($id_type_gp);
+        }
 
