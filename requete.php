@@ -731,3 +731,59 @@
             return($id_type_gp);
         }
 
+
+
+        function gp_suivis_1a($email){ /*Renvoie la liste des gp suivis par l'eleve en 1ere année*/
+            global $db;
+            $c = $db->prepare("SELECT  tb1_1a, tb2_1a FROM gp_suivis WHERE email_eleve=:email");
+            $c->execute(['email'=> $email]);
+            $d = $db->prepare("SELECT id  FROM gp WHERE type_gp='TC1A'");
+            $d->execute([]);
+            $gp_suivis = array();
+            while ($data = $d->fetch() ) {
+                $gp_suivis[] = $data['id'];
+            }
+            while ($data = $c->fetch() ) {
+                $gp_suivis[] = $data['tb1_1a'];
+                $gp_suivis[] = $data['tb2_1a'];
+            }
+            return($gp_suivis);
+        }
+
+
+        function gp_suivis_2a($email){ /*Renvoie la liste des gp suivis par l'eleve en 2e année*/
+            global $db;
+            $c = $db->prepare("SELECT  maj_2a, tb3, tb1_2a, tb2_2a, defi_2a FROM gp_suivis WHERE email_eleve=:email");
+            $c->execute(['email'=> $email]);
+            $d = $db->prepare("SELECT id  FROM gp WHERE  type_gp='TC2A'");
+            $d->execute([]);
+            $gp_suivis = array();
+            while ($data = $d->fetch() ) {
+                $gp_suivis[] = $data['id'];
+            }
+            while ($data = $c->fetch() ) {
+                $gp_suivis[] = $data['maj_2a'];
+                $gp_suivis[] = $data['tb3'];
+                $gp_suivis[] = $data['tb1_2a'];
+                $gp_suivis[] = $data['tb2_2a'];
+                $gp_suivis[] = $data['defi_2a'];
+            }
+            return($gp_suivis);
+        }
+
+
+        function gp_suivis_3a($email){ /*Renvoie la liste des gp suivis par l'eleve en 3e année*/
+            global $db;
+            $c = $db->prepare("SELECT  maj_3a, defi_3a  FROM gp_suivis WHERE email_eleve=:email");
+            $c->execute(['email'=> $email]);
+            $gp_suivis = array();
+            while ($data = $c->fetch() ) {
+                $gp_suivis[] = $data['maj_3a'];
+                $gp_suivis[] = $data['defi_3a'];
+            }
+            return($gp_suivis);
+        }
+
+
+
+
