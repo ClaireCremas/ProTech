@@ -106,7 +106,7 @@ foreach($liste_types_gp as $nom_type_gp) {
                     echo("</ul>
                     </li>");
 
-                    #include('./../ajoutnote.php');
+                    include('./../ajoutnote.php');
             }
             
             echo('</ul>
