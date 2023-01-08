@@ -13,10 +13,7 @@
 <body>
     <div class='bg'></div>
     <h1>Informations</h1>
-    <h2>Questions</h2>
-    <p>
-        Question de la personne numéro 1
-    </p>
+
     <h2>Grade : </h2>
         <p>
             <li>Le grade d’un élève est calculé en fonction de son classement dans un Groupe Pédagogique (GP).</li></br>
