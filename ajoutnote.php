@@ -38,7 +38,8 @@ if(!$rep){
 if (isset($_POST['submit'])){
     $nom_eval = $_POST['eval'];
     $coef = $_POST['coef'];
-    db -> query("INSERT INTO eval (nom, id_up, Coefficient, TYPE) VALUES ('$nom_eval', $up_note, $coef, 'E')");
+    db -> query("INSERT INTO eval (nom, id_up, Coefficient, TYPE) VALUES ('$nom_eval', $num_up, $coef, 'E')");
+    $id_eval = ideval($nom_eval, $num_up, $coef);
 }
 
 
@@ -65,7 +66,7 @@ while(false !== ($file = readdir($rep))){
             $prenom = $sheet->getCellByColumnAndRow(2,$i) ;
             $note = $sheet->getCellByColumnAndRow(3,$i) ;
             $id_eleve = trouveideleve($nom, $prenom);
-            $db -> query("INSERT INTO note (id_eval, id_user, note) VALUES (#creer une requete pour avoir l'id de l'eval cree $id_eleve, $note)");
+            $db -> query("INSERT INTO note (id_eval, id_user, note) VALUES ($id_eval, $id_eleve, $note)");
             
             $compteur++;
             
