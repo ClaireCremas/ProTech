@@ -73,7 +73,7 @@
             <input class='cd-accordion__input' type='checkbox' name ='group-$id_gp' id='group-$id_gp'>
             <label class='cd-accordion__label cd-accordion__label--icon-folder' for='group-$id_gp'>
             <span class='GP GP$id_gp'>GP $nom </span><span class='barre'>Moyenne : $moyenne_gp Barre :$barre Grade : $grade </span>
-            <span><a class='info_GP' href='./GP/GP1.php?num_gp=$id_gp'>En savoir plus</a></span> </label>");
+            <span><a class='info_GP' href='./GP/GP.php?num_gp=$id_gp'>En savoir plus</a></span> </label>");
 
       /* COULEUR POUR SAVOIR SI ON VALIDE LE GP */
       if (validation_gp($id_gp,$email)==True){
@@ -159,7 +159,7 @@
             <input class='cd-accordion__input' type='checkbox' name ='group-$id_gp' id='group-$id_gp'>
             <label class='cd-accordion__label cd-accordion__label--icon-folder' for='group-$id_gp'>
             <span class='GP GP$id_gp'>GP $nom </span><span class='barre'>Moyenne : $moyenne_gp Barre :$barre Grade : $grade </span>
-            <span><a class='info_GP' href='./GP/GP1.php?num_gp=$id_gp'>En savoir plus</a></span> </label>");
+            <span><a class='info_GP' href='./GP/GP.php?num_gp=$id_gp'>En savoir plus</a></span> </label>");
 
       /* COULEUR POUR SAVOIR SI ON VALIDE LE GP */
       if (validation_gp($id_gp,$email)==True){
@@ -252,7 +252,7 @@
             <input class='cd-accordion__input' type='checkbox' name ='group-$id_gp' id='group-$id_gp'>
             <label class='cd-accordion__label cd-accordion__label--icon-folder' for='group-$id_gp'>
             <span class='GP GP$id_gp'>GP $nom </span><span class='barre'>Moyenne : $moyenne_gp Barre :$barre Grade : $grade </span>
-            <span><a class='info_GP' href='./GP/GP1.php?num_gp=$id_gp'>En savoir plus</a></span> </label>");
+            <span><a class='info_GP' href='./GP/GP.php?num_gp=$id_gp'>En savoir plus</a></span> </label>");
 
       /* COULEUR POUR SAVOIR SI ON VALIDE LE GP */
       if (validation_gp($id_gp,$email)==True){

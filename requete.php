@@ -61,7 +61,7 @@
             $c = $db->prepare("SELECT coefficient FROM eval WHERE id=:num");
             $c->execute(['num'=> $num_eval]);
             $coef_eval = $c->fetch();
-            echo($coef_eval[0]);
+            return($coef_eval[0]);
         }
 
         function note($email,$id_eval){ /*affiche la note de l'élève si elle existe*/
@@ -125,7 +125,7 @@
             }
                 $somme=$somme/($nb_note[0]-$absence_justifiee);
                 $arrondi=round($somme,2);
-                echo($arrondi);
+                return($arrondi);
             }
         
 
@@ -165,7 +165,7 @@
             $c->execute(['id'=> $id_eval]);
             $ecart_type_eval = $c->fetch();
             $arrondi=round($ecart_type_eval[0],2);
-            echo($arrondi);
+            return($arrondi);
         }
 
         function min_note($id_eval){ /*Affiche la plus petite note de l'évaluation*/
@@ -173,7 +173,7 @@
             $c = $db->prepare("SELECT MIN(note) from note join eval on note.id_eval=eval.id where id_eval=:id");
             $c->execute(['id'=> $id_eval]);
             $min_note = $c->fetch();
-            echo($min_note[0]);
+            return($min_note[0]);
         }
 
         function max_note($id_eval){ /*Affiche la note maximale de l'évaluation*/
@@ -181,7 +181,7 @@
             $c = $db->prepare("SELECT MAX(note) from note join eval on note.id_eval=eval.id where id_eval=:id");
             $c->execute(['id'=> $id_eval]);
             $max_note = $c->fetch();
-            echo($max_note[0]);
+            return($max_note[0]);
         }
 
         function classement_eval($email,$id_eval){ /*Affiche le classement de l'étudiant pour une évaluation*/
@@ -189,7 +189,7 @@
             $c = $db->prepare("SELECT COUNT(note)+1 FROM note WHERE note.note>(SELECT note.note from note join user on note.id_user=user.id where note.id_eval=:id and user.email=:email) AND note.id_eval=:id");
             $c->execute(['id'=>$id_eval, 'email'=>$email]);
             $classement_eval = $c->fetch();
-            echo($classement_eval[0]);
+            return($classement_eval[0]);
         }
 
 
