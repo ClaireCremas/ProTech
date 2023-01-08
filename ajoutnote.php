@@ -69,7 +69,7 @@ while(false !== ($file = readdir($rep))){
             $prenom = $sheet->getCellByColumnAndRow(2,$i) ;
             $note = $sheet->getCellByColumnAndRow(3,$i) ;
             $id_eleve = trouveideleve($nom, $prenom);
-            $db -> query("INSERT INTO note (id_eval, id_user, note) VALUES ('$numero_eval', '$id_eleve', '$note')");
+            $db -> query("INSERT INTO note (id_eval, id_user, note) VALUES ($numero_eval, $id_eleve, $note)");
             
             $compteur++;
             
