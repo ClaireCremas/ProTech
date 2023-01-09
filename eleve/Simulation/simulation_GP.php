@@ -91,21 +91,22 @@
             if(isset($_POST["grade_send$id_up"])){
                 $grade_voulu=$_POST['grade'];
                 $note_pour_grade=note_pour_avoir_grade($id_gp,$email,$id_up,$grade_voulu);
+                $note_affichee=($note_pour_grade+$moyenne)/2;
                 if($grade_voulu=='A+'){
                     echo("<ul> Note à avoir : $note_pour_grade </ul>
-                    <ul> Note affichée sur le bulletin : </ul>");
+                    <ul> Note affichée sur le bulletin :$note_affichee </ul>");
                 }
                 elseif($grade_voulu=='A'){
                     echo("<ul> Note à avoir : $note_pour_grade</ul>
-                    <ul> Note affichée sur le bulletin : </ul>");
+                    <ul> Note affichée sur le bulletin : $note_affichee</ul>");
                 }
                 elseif($grade_voulu=='B'){
                     echo("<ul> Note à avoir : $note_pour_grade</ul>
-                    <ul> Note affichée sur le bulletin : </ul>");
+                    <ul> Note affichée sur le bulletin : $note_affichee</ul>");
                 }
                 elseif($grade_voulu=='C'){
-                    echo("<ul> Note à avoir : </ul>
-                    <ul> Note affichée sur le bulletin : $note_pour_grade </ul>");
+                    echo("<ul> Note à avoir : $note_pour_grade</ul>
+                    <ul> Note affichée sur le bulletin : $note_affichee </ul>");
                 }
                 else{
                     echo("ce grade n'existe pas");
