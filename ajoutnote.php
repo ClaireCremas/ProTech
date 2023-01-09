@@ -1,26 +1,30 @@
 <?php
 $telechargement=False;
 
-    if(!empty($_FILES)){
-        $file_name = $_FILES['fichier']['name'];
-        $file_extension = strrchr($file_name, ".");
+$nom_de_l_eval = "eval_$num_up";
+$coef_de_l_eval = "coef_$num_up";
+$nom_du_fichier = "fichier_$num_up";
 
-        $file_tmp_name = $_FILES['fichier']['tmp_name'];
-        $file_dest = "../notesatraiter";
+if(isset($_POST[$nom_de_l_eval]) and isset($_POST[$coef_de_l_eval]) and !empty($_FILES)){
+    $file_name = $_FILES[$nom_du_fichier]['name'];
+    $file_extension = strrchr($file_name, ".");
 
-        $extensions_autorisees = array(".xlsx", ".XLSX");
+    $file_tmp_name = $_FILES[$nom_du_fichier]['tmp_name'];
+    $file_dest = "../notesatraiter";
 
-        if(in_array($file_extension, $extensions_autorisees) and $_FILES['fichier']['error']==0){
-            if(move_uploaded_file($file_tmp_name, "$file_dest/$file_name")){
-                echo 'Notes téléchargées avec succès';
-                $telechargement = True;
-            } else {
-                echo "Une erreur est survenue lors du téléchargement.";
-            }
+    $extensions_autorisees = array(".xlsx", ".XLSX");
+
+    if(in_array($file_extension, $extensions_autorisees) and $_FILES[$nom_du_fichier]['error']==0){
+        if(move_uploaded_file($file_tmp_name, "$file_dest/$file_name")){
+            echo 'Notes téléchargées avec succès';
+            $telechargement = True;
         } else {
-            echo "Seuls les fichiers au format .xlsx sont autorisés.";
+            echo "Une erreur est survenue lors du téléchargement.";
         }
+    } else {
+        echo "Seuls les fichiers au format .xlsx sont autorisés.";
     }
+}
 
 
 include('../vendor/autoload.php'); #appel à phpSpreadsheet
@@ -37,8 +41,8 @@ if(!$rep){
 }
 
 if ($telechargement){    # Création d'une évaluation
-    $nom_eval = $_POST['eval'];
-    $coef = $_POST['coef'];
+    $nom_eval = $_POST[$nom_de_l_eval];
+    $coef = $_POST[$coef_de_l_eval];
     $db -> query("INSERT INTO eval (nom, id_up, Coefficient, TYPE) VALUES ('$nom_eval', $num_up, $coef, 'E')");
     $numero_eval = ideval($nom_eval);
     $telechargement = False;
@@ -113,32 +117,34 @@ closedir($rep);
             background: #3CB371;
             box-shadow: #3CB371;
         }
-        div.ajoutnote{
-            font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
+        <?php echo("
+        div.ajoutnote_$num_up{
+            font-family: 'Klima', 'Open Sans', Helvetica, Arial, sans-serif;
             margin: 0px 10px 30px 0px;
-        }
+        }"); ?>
         h2.titreh2{
             border-bottom: 1px dashed green;
             font-size: 1.1rem;
             margin: 0px;
             padding:0px 5px 5px 5px;
         }
-        form.form{
+        <?php echo("
+        form.form_$num_up{
             padding: 5px;
             font-size: 0.85rem;
-        }
+        }"); ?>
     </style>
 </head>
 
 <body>
     </br>
-    <div class="ajoutnote">
+    <?php echo("<div class='ajoutnote_$num_up'>");?>
         <h2 class="titreh2">Ajouter une note :</h2>
-        <form class="form" actions="accueil_prof.php" method="POST" enctype="multipart/form-data">
-            Nom de l'évaluation : <input type="text" name="eval" /></br>
-            Coefficient : <input type="number" name="coef" /></br>
-            <input type="file" name="fichier" /> </br>
-            <input type="submit" value="Valider pour ajouter une note" />
-        </form>
+        <?php echo("<form class='form_$num_up' actions='accueil_prof.php' method='POST' enctype='multipart/form-data'>
+            Nom de l'évaluation : <input type='text' name='eval_$num_up' /></br>
+            Coefficient : <input type='number' name='coef_$num_up' /></br>
+            <input type='file' name='fichier_$num_up' /> </br>
+            <input type='submit' name='button_$num_up' value='Valider pour ajouter une note' />
+        </form> "); ?>
     </div>
 </body>
