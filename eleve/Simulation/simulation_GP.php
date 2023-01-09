@@ -88,7 +88,7 @@
             </form>
             </ul>");
 
-            if(isset($_POST['grade_send$id_up'])){
+            if(isset($_POST["grade_send$id_up"])){
                 $grade_voulu=$_POST['grade'];
                 $note_pour_grade=note_pour_avoir_grade($id_gp,$email,$id_up,$grade_voulu);
                 if($grade_voulu=='A+'){
