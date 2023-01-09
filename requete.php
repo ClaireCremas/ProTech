@@ -266,10 +266,11 @@
                     $moyenne=($moyenne+$note[0])/2;
                 }
 
-                $arrondi=round($moyenne,2);
-                return $arrondi;
+                
             }
             
+            $arrondi=round($moyenne,2);
+            return $arrondi;
         }
         
 
@@ -454,10 +455,10 @@
 
         function grade_gp($id_gp,$email){ /* retourne un couple qui est la barre du gp de l'élève et la note*/
             global $db;
-            $d=$db->prepare("SELECT 'A+',A,B from gp where id=:id");
+            $d=$db->prepare("SELECT Aplus,A,B from gp where id=:id");
             $d->execute(['id'=>$id_gp]);
             $grade=$d->fetch();
-            $aplus=$grade['A+'];
+            $aplus=$grade['Aplus'];
             $a=$grade['A'];
             $b=$grade['B'];
 
@@ -566,26 +567,27 @@
             $d->execute(['id'=>$id_gp]);
             $barre_gp=$d->fetch();
            
-
-            for ($i = 1; $i <= 4; $i++) {
-                if ($i+($id_gp-1)*4==$id_up_simulation){ /*cas où c'est l'id du rattrapage*/
-                    $c->execute(['id'=> ($id_gp-1)*4+$i]);
+            $id_up=id_up_gp($id_gp);
+            
+            for ($i = 0; $i <= count($id_up)-1; $i++) {
+                if ($id_up[$i]==$id_up_simulation){ /*cas où c'est l'id du rattrapage*/
+                    $c->execute(['id'=> $id_up[$i]]);
                     $coef_up = $c->fetch();
                     $coef_simulation=$coef_up[0];
                 }
                 else{ /*reste*/
-                    $c->execute(['id'=> ($id_gp-1)*4+$i]);
+                    $c->execute(['id'=> $id_up[$i]]);
                     $coef_up = $c->fetch();
 
                     $d=$db->prepare("SELECT id from eval where eval.id_up=:id and eval.TYPE=:t");
-                    $d->execute(['id'=>($id_gp-1)*4+$i,'t'=>'R']);
+                    $d->execute(['id'=>$id_up[$i],'t'=>'R']);
                     $id_rattrapage=$d->fetch();
                     if(rattrapage_non_vide($id_rattrapage[0],$email)==TRUE){
-                        $somme=$somme+return_max_rattrapage_moyenne(($id_gp-1)*4+$i,$email)*$coef_up[0];
-                        $val=return_max_rattrapage_moyenne(($id_gp-1)*4+$i,$email);
+                        $somme=$somme+return_max_rattrapage_moyenne($id_up[$i],$email)*$coef_up[0];
+                        $val=return_max_rattrapage_moyenne($id_up[$i],$email);
                     }
                     else{
-                        $moyenne_up_eleve=moyenne_up_eleve(($id_gp-1)*4+$i,$email);
+                        $moyenne_up_eleve=moyenne_up_eleve($id_up[$i],$email);
                         $somme=$somme+$coef_up[0]*$moyenne_up_eleve;
                     }
                 }
@@ -621,34 +623,36 @@
             $d->execute(['id'=>$id_gp]);
             $seuil_grade=$d->fetch();
            
+            $id_up=id_up_gp($id_gp);
 
-            for ($i = 1; $i <= 4; $i++) {
-                if ($i+($id_gp-1)*4==$id_up_simulation){ /*cas où c'est l'id du rattrapage*/
-                    $c->execute(['id'=> ($id_gp-1)*4+$i]);
+            for ($i = 0; $i <= count($id_up)-1; $i++) {
+                if ($id_up[$i]==$id_up_simulation){ /*cas où c'est l'id du rattrapage*/
+                    $c->execute(['id'=> $id_up[$i]]);
                     $coef_up = $c->fetch();
                     $coef_simulation=$coef_up[0];
-                    $moyenne_up_simulation_eleve=moyenne_up_eleve(($id_gp-1)*4+$i,$email);
+                    $moyenne_up_simulation_eleve=moyenne_up_eleve($id_up[$i],$email);
                 }
                 else{ /*reste*/
-                    $c->execute(['id'=> ($id_gp-1)*4+$i]);
+                    $c->execute(['id'=> $id_up[$i]]);
                     $coef_up = $c->fetch();
 
                     $d=$db->prepare("SELECT id from eval where eval.id_up=:id and eval.TYPE=:t");
-                    $d->execute(['id'=>($id_gp-1)*4+$i,'t'=>'R']);
+                    $d->execute(['id'=>$id_up[$i],'t'=>'R']);
                     $id_rattrapage=$d->fetch();
-                    if(rattrapage_non_vide($id_rattrapage[0],$email)==TRUE){
-                        $somme=$somme+return_max_rattrapage_moyenne(($id_gp-1)*4+$i,$email)*$coef_up[0];
-                        $val=return_max_rattrapage_moyenne(($id_gp-1)*4+$i,$email);
+                    if(empty($id_rattrapage)==FALSE AND rattrapage_non_vide($id_rattrapage[0],$email)==TRUE ){
+                        $somme=$somme+return_max_rattrapage_moyenne($id_up[$i],$email)*$coef_up[0];
+                        $val=return_max_rattrapage_moyenne($id_up[$i],$email);
                     }
                     else{
-                        $moyenne_up_eleve=moyenne_up_eleve(($id_gp-1)*4+$i,$email);
+                        $moyenne_up_eleve=moyenne_up_eleve($id_up[$i],$email);
                         $somme=$somme+$coef_up[0]*$moyenne_up_eleve;
                     }
                 }
                 $coef=$coef+$coef_up[0];
                 
             }
-            $note_a_avoir=($coef*$seuil_grade[0]-$somme)*2/($coef_simulation*$moyenne_up_simulation_eleve);
+
+            $note_a_avoir=(($coef*$seuil_grade[0]-$somme)*2)-$moyenne_up_simulation_eleve/($coef_simulation);
             $arrondi=round($note_a_avoir,2);
             return $arrondi;
 

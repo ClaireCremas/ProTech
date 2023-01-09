@@ -4,8 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="simulation_GP.css">
+    <link rel="stylesheet" href="simulation_GP1.css">
     <?php echo("<title>Simulation GP</title>"); ?>
+    <style>
+        h1{
+    text-align: center;
+    font-size: 3rem;
+}
+
+body{
+    font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
+    background-color: #ECECEE;
+}
+
+ul{
+    list-style: none;
+}
+
+li{
+    list-style: none;
+    display: flex;
+}
+
+.UP{
+    border-radius: 1.3125rem;
+    padding:5px;
+    margin: 1rem;
+    box-shadow: inset 0 0 0 1px black;
+}
+
+    </style>
 </head>
 <body>
 
@@ -88,24 +116,25 @@
             </form>
             </ul>");
 
-            if(isset($_POST['grade_send$id_up'])){
+            if(isset($_POST["grade_send$id_up"])){
                 $grade_voulu=$_POST['grade'];
                 $note_pour_grade=note_pour_avoir_grade($id_gp,$email,$id_up,$grade_voulu);
+                $note_affichee=($note_pour_grade+$moyenne)/2;
                 if($grade_voulu=='A+'){
                     echo("<ul> Note à avoir : $note_pour_grade </ul>
-                    <ul> Note affichée sur le bulletin : </ul>");
+                    <ul> Note affichée sur le bulletin :$note_affichee </ul>");
                 }
                 elseif($grade_voulu=='A'){
                     echo("<ul> Note à avoir : $note_pour_grade</ul>
-                    <ul> Note affichée sur le bulletin : </ul>");
+                    <ul> Note affichée sur le bulletin : $note_affichee</ul>");
                 }
                 elseif($grade_voulu=='B'){
                     echo("<ul> Note à avoir : $note_pour_grade</ul>
-                    <ul> Note affichée sur le bulletin : </ul>");
+                    <ul> Note affichée sur le bulletin : $note_affichee</ul>");
                 }
                 elseif($grade_voulu=='C'){
-                    echo("<ul> Note à avoir : </ul>
-                    <ul> Note affichée sur le bulletin : $note_pour_grade </ul>");
+                    echo("<ul> Note à avoir : $note_pour_grade</ul>
+                    <ul> Note affichée sur le bulletin : $note_affichee </ul>");
                 }
                 else{
                     echo("ce grade n'existe pas");

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="prof.css"> <!--css-->
+    <link rel="stylesheet" href="prof1.css"> <!--css-->
 </head>
 
 <?php session_start();
@@ -26,7 +26,7 @@
     <div class="professeur">
         <p><span class='nom'>Nom</span> : <?php echo($_SESSION['nom']) ?> </p>
         <p><span class='nom'>Prénom</span> : <?php echo($_SESSION['prenom']) ?> </p>
-        <p><span class='nom'>Rôle</span> : <?php  ?> </p>
+        <!--<p><span class='nom'>Rôle</span> : <?php  ?> </p>-->
     </div>
         
 
