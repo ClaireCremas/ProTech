@@ -1,27 +1,32 @@
-body{
+body {
     background-color: #ECECEE;
 }
-h1{
+
+h1 {
     text-align: center;
     font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
     font-size: 3rem;
 }
-.professeur{
-    font-family: "Klima","open sans",Helvetica,Arial,sans-serif;
+
+.professeur {
+    font-family: "Klima", "open sans", Helvetica, Arial, sans-serif;
     text-transform: capitalize;
     display: flex;
     justify-content: space-around;
 }
-.nom{
+
+.nom {
     text-decoration: underline;
 }
-.cours{
+
+.cours {
     overflow: hidden;
     background-color: #ECECEE;
     background-position: bottom;
     background-repeat: repeat-x;
 }
-.cours ul{
+
+.cours ul {
     list-style: none;
     background: #6A5ACD;
     font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
@@ -30,14 +35,16 @@ h1{
     padding: 10px 35px 10px 7px;
     border-radius: 10px;
     text-decoration: none;
-    display : inline-block;
+    display: inline-block;
 }
-.cours li{
+
+.cours li {
     float: left;
     margin-left: 30px;
 }
-.cours li a{
-    text-decoration:none;
+
+.cours li a {
+    text-decoration: none;
     color: white;
     position: relative;
     width: 100%;
@@ -47,26 +54,29 @@ h1{
     align-items: right;
     flex-wrap: wrap;
 }
-.cours ul:hover{
+
+.cours ul:hover {
     background: #61259e;
     font-size: 102%;
 }
-.contenucours{
+
+.contenucours {
     display: none;
 }
-.contenucours:target{
+
+.contenucours:target {
     display: block;
 }
 
-.GP{
-    font-size:large;
+.GP {
+    font-size: large;
     font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
     cursor: pointer;
     border: 0;
-    box-shadow: inset 0 0 0 1px #ECECEE;
+    box-shadow: inset 0 0 0 1px black;
     padding: .625rem 1.5rem .85rem;
     border-radius: 1.3125rem;
-    color:black;
+    color: black;
     display: flex;
     align-items: center;
     justify-content: left;
@@ -80,41 +90,19 @@ h1{
     margin: 10px;
 }
 
-.GP:hover{
-  background: #BABABB;
-  box-shadow: #BABABB ;
+.GP:hover {
+    background: #BABABB;
+    box-shadow: #BABABB;
 }
 
-.barre{
-  font-size:large;
-  font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
-  border: 0;
-  box-shadow: inset 0 0 0 1px black;
-  padding: .625rem 1.5rem .85rem;
-  border-radius: 1.3125rem;
-  color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 3rem;
-  min-width: 15rem;
-  font-size: 1rem;
-  letter-spacing: .025rem;
-  line-height: 1.25rem;
-  font-weight: 400;
-  box-sizing: border-box;
-}
-
-.UP{
-    list-style: none;
-    font-size:large;
-    cursor: pointer;
+.barre {
+    font-size: large;
     font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
     border: 0;
-    box-shadow: inset 0 0 0 1px #CACACB;
+    box-shadow: inset 0 0 0 1px black;
     padding: .625rem 1.5rem .85rem;
     border-radius: 1.3125rem;
-    color:black;
+    color: black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -125,77 +113,100 @@ h1{
     line-height: 1.25rem;
     font-weight: 400;
     box-sizing: border-box;
-    margin:10px;
 }
 
-.UP:hover{
-  background: #BABABB;
-  box-shadow: #BABABB ;
+.UP {
+    list-style: none;
+    font-size: large;
+    cursor: pointer;
+    font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
+    border: 0;
+    box-shadow: inset 0 0 0 1px #CACACB;
+    padding: .625rem 1.5rem .85rem;
+    border-radius: 1.3125rem;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    min-width: 15rem;
+    font-size: 1rem;
+    letter-spacing: .025rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    box-sizing: border-box;
+    margin: 10px;
 }
 
-.moyenne{
-  font-size:large;
-  font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
-  border: 0;
-  box-shadow: inset 0 0 0 1px black;
-  padding: .625rem 1.5rem .85rem;
-  border-radius: 1.3125rem;
-  color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 3rem;
-  min-width: 15rem;
-  font-size: 1rem;
-  letter-spacing: .025rem;
-  line-height: 1.25rem;
-  font-weight: 400;
-  box-sizing: border-box;
-  margin: 10px;
+.UP:hover {
+    background: #BABABB;
+    box-shadow: #BABABB;
 }
 
-.info_GP{
-  cursor: pointer;
-  background: #CACACB;
-  display: inline-flex;
-  font-size:large;
-  font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
-  border: 0;
-  box-shadow: inset 0 0 0 1px #ECECEE ;
-  padding: .625rem 1.5rem .85rem;
-  border-radius: 1.3125rem;
-  color: black;
-  align-items: center;
-  justify-content: center;
-  min-height: 2rem;
-  min-width: 6rem;
-  font-size: 1rem;
-  letter-spacing: .025rem;
-  line-height: 1.25rem;
-  font-weight: 400;
-  box-sizing: border-box;
-  margin: 5px;
-  margin-left: 1rem;
-  text-decoration: none;
+.moyenne {
+    font-size: large;
+    font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
+    border: 0;
+    box-shadow: inset 0 0 0 1px black;
+    padding: .625rem 1.5rem .85rem;
+    border-radius: 1.3125rem;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    min-width: 15rem;
+    font-size: 1rem;
+    letter-spacing: .025rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    box-sizing: border-box;
+    margin: 10px;
 }
 
-.info_GP:hover{
-  background: #B7B7B7;
+.info_GP {
+    cursor: pointer;
+    background: #CACACB;
+    display: inline-flex;
+    font-size: large;
+    font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
+    border: 0;
+    box-shadow: inset 0 0 0 1px #ECECEE;
+    padding: .625rem 1.5rem .85rem;
+    border-radius: 1.3125rem;
+    color: black;
+    align-items: center;
+    justify-content: center;
+    min-height: 2rem;
+    min-width: 6rem;
+    font-size: 1rem;
+    letter-spacing: .025rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    box-sizing: border-box;
+    margin: 5px;
+    margin-left: 1rem;
+    text-decoration: none;
 }
 
-.note{
-  font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
+.info_GP:hover {
+    background: #B7B7B7;
 }
 
-.cd-accordion__item{
-  list-style: none;
+.note {
+    font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
 }
 
-.cd-accordion__input { /*hide native checkbox*/
+.cd-accordion__item {
+    list-style: none;
+}
+
+.cd-accordion__input {
+    /*hide native checkbox*/
     position: absolute;
     opacity: 0;
 }
-  
+
 .cd-accordion__label {
     position: relative;
     display: flex;
@@ -207,9 +218,11 @@ h1{
 }
 
 .cd-accordion__sub {
-    display: none; /* by default hide all sub menus*/
+    display: none;
+    /* by default hide all sub menus*/
 }
 
-.cd-accordion__input:checked ~ .cd-accordion__sub { /* show children when item is checked*/
+.cd-accordion__input:checked~.cd-accordion__sub {
+    /* show children when item is checked*/
     display: block;
 }
