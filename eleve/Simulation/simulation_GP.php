@@ -4,8 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="simulation_GP.css">
+    <link rel="stylesheet" href="simulation_GP1.css">
     <?php echo("<title>Simulation GP</title>"); ?>
+    <style>
+        h1{
+    text-align: center;
+    font-size: 3rem;
+}
+
+body{
+    font-family: "Klima", "Open Sans", Helvetica, Arial, sans-serif;
+    background-color: #ECECEE;
+}
+
+ul{
+    list-style: none;
+}
+
+li{
+    list-style: none;
+    display: flex;
+}
+
+.UP{
+    border-radius: 1.3125rem;
+    padding:5px;
+    margin: 1rem;
+    box-shadow: inset 0 0 0 1px black;
+}
+
+    </style>
 </head>
 <body>
 
